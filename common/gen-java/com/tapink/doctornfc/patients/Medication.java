@@ -34,7 +34,7 @@ public class Medication implements org.apache.thrift.TBase<Medication, Medicatio
   private static final org.apache.thrift.protocol.TField NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("name", org.apache.thrift.protocol.TType.STRING, (short)2);
   private static final org.apache.thrift.protocol.TField TYPE_FIELD_DESC = new org.apache.thrift.protocol.TField("type", org.apache.thrift.protocol.TType.STRING, (short)3);
   private static final org.apache.thrift.protocol.TField SIDE_EFFECTS_FIELD_DESC = new org.apache.thrift.protocol.TField("side_effects", org.apache.thrift.protocol.TType.LIST, (short)4);
-  private static final org.apache.thrift.protocol.TField INTERACTING_DRUG_IDS_FIELD_DESC = new org.apache.thrift.protocol.TField("interacting_drug_ids", org.apache.thrift.protocol.TType.LIST, (short)5);
+  private static final org.apache.thrift.protocol.TField I32ERACTING_DRUG_IDS_FIELD_DESC = new org.apache.thrift.protocol.TField("i32eracting_drug_ids", org.apache.thrift.protocol.TType.LIST, (short)5);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -46,7 +46,7 @@ public class Medication implements org.apache.thrift.TBase<Medication, Medicatio
   public String name; // required
   public String type; // required
   public List<String> side_effects; // required
-  public List<String> interacting_drug_ids; // required
+  public List<String> i32eracting_drug_ids; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -54,7 +54,7 @@ public class Medication implements org.apache.thrift.TBase<Medication, Medicatio
     NAME((short)2, "name"),
     TYPE((short)3, "type"),
     SIDE_EFFECTS((short)4, "side_effects"),
-    INTERACTING_DRUG_IDS((short)5, "interacting_drug_ids");
+    I32ERACTING_DRUG_IDS((short)5, "i32eracting_drug_ids");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -77,8 +77,8 @@ public class Medication implements org.apache.thrift.TBase<Medication, Medicatio
           return TYPE;
         case 4: // SIDE_EFFECTS
           return SIDE_EFFECTS;
-        case 5: // INTERACTING_DRUG_IDS
-          return INTERACTING_DRUG_IDS;
+        case 5: // I32ERACTING_DRUG_IDS
+          return I32ERACTING_DRUG_IDS;
         default:
           return null;
       }
@@ -131,7 +131,7 @@ public class Medication implements org.apache.thrift.TBase<Medication, Medicatio
     tmpMap.put(_Fields.SIDE_EFFECTS, new org.apache.thrift.meta_data.FieldMetaData("side_effects", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.ListMetaData(org.apache.thrift.protocol.TType.LIST, 
             new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING))));
-    tmpMap.put(_Fields.INTERACTING_DRUG_IDS, new org.apache.thrift.meta_data.FieldMetaData("interacting_drug_ids", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.I32ERACTING_DRUG_IDS, new org.apache.thrift.meta_data.FieldMetaData("i32eracting_drug_ids", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.ListMetaData(org.apache.thrift.protocol.TType.LIST, 
             new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING))));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
@@ -146,14 +146,14 @@ public class Medication implements org.apache.thrift.TBase<Medication, Medicatio
     String name,
     String type,
     List<String> side_effects,
-    List<String> interacting_drug_ids)
+    List<String> i32eracting_drug_ids)
   {
     this();
     this.id = id;
     this.name = name;
     this.type = type;
     this.side_effects = side_effects;
-    this.interacting_drug_ids = interacting_drug_ids;
+    this.i32eracting_drug_ids = i32eracting_drug_ids;
   }
 
   /**
@@ -176,12 +176,12 @@ public class Medication implements org.apache.thrift.TBase<Medication, Medicatio
       }
       this.side_effects = __this__side_effects;
     }
-    if (other.isSetInteracting_drug_ids()) {
-      List<String> __this__interacting_drug_ids = new ArrayList<String>();
-      for (String other_element : other.interacting_drug_ids) {
-        __this__interacting_drug_ids.add(other_element);
+    if (other.isSetI32eracting_drug_ids()) {
+      List<String> __this__i32eracting_drug_ids = new ArrayList<String>();
+      for (String other_element : other.i32eracting_drug_ids) {
+        __this__i32eracting_drug_ids.add(other_element);
       }
-      this.interacting_drug_ids = __this__interacting_drug_ids;
+      this.i32eracting_drug_ids = __this__i32eracting_drug_ids;
     }
   }
 
@@ -195,7 +195,7 @@ public class Medication implements org.apache.thrift.TBase<Medication, Medicatio
     this.name = null;
     this.type = null;
     this.side_effects = null;
-    this.interacting_drug_ids = null;
+    this.i32eracting_drug_ids = null;
   }
 
   public String getId() {
@@ -309,42 +309,42 @@ public class Medication implements org.apache.thrift.TBase<Medication, Medicatio
     }
   }
 
-  public int getInteracting_drug_idsSize() {
-    return (this.interacting_drug_ids == null) ? 0 : this.interacting_drug_ids.size();
+  public int getI32eracting_drug_idsSize() {
+    return (this.i32eracting_drug_ids == null) ? 0 : this.i32eracting_drug_ids.size();
   }
 
-  public java.util.Iterator<String> getInteracting_drug_idsIterator() {
-    return (this.interacting_drug_ids == null) ? null : this.interacting_drug_ids.iterator();
+  public java.util.Iterator<String> getI32eracting_drug_idsIterator() {
+    return (this.i32eracting_drug_ids == null) ? null : this.i32eracting_drug_ids.iterator();
   }
 
-  public void addToInteracting_drug_ids(String elem) {
-    if (this.interacting_drug_ids == null) {
-      this.interacting_drug_ids = new ArrayList<String>();
+  public void addToI32eracting_drug_ids(String elem) {
+    if (this.i32eracting_drug_ids == null) {
+      this.i32eracting_drug_ids = new ArrayList<String>();
     }
-    this.interacting_drug_ids.add(elem);
+    this.i32eracting_drug_ids.add(elem);
   }
 
-  public List<String> getInteracting_drug_ids() {
-    return this.interacting_drug_ids;
+  public List<String> getI32eracting_drug_ids() {
+    return this.i32eracting_drug_ids;
   }
 
-  public Medication setInteracting_drug_ids(List<String> interacting_drug_ids) {
-    this.interacting_drug_ids = interacting_drug_ids;
+  public Medication setI32eracting_drug_ids(List<String> i32eracting_drug_ids) {
+    this.i32eracting_drug_ids = i32eracting_drug_ids;
     return this;
   }
 
-  public void unsetInteracting_drug_ids() {
-    this.interacting_drug_ids = null;
+  public void unsetI32eracting_drug_ids() {
+    this.i32eracting_drug_ids = null;
   }
 
-  /** Returns true if field interacting_drug_ids is set (has been assigned a value) and false otherwise */
-  public boolean isSetInteracting_drug_ids() {
-    return this.interacting_drug_ids != null;
+  /** Returns true if field i32eracting_drug_ids is set (has been assigned a value) and false otherwise */
+  public boolean isSetI32eracting_drug_ids() {
+    return this.i32eracting_drug_ids != null;
   }
 
-  public void setInteracting_drug_idsIsSet(boolean value) {
+  public void setI32eracting_drug_idsIsSet(boolean value) {
     if (!value) {
-      this.interacting_drug_ids = null;
+      this.i32eracting_drug_ids = null;
     }
   }
 
@@ -382,11 +382,11 @@ public class Medication implements org.apache.thrift.TBase<Medication, Medicatio
       }
       break;
 
-    case INTERACTING_DRUG_IDS:
+    case I32ERACTING_DRUG_IDS:
       if (value == null) {
-        unsetInteracting_drug_ids();
+        unsetI32eracting_drug_ids();
       } else {
-        setInteracting_drug_ids((List<String>)value);
+        setI32eracting_drug_ids((List<String>)value);
       }
       break;
 
@@ -407,8 +407,8 @@ public class Medication implements org.apache.thrift.TBase<Medication, Medicatio
     case SIDE_EFFECTS:
       return getSide_effects();
 
-    case INTERACTING_DRUG_IDS:
-      return getInteracting_drug_ids();
+    case I32ERACTING_DRUG_IDS:
+      return getI32eracting_drug_ids();
 
     }
     throw new IllegalStateException();
@@ -429,8 +429,8 @@ public class Medication implements org.apache.thrift.TBase<Medication, Medicatio
       return isSetType();
     case SIDE_EFFECTS:
       return isSetSide_effects();
-    case INTERACTING_DRUG_IDS:
-      return isSetInteracting_drug_ids();
+    case I32ERACTING_DRUG_IDS:
+      return isSetI32eracting_drug_ids();
     }
     throw new IllegalStateException();
   }
@@ -484,12 +484,12 @@ public class Medication implements org.apache.thrift.TBase<Medication, Medicatio
         return false;
     }
 
-    boolean this_present_interacting_drug_ids = true && this.isSetInteracting_drug_ids();
-    boolean that_present_interacting_drug_ids = true && that.isSetInteracting_drug_ids();
-    if (this_present_interacting_drug_ids || that_present_interacting_drug_ids) {
-      if (!(this_present_interacting_drug_ids && that_present_interacting_drug_ids))
+    boolean this_present_i32eracting_drug_ids = true && this.isSetI32eracting_drug_ids();
+    boolean that_present_i32eracting_drug_ids = true && that.isSetI32eracting_drug_ids();
+    if (this_present_i32eracting_drug_ids || that_present_i32eracting_drug_ids) {
+      if (!(this_present_i32eracting_drug_ids && that_present_i32eracting_drug_ids))
         return false;
-      if (!this.interacting_drug_ids.equals(that.interacting_drug_ids))
+      if (!this.i32eracting_drug_ids.equals(that.i32eracting_drug_ids))
         return false;
     }
 
@@ -549,12 +549,12 @@ public class Medication implements org.apache.thrift.TBase<Medication, Medicatio
         return lastComparison;
       }
     }
-    lastComparison = Boolean.valueOf(isSetInteracting_drug_ids()).compareTo(typedOther.isSetInteracting_drug_ids());
+    lastComparison = Boolean.valueOf(isSetI32eracting_drug_ids()).compareTo(typedOther.isSetI32eracting_drug_ids());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetInteracting_drug_ids()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.interacting_drug_ids, typedOther.interacting_drug_ids);
+    if (isSetI32eracting_drug_ids()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.i32eracting_drug_ids, typedOther.i32eracting_drug_ids);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -611,11 +611,11 @@ public class Medication implements org.apache.thrift.TBase<Medication, Medicatio
     }
     first = false;
     if (!first) sb.append(", ");
-    sb.append("interacting_drug_ids:");
-    if (this.interacting_drug_ids == null) {
+    sb.append("i32eracting_drug_ids:");
+    if (this.i32eracting_drug_ids == null) {
       sb.append("null");
     } else {
-      sb.append(this.interacting_drug_ids);
+      sb.append(this.i32eracting_drug_ids);
     }
     first = false;
     sb.append(")");
@@ -702,20 +702,20 @@ public class Medication implements org.apache.thrift.TBase<Medication, Medicatio
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 5: // INTERACTING_DRUG_IDS
+          case 5: // I32ERACTING_DRUG_IDS
             if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
               {
                 org.apache.thrift.protocol.TList _list3 = iprot.readListBegin();
-                struct.interacting_drug_ids = new ArrayList<String>(_list3.size);
+                struct.i32eracting_drug_ids = new ArrayList<String>(_list3.size);
                 for (int _i4 = 0; _i4 < _list3.size; ++_i4)
                 {
                   String _elem5; // required
                   _elem5 = iprot.readString();
-                  struct.interacting_drug_ids.add(_elem5);
+                  struct.i32eracting_drug_ids.add(_elem5);
                 }
                 iprot.readListEnd();
               }
-              struct.setInteracting_drug_idsIsSet(true);
+              struct.setI32eracting_drug_idsIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -762,11 +762,11 @@ public class Medication implements org.apache.thrift.TBase<Medication, Medicatio
         }
         oprot.writeFieldEnd();
       }
-      if (struct.interacting_drug_ids != null) {
-        oprot.writeFieldBegin(INTERACTING_DRUG_IDS_FIELD_DESC);
+      if (struct.i32eracting_drug_ids != null) {
+        oprot.writeFieldBegin(I32ERACTING_DRUG_IDS_FIELD_DESC);
         {
-          oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, struct.interacting_drug_ids.size()));
-          for (String _iter7 : struct.interacting_drug_ids)
+          oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, struct.i32eracting_drug_ids.size()));
+          for (String _iter7 : struct.i32eracting_drug_ids)
           {
             oprot.writeString(_iter7);
           }
@@ -804,7 +804,7 @@ public class Medication implements org.apache.thrift.TBase<Medication, Medicatio
       if (struct.isSetSide_effects()) {
         optionals.set(3);
       }
-      if (struct.isSetInteracting_drug_ids()) {
+      if (struct.isSetI32eracting_drug_ids()) {
         optionals.set(4);
       }
       oprot.writeBitSet(optionals, 5);
@@ -826,10 +826,10 @@ public class Medication implements org.apache.thrift.TBase<Medication, Medicatio
           }
         }
       }
-      if (struct.isSetInteracting_drug_ids()) {
+      if (struct.isSetI32eracting_drug_ids()) {
         {
-          oprot.writeI32(struct.interacting_drug_ids.size());
-          for (String _iter9 : struct.interacting_drug_ids)
+          oprot.writeI32(struct.i32eracting_drug_ids.size());
+          for (String _iter9 : struct.i32eracting_drug_ids)
           {
             oprot.writeString(_iter9);
           }
@@ -869,15 +869,15 @@ public class Medication implements org.apache.thrift.TBase<Medication, Medicatio
       if (incoming.get(4)) {
         {
           org.apache.thrift.protocol.TList _list13 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRING, iprot.readI32());
-          struct.interacting_drug_ids = new ArrayList<String>(_list13.size);
+          struct.i32eracting_drug_ids = new ArrayList<String>(_list13.size);
           for (int _i14 = 0; _i14 < _list13.size; ++_i14)
           {
             String _elem15; // required
             _elem15 = iprot.readString();
-            struct.interacting_drug_ids.add(_elem15);
+            struct.i32eracting_drug_ids.add(_elem15);
           }
         }
-        struct.setInteracting_drug_idsIsSet(true);
+        struct.setI32eracting_drug_idsIsSet(true);
       }
     }
   }

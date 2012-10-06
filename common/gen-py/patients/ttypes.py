@@ -17,6 +17,90 @@ except:
 
 
 
+class Patient:
+  """
+  Attributes:
+   - first_name
+   - last_name
+   - email
+  """
+
+  thrift_spec = (
+    None, # 0
+    (1, TType.STRING, 'first_name', None, None, ), # 1
+    (2, TType.STRING, 'last_name', None, None, ), # 2
+    (3, TType.STRING, 'email', None, None, ), # 3
+  )
+
+  def __init__(self, first_name=None, last_name=None, email=None,):
+    self.first_name = first_name
+    self.last_name = last_name
+    self.email = email
+
+  def read(self, iprot):
+    if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
+      fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+      return
+    iprot.readStructBegin()
+    while True:
+      (fname, ftype, fid) = iprot.readFieldBegin()
+      if ftype == TType.STOP:
+        break
+      if fid == 1:
+        if ftype == TType.STRING:
+          self.first_name = iprot.readString();
+        else:
+          iprot.skip(ftype)
+      elif fid == 2:
+        if ftype == TType.STRING:
+          self.last_name = iprot.readString();
+        else:
+          iprot.skip(ftype)
+      elif fid == 3:
+        if ftype == TType.STRING:
+          self.email = iprot.readString();
+        else:
+          iprot.skip(ftype)
+      else:
+        iprot.skip(ftype)
+      iprot.readFieldEnd()
+    iprot.readStructEnd()
+
+  def write(self, oprot):
+    if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
+      oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+      return
+    oprot.writeStructBegin('Patient')
+    if self.first_name is not None:
+      oprot.writeFieldBegin('first_name', TType.STRING, 1)
+      oprot.writeString(self.first_name)
+      oprot.writeFieldEnd()
+    if self.last_name is not None:
+      oprot.writeFieldBegin('last_name', TType.STRING, 2)
+      oprot.writeString(self.last_name)
+      oprot.writeFieldEnd()
+    if self.email is not None:
+      oprot.writeFieldBegin('email', TType.STRING, 3)
+      oprot.writeString(self.email)
+      oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()
+
+  def validate(self):
+    return
+
+
+  def __repr__(self):
+    L = ['%s=%r' % (key, value)
+      for key, value in self.__dict__.iteritems()]
+    return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
+
+  def __eq__(self, other):
+    return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
+
+  def __ne__(self, other):
+    return not (self == other)
+
 class Medication:
   """
   Attributes:
@@ -24,7 +108,7 @@ class Medication:
    - name
    - type
    - side_effects
-   - interacting_drug_ids
+   - i32eracting_drug_ids
   """
 
   thrift_spec = (
@@ -33,15 +117,15 @@ class Medication:
     (2, TType.STRING, 'name', None, None, ), # 2
     (3, TType.STRING, 'type', None, None, ), # 3
     (4, TType.LIST, 'side_effects', (TType.STRING,None), None, ), # 4
-    (5, TType.LIST, 'interacting_drug_ids', (TType.STRING,None), None, ), # 5
+    (5, TType.LIST, 'i32eracting_drug_ids', (TType.STRING,None), None, ), # 5
   )
 
-  def __init__(self, id=None, name=None, type=None, side_effects=None, interacting_drug_ids=None,):
+  def __init__(self, id=None, name=None, type=None, side_effects=None, i32eracting_drug_ids=None,):
     self.id = id
     self.name = name
     self.type = type
     self.side_effects = side_effects
-    self.interacting_drug_ids = interacting_drug_ids
+    self.i32eracting_drug_ids = i32eracting_drug_ids
 
   def read(self, iprot):
     if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
@@ -79,11 +163,11 @@ class Medication:
           iprot.skip(ftype)
       elif fid == 5:
         if ftype == TType.LIST:
-          self.interacting_drug_ids = []
+          self.i32eracting_drug_ids = []
           (_etype9, _size6) = iprot.readListBegin()
           for _i10 in xrange(_size6):
             _elem11 = iprot.readString();
-            self.interacting_drug_ids.append(_elem11)
+            self.i32eracting_drug_ids.append(_elem11)
           iprot.readListEnd()
         else:
           iprot.skip(ftype)
@@ -116,12 +200,134 @@ class Medication:
         oprot.writeString(iter12)
       oprot.writeListEnd()
       oprot.writeFieldEnd()
-    if self.interacting_drug_ids is not None:
-      oprot.writeFieldBegin('interacting_drug_ids', TType.LIST, 5)
-      oprot.writeListBegin(TType.STRING, len(self.interacting_drug_ids))
-      for iter13 in self.interacting_drug_ids:
+    if self.i32eracting_drug_ids is not None:
+      oprot.writeFieldBegin('i32eracting_drug_ids', TType.LIST, 5)
+      oprot.writeListBegin(TType.STRING, len(self.i32eracting_drug_ids))
+      for iter13 in self.i32eracting_drug_ids:
         oprot.writeString(iter13)
       oprot.writeListEnd()
+      oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()
+
+  def validate(self):
+    return
+
+
+  def __repr__(self):
+    L = ['%s=%r' % (key, value)
+      for key, value in self.__dict__.iteritems()]
+    return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
+
+  def __eq__(self, other):
+    return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
+
+  def __ne__(self, other):
+    return not (self == other)
+
+class Prescription:
+  """
+  Attributes:
+   - id
+   - patient
+   - medication
+   - tablets
+   - tablet_size
+   - hours_between_doses
+  """
+
+  thrift_spec = (
+    None, # 0
+    (1, TType.STRING, 'id', None, None, ), # 1
+    (2, TType.STRUCT, 'patient', (Patient, Patient.thrift_spec), None, ), # 2
+    (3, TType.STRUCT, 'medication', (Medication, Medication.thrift_spec), None, ), # 3
+    (4, TType.I32, 'tablets', None, None, ), # 4
+    (5, TType.I32, 'tablet_size', None, None, ), # 5
+    (6, TType.I32, 'hours_between_doses', None, None, ), # 6
+  )
+
+  def __init__(self, id=None, patient=None, medication=None, tablets=None, tablet_size=None, hours_between_doses=None,):
+    self.id = id
+    self.patient = patient
+    self.medication = medication
+    self.tablets = tablets
+    self.tablet_size = tablet_size
+    self.hours_between_doses = hours_between_doses
+
+  def read(self, iprot):
+    if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
+      fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+      return
+    iprot.readStructBegin()
+    while True:
+      (fname, ftype, fid) = iprot.readFieldBegin()
+      if ftype == TType.STOP:
+        break
+      if fid == 1:
+        if ftype == TType.STRING:
+          self.id = iprot.readString();
+        else:
+          iprot.skip(ftype)
+      elif fid == 2:
+        if ftype == TType.STRUCT:
+          self.patient = Patient()
+          self.patient.read(iprot)
+        else:
+          iprot.skip(ftype)
+      elif fid == 3:
+        if ftype == TType.STRUCT:
+          self.medication = Medication()
+          self.medication.read(iprot)
+        else:
+          iprot.skip(ftype)
+      elif fid == 4:
+        if ftype == TType.I32:
+          self.tablets = iprot.readI32();
+        else:
+          iprot.skip(ftype)
+      elif fid == 5:
+        if ftype == TType.I32:
+          self.tablet_size = iprot.readI32();
+        else:
+          iprot.skip(ftype)
+      elif fid == 6:
+        if ftype == TType.I32:
+          self.hours_between_doses = iprot.readI32();
+        else:
+          iprot.skip(ftype)
+      else:
+        iprot.skip(ftype)
+      iprot.readFieldEnd()
+    iprot.readStructEnd()
+
+  def write(self, oprot):
+    if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
+      oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+      return
+    oprot.writeStructBegin('Prescription')
+    if self.id is not None:
+      oprot.writeFieldBegin('id', TType.STRING, 1)
+      oprot.writeString(self.id)
+      oprot.writeFieldEnd()
+    if self.patient is not None:
+      oprot.writeFieldBegin('patient', TType.STRUCT, 2)
+      self.patient.write(oprot)
+      oprot.writeFieldEnd()
+    if self.medication is not None:
+      oprot.writeFieldBegin('medication', TType.STRUCT, 3)
+      self.medication.write(oprot)
+      oprot.writeFieldEnd()
+    if self.tablets is not None:
+      oprot.writeFieldBegin('tablets', TType.I32, 4)
+      oprot.writeI32(self.tablets)
+      oprot.writeFieldEnd()
+    if self.tablet_size is not None:
+      oprot.writeFieldBegin('tablet_size', TType.I32, 5)
+      oprot.writeI32(self.tablet_size)
+      oprot.writeFieldEnd()
+    if self.hours_between_doses is not None:
+      oprot.writeFieldBegin('hours_between_doses', TType.I32, 6)
+      oprot.writeI32(self.hours_between_doses)
       oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

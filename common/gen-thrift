@@ -1,0 +1,3 @@
+#!/bin/bash
+thrift --gen java patients.thrift
+thrift --gen py patients.thrift
