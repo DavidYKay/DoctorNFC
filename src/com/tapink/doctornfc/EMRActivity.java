@@ -4,11 +4,24 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AnalogClock;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
 public class EMRActivity extends Activity {
   private TabHost mTabs;
+
+  private static final String[] words = {"lorem", "ipsum", "dolor",
+    "sit", "amet", "consectetuer", "adipiscing", "elit",
+    "morbi", "vel", "ligula", "vitae", "arcu", "aliquet",
+    "mollis", "etiam", "vel", "erat", "placerat", "ante",
+    "porttitor", "sodales", "pellentesque", "augue", "purus"};
+
+  ////////////////////////////////////////////////////////////
+  // Activity Lifecycle
+  ////////////////////////////////////////////////////////////
+
 
   @Override
   public void onCreate(Bundle icicle) {
@@ -21,20 +34,42 @@ public class EMRActivity extends Activity {
     initTabs();
   }
 
-  private void initTabs() {
+  ////////////////////////////////////////////////////////////
+  // UI Callbacks
+  ////////////////////////////////////////////////////////////
 
+  public void onClickAddTab(View v) {
+    addTab(new AnalogClock(EMRActivity.this), buildTabIndicator("Clock"), "tag1");
+  }
+
+  ////////////////////////////////////////////////////////////
+  // Views
+  ////////////////////////////////////////////////////////////
+
+  private void initTabs() {
     // Profile
     makeTab("profile");
 
     // Vitals
     makeTab("vitals");
 
+    // Medications
+    //makeTab("medications");
+
+    View medView = getLayoutInflater().inflate(R.layout.medications, mTabs.getTabWidget(), false);
+    ListView medsList = (ListView) medView.findViewById(R.id.meds_list);
+    medsList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, words));
+    addTab(
+        medView,
+        buildTabIndicator("medications"),
+        "medications"
+        );
+
     // Labs
     makeTab("labs");
 
     // XRay
     makeTab("xray");
-
   }
 
   private void makeTab(String tabName) {
@@ -47,7 +82,7 @@ public class EMRActivity extends Activity {
         content,
         buildTabIndicator(tabName),
         tabName
-    );
+        );
   }
 
   private void addTab(final View content, View indicator, String tag) {
@@ -62,9 +97,6 @@ public class EMRActivity extends Activity {
     mTabs.addTab(spec);
   }
 
-  public void onClickAddTab(View v) {
-    addTab(new AnalogClock(EMRActivity.this), buildTabIndicator("Clock"), "tag1");
-  }
 
   private View buildTabIndicator(String msg) {
     View indicator = getLayoutInflater()
@@ -73,5 +105,12 @@ public class EMRActivity extends Activity {
     tv.setText(msg);
     return (indicator);
   }
+
+  ////////////////////////////////////////////////////////////
+  // ListView
+  ////////////////////////////////////////////////////////////
+
+
+
 
 }
