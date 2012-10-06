@@ -10,8 +10,8 @@ from thrift.transport import TSocket, TTransport
 from thrift.protocol import TBinaryProtocol
 from thrift.server import TServer
 
-from patients.ttypes import Medication
-from patients.MedicationService import Client
+from users.ttypes import User
+from users.UserService import Client
 
 #require 'rubygems'
 #require 'thrift'
@@ -26,17 +26,7 @@ from patients.MedicationService import Client
 #  return transport, client
 #end
 
-medication = Medication(
-    name  = 'Albuterol',
-    type  = 'Antibacterial',
-    side_effects      = [
-        'Headache',
-        'Nausea',
-        'Diahhrea',
-        'Vomiting',
-    ],
-    interacting_drug_ids      = [],
-)
+user = User(first_name = 'Paul', last_name = 'Osman', email = 'test@example.org',)
 
 try:
   # Make socket
@@ -50,13 +40,14 @@ try:
   # Connect!
   transport.open()
 
-  client.add_medication(medication)
+  #client.ping()
+  #print 'ping()'
 
-  medications = client.get_medications()
-  for medication in medications:
-      print "%s, %s, %s, %s" % (medication.name, medication.type,
-                            medication.side_effects,
-                            medication.interacting_drug_ids)
+  client.add_user(user)
+
+  users = client.get_users()
+  for user in users:
+      print "%s, %s, %s" % (user.first_name, user.last_name, user.email)
 
 except Thrift.TException, tx:
   print '%s' % (tx.message)

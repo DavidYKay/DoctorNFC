@@ -20,25 +20,28 @@ except:
 class Medication:
   """
   Attributes:
+   - id
    - name
    - type
    - side_effects
-   - interacting_drug_names
+   - interacting_drug_ids
   """
 
   thrift_spec = (
     None, # 0
-    (1, TType.STRING, 'name', None, None, ), # 1
-    (2, TType.STRING, 'type', None, None, ), # 2
-    (3, TType.LIST, 'side_effects', (TType.STRING,None), None, ), # 3
-    (4, TType.LIST, 'interacting_drug_names', (TType.STRING,None), None, ), # 4
+    (1, TType.STRING, 'id', None, None, ), # 1
+    (2, TType.STRING, 'name', None, None, ), # 2
+    (3, TType.STRING, 'type', None, None, ), # 3
+    (4, TType.LIST, 'side_effects', (TType.STRING,None), None, ), # 4
+    (5, TType.LIST, 'interacting_drug_ids', (TType.STRING,None), None, ), # 5
   )
 
-  def __init__(self, name=None, type=None, side_effects=None, interacting_drug_names=None,):
+  def __init__(self, id=None, name=None, type=None, side_effects=None, interacting_drug_ids=None,):
+    self.id = id
     self.name = name
     self.type = type
     self.side_effects = side_effects
-    self.interacting_drug_names = interacting_drug_names
+    self.interacting_drug_ids = interacting_drug_ids
 
   def read(self, iprot):
     if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
@@ -51,15 +54,20 @@ class Medication:
         break
       if fid == 1:
         if ftype == TType.STRING:
-          self.name = iprot.readString();
+          self.id = iprot.readString();
         else:
           iprot.skip(ftype)
       elif fid == 2:
         if ftype == TType.STRING:
-          self.type = iprot.readString();
+          self.name = iprot.readString();
         else:
           iprot.skip(ftype)
       elif fid == 3:
+        if ftype == TType.STRING:
+          self.type = iprot.readString();
+        else:
+          iprot.skip(ftype)
+      elif fid == 4:
         if ftype == TType.LIST:
           self.side_effects = []
           (_etype3, _size0) = iprot.readListBegin()
@@ -69,13 +77,13 @@ class Medication:
           iprot.readListEnd()
         else:
           iprot.skip(ftype)
-      elif fid == 4:
+      elif fid == 5:
         if ftype == TType.LIST:
-          self.interacting_drug_names = []
+          self.interacting_drug_ids = []
           (_etype9, _size6) = iprot.readListBegin()
           for _i10 in xrange(_size6):
             _elem11 = iprot.readString();
-            self.interacting_drug_names.append(_elem11)
+            self.interacting_drug_ids.append(_elem11)
           iprot.readListEnd()
         else:
           iprot.skip(ftype)
@@ -89,25 +97,29 @@ class Medication:
       oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
       return
     oprot.writeStructBegin('Medication')
+    if self.id is not None:
+      oprot.writeFieldBegin('id', TType.STRING, 1)
+      oprot.writeString(self.id)
+      oprot.writeFieldEnd()
     if self.name is not None:
-      oprot.writeFieldBegin('name', TType.STRING, 1)
+      oprot.writeFieldBegin('name', TType.STRING, 2)
       oprot.writeString(self.name)
       oprot.writeFieldEnd()
     if self.type is not None:
-      oprot.writeFieldBegin('type', TType.STRING, 2)
+      oprot.writeFieldBegin('type', TType.STRING, 3)
       oprot.writeString(self.type)
       oprot.writeFieldEnd()
     if self.side_effects is not None:
-      oprot.writeFieldBegin('side_effects', TType.LIST, 3)
+      oprot.writeFieldBegin('side_effects', TType.LIST, 4)
       oprot.writeListBegin(TType.STRING, len(self.side_effects))
       for iter12 in self.side_effects:
         oprot.writeString(iter12)
       oprot.writeListEnd()
       oprot.writeFieldEnd()
-    if self.interacting_drug_names is not None:
-      oprot.writeFieldBegin('interacting_drug_names', TType.LIST, 4)
-      oprot.writeListBegin(TType.STRING, len(self.interacting_drug_names))
-      for iter13 in self.interacting_drug_names:
+    if self.interacting_drug_ids is not None:
+      oprot.writeFieldBegin('interacting_drug_ids', TType.LIST, 5)
+      oprot.writeListBegin(TType.STRING, len(self.interacting_drug_ids))
+      for iter13 in self.interacting_drug_ids:
         oprot.writeString(iter13)
       oprot.writeListEnd()
       oprot.writeFieldEnd()

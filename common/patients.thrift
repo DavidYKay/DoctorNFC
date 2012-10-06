@@ -13,10 +13,11 @@ namespace py patients
 //}
 
 struct Medication {
-    1:string name,
-    2:string type,
-    3:list<string> side_effects,
-    4:list<string> interacting_drug_names
+    1:string id,
+    2:string name,
+    3:string type,
+    4:list<string> side_effects,
+    5:list<string> interacting_drug_ids
 }
 
 service MedicationService {

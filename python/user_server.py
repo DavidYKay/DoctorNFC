@@ -9,7 +9,7 @@ from thrift.protocol import TBinaryProtocol
 from thrift.server import TServer
 
 #from users.userservice.UserService import UserService
-from patients.MedicationService import Processor
+from users.UserService import Processor
 
 class UserServiceHandler(object):
 
