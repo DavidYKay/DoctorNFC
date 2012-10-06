@@ -86,18 +86,18 @@ public class EMRActivity extends Activity {
 
   }
 
-  private void makeSimpleTab(String tabName) {
-    TextView text = new TextView(this);
-    text.setText(tabName);
-
-    View content = text;
-
-    addTab(
-        content,
-        buildTabIndicator(tabName),
-        tabName
-        );
-  }
+//  private void makeSimpleTab(String tabName) {
+//    TextView text = new TextView(this);
+//    text.setText(tabName);
+//
+//    View content = text;
+//
+//    addTab(
+//        content,
+//        buildTabIndicator(tabName),
+//        tabName
+//        );
+//  }
 
   private void addTab(final View content, View indicator, String tag) {
     TabHost.TabSpec spec = mTabs.newTabSpec(tag);
