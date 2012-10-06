@@ -22,7 +22,6 @@ public class EMRActivity extends Activity {
   // Activity Lifecycle
   ////////////////////////////////////////////////////////////
 
-
   @Override
   public void onCreate(Bundle icicle) {
     super.onCreate(icicle);
@@ -48,13 +47,15 @@ public class EMRActivity extends Activity {
 
   private void initTabs() {
     // Profile
-    makeTab("profile");
+    //makeSimpleTab("profile");
+    makeTabWithLayout(R.layout.profile, "profile");
 
     // Vitals
-    makeTab("vitals");
+    //makeSimpleTab("vitals");
+    makeTabWithLayout(R.layout.vitals, "vitals");
 
     // Medications
-    //makeTab("medications");
+    //makeSimpleTab("medications");
 
     View medView = getLayoutInflater().inflate(R.layout.medications, mTabs.getTabWidget(), false);
     ListView medsList = (ListView) medView.findViewById(R.id.meds_list);
@@ -66,13 +67,26 @@ public class EMRActivity extends Activity {
         );
 
     // Labs
-    makeTab("labs");
+    //makeSimpleTab("labs");
+    makeTabWithLayout(R.layout.labs, "labs");
 
     // XRay
-    makeTab("xray");
+    //makeSimpleTab("xray");
+    makeTabWithLayout(R.layout.xray, "xray");
   }
 
-  private void makeTab(String tabName) {
+  private void makeTabWithLayout(int layoutId, String tabName) {
+    View medView = getLayoutInflater().inflate(layoutId, mTabs.getTabWidget(), false);
+
+    addTab(
+        medView,
+        buildTabIndicator(tabName),
+        tabName
+        );
+
+  }
+
+  private void makeSimpleTab(String tabName) {
     TextView text = new TextView(this);
     text.setText(tabName);
 
