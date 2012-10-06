@@ -2,3 +2,4 @@ bin/
 gen/
 
 *.pyc
+android/app/.settings/
