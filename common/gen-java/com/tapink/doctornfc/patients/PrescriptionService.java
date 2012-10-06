@@ -27,29 +27,29 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class MedicationService {
+public class PrescriptionService {
 
   public interface Iface {
 
-    public boolean add_medication(Medication medication) throws org.apache.thrift.TException;
+    public boolean add_prescription(Prescription prescription) throws org.apache.thrift.TException;
 
-    public boolean remove_medication(Medication medication) throws org.apache.thrift.TException;
+    public boolean remove_prescription(Prescription prescription) throws org.apache.thrift.TException;
 
-    public List<Medication> get_medications() throws org.apache.thrift.TException;
+    public Prescription get_prescription_by_tag_id(String tag_id) throws org.apache.thrift.TException;
 
-    public Medication get_medication_by_tag_id(String tag_id) throws org.apache.thrift.TException;
+    public List<Prescription> get_prescriptions_for_patient(String pantient_id) throws org.apache.thrift.TException;
 
   }
 
   public interface AsyncIface {
 
-    public void add_medication(Medication medication, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.add_medication_call> resultHandler) throws org.apache.thrift.TException;
+    public void add_prescription(Prescription prescription, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.add_prescription_call> resultHandler) throws org.apache.thrift.TException;
 
-    public void remove_medication(Medication medication, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.remove_medication_call> resultHandler) throws org.apache.thrift.TException;
+    public void remove_prescription(Prescription prescription, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.remove_prescription_call> resultHandler) throws org.apache.thrift.TException;
 
-    public void get_medications(org.apache.thrift.async.AsyncMethodCallback<AsyncClient.get_medications_call> resultHandler) throws org.apache.thrift.TException;
+    public void get_prescription_by_tag_id(String tag_id, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.get_prescription_by_tag_id_call> resultHandler) throws org.apache.thrift.TException;
 
-    public void get_medication_by_tag_id(String tag_id, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.get_medication_by_tag_id_call> resultHandler) throws org.apache.thrift.TException;
+    public void get_prescriptions_for_patient(String pantient_id, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.get_prescriptions_for_patient_call> resultHandler) throws org.apache.thrift.TException;
 
   }
 
@@ -73,95 +73,96 @@ public class MedicationService {
       super(iprot, oprot);
     }
 
-    public boolean add_medication(Medication medication) throws org.apache.thrift.TException
+    public boolean add_prescription(Prescription prescription) throws org.apache.thrift.TException
     {
-      send_add_medication(medication);
-      return recv_add_medication();
+      send_add_prescription(prescription);
+      return recv_add_prescription();
     }
 
-    public void send_add_medication(Medication medication) throws org.apache.thrift.TException
+    public void send_add_prescription(Prescription prescription) throws org.apache.thrift.TException
     {
-      add_medication_args args = new add_medication_args();
-      args.setMedication(medication);
-      sendBase("add_medication", args);
+      add_prescription_args args = new add_prescription_args();
+      args.setPrescription(prescription);
+      sendBase("add_prescription", args);
     }
 
-    public boolean recv_add_medication() throws org.apache.thrift.TException
+    public boolean recv_add_prescription() throws org.apache.thrift.TException
     {
-      add_medication_result result = new add_medication_result();
-      receiveBase(result, "add_medication");
+      add_prescription_result result = new add_prescription_result();
+      receiveBase(result, "add_prescription");
       if (result.isSetSuccess()) {
         return result.success;
       }
-      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "add_medication failed: unknown result");
+      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "add_prescription failed: unknown result");
     }
 
-    public boolean remove_medication(Medication medication) throws org.apache.thrift.TException
+    public boolean remove_prescription(Prescription prescription) throws org.apache.thrift.TException
     {
-      send_remove_medication(medication);
-      return recv_remove_medication();
+      send_remove_prescription(prescription);
+      return recv_remove_prescription();
     }
 
-    public void send_remove_medication(Medication medication) throws org.apache.thrift.TException
+    public void send_remove_prescription(Prescription prescription) throws org.apache.thrift.TException
     {
-      remove_medication_args args = new remove_medication_args();
-      args.setMedication(medication);
-      sendBase("remove_medication", args);
+      remove_prescription_args args = new remove_prescription_args();
+      args.setPrescription(prescription);
+      sendBase("remove_prescription", args);
     }
 
-    public boolean recv_remove_medication() throws org.apache.thrift.TException
+    public boolean recv_remove_prescription() throws org.apache.thrift.TException
     {
-      remove_medication_result result = new remove_medication_result();
-      receiveBase(result, "remove_medication");
+      remove_prescription_result result = new remove_prescription_result();
+      receiveBase(result, "remove_prescription");
       if (result.isSetSuccess()) {
         return result.success;
       }
-      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "remove_medication failed: unknown result");
+      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "remove_prescription failed: unknown result");
     }
 
-    public List<Medication> get_medications() throws org.apache.thrift.TException
+    public Prescription get_prescription_by_tag_id(String tag_id) throws org.apache.thrift.TException
     {
-      send_get_medications();
-      return recv_get_medications();
+      send_get_prescription_by_tag_id(tag_id);
+      return recv_get_prescription_by_tag_id();
     }
 
-    public void send_get_medications() throws org.apache.thrift.TException
+    public void send_get_prescription_by_tag_id(String tag_id) throws org.apache.thrift.TException
     {
-      get_medications_args args = new get_medications_args();
-      sendBase("get_medications", args);
-    }
-
-    public List<Medication> recv_get_medications() throws org.apache.thrift.TException
-    {
-      get_medications_result result = new get_medications_result();
-      receiveBase(result, "get_medications");
-      if (result.isSetSuccess()) {
-        return result.success;
-      }
-      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "get_medications failed: unknown result");
-    }
-
-    public Medication get_medication_by_tag_id(String tag_id) throws org.apache.thrift.TException
-    {
-      send_get_medication_by_tag_id(tag_id);
-      return recv_get_medication_by_tag_id();
-    }
-
-    public void send_get_medication_by_tag_id(String tag_id) throws org.apache.thrift.TException
-    {
-      get_medication_by_tag_id_args args = new get_medication_by_tag_id_args();
+      get_prescription_by_tag_id_args args = new get_prescription_by_tag_id_args();
       args.setTag_id(tag_id);
-      sendBase("get_medication_by_tag_id", args);
+      sendBase("get_prescription_by_tag_id", args);
     }
 
-    public Medication recv_get_medication_by_tag_id() throws org.apache.thrift.TException
+    public Prescription recv_get_prescription_by_tag_id() throws org.apache.thrift.TException
     {
-      get_medication_by_tag_id_result result = new get_medication_by_tag_id_result();
-      receiveBase(result, "get_medication_by_tag_id");
+      get_prescription_by_tag_id_result result = new get_prescription_by_tag_id_result();
+      receiveBase(result, "get_prescription_by_tag_id");
       if (result.isSetSuccess()) {
         return result.success;
       }
-      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "get_medication_by_tag_id failed: unknown result");
+      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "get_prescription_by_tag_id failed: unknown result");
+    }
+
+    public List<Prescription> get_prescriptions_for_patient(String pantient_id) throws org.apache.thrift.TException
+    {
+      send_get_prescriptions_for_patient(pantient_id);
+      return recv_get_prescriptions_for_patient();
+    }
+
+    public void send_get_prescriptions_for_patient(String pantient_id) throws org.apache.thrift.TException
+    {
+      get_prescriptions_for_patient_args args = new get_prescriptions_for_patient_args();
+      args.setPantient_id(pantient_id);
+      sendBase("get_prescriptions_for_patient", args);
+    }
+
+    public List<Prescription> recv_get_prescriptions_for_patient() throws org.apache.thrift.TException
+    {
+      get_prescriptions_for_patient_result result = new get_prescriptions_for_patient_result();
+      receiveBase(result, "get_prescriptions_for_patient");
+      if (result.isSetSuccess()) {
+        return result.success;
+      }
+      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "get_prescriptions_for_patient failed: unknown result");
     }
 
   }
@@ -182,24 +183,24 @@ public class MedicationService {
       super(protocolFactory, clientManager, transport);
     }
 
-    public void add_medication(Medication medication, org.apache.thrift.async.AsyncMethodCallback<add_medication_call> resultHandler) throws org.apache.thrift.TException {
+    public void add_prescription(Prescription prescription, org.apache.thrift.async.AsyncMethodCallback<add_prescription_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
-      add_medication_call method_call = new add_medication_call(medication, resultHandler, this, ___protocolFactory, ___transport);
+      add_prescription_call method_call = new add_prescription_call(prescription, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
       ___manager.call(method_call);
     }
 
-    public static class add_medication_call extends org.apache.thrift.async.TAsyncMethodCall {
-      private Medication medication;
-      public add_medication_call(Medication medication, org.apache.thrift.async.AsyncMethodCallback<add_medication_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+    public static class add_prescription_call extends org.apache.thrift.async.TAsyncMethodCall {
+      private Prescription prescription;
+      public add_prescription_call(Prescription prescription, org.apache.thrift.async.AsyncMethodCallback<add_prescription_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
-        this.medication = medication;
+        this.prescription = prescription;
       }
 
       public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
-        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("add_medication", org.apache.thrift.protocol.TMessageType.CALL, 0));
-        add_medication_args args = new add_medication_args();
-        args.setMedication(medication);
+        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("add_prescription", org.apache.thrift.protocol.TMessageType.CALL, 0));
+        add_prescription_args args = new add_prescription_args();
+        args.setPrescription(prescription);
         args.write(prot);
         prot.writeMessageEnd();
       }
@@ -210,28 +211,28 @@ public class MedicationService {
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
         org.apache.thrift.protocol.TProtocol prot = client.getProtocolFactory().getProtocol(memoryTransport);
-        return (new Client(prot)).recv_add_medication();
+        return (new Client(prot)).recv_add_prescription();
       }
     }
 
-    public void remove_medication(Medication medication, org.apache.thrift.async.AsyncMethodCallback<remove_medication_call> resultHandler) throws org.apache.thrift.TException {
+    public void remove_prescription(Prescription prescription, org.apache.thrift.async.AsyncMethodCallback<remove_prescription_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
-      remove_medication_call method_call = new remove_medication_call(medication, resultHandler, this, ___protocolFactory, ___transport);
+      remove_prescription_call method_call = new remove_prescription_call(prescription, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
       ___manager.call(method_call);
     }
 
-    public static class remove_medication_call extends org.apache.thrift.async.TAsyncMethodCall {
-      private Medication medication;
-      public remove_medication_call(Medication medication, org.apache.thrift.async.AsyncMethodCallback<remove_medication_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+    public static class remove_prescription_call extends org.apache.thrift.async.TAsyncMethodCall {
+      private Prescription prescription;
+      public remove_prescription_call(Prescription prescription, org.apache.thrift.async.AsyncMethodCallback<remove_prescription_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
-        this.medication = medication;
+        this.prescription = prescription;
       }
 
       public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
-        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("remove_medication", org.apache.thrift.protocol.TMessageType.CALL, 0));
-        remove_medication_args args = new remove_medication_args();
-        args.setMedication(medication);
+        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("remove_prescription", org.apache.thrift.protocol.TMessageType.CALL, 0));
+        remove_prescription_args args = new remove_prescription_args();
+        args.setPrescription(prescription);
         args.write(prot);
         prot.writeMessageEnd();
       }
@@ -242,68 +243,71 @@ public class MedicationService {
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
         org.apache.thrift.protocol.TProtocol prot = client.getProtocolFactory().getProtocol(memoryTransport);
-        return (new Client(prot)).recv_remove_medication();
+        return (new Client(prot)).recv_remove_prescription();
       }
     }
 
-    public void get_medications(org.apache.thrift.async.AsyncMethodCallback<get_medications_call> resultHandler) throws org.apache.thrift.TException {
+    public void get_prescription_by_tag_id(String tag_id, org.apache.thrift.async.AsyncMethodCallback<get_prescription_by_tag_id_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
-      get_medications_call method_call = new get_medications_call(resultHandler, this, ___protocolFactory, ___transport);
+      get_prescription_by_tag_id_call method_call = new get_prescription_by_tag_id_call(tag_id, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
       ___manager.call(method_call);
     }
 
-    public static class get_medications_call extends org.apache.thrift.async.TAsyncMethodCall {
-      public get_medications_call(org.apache.thrift.async.AsyncMethodCallback<get_medications_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
-        super(client, protocolFactory, transport, resultHandler, false);
-      }
-
-      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
-        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("get_medications", org.apache.thrift.protocol.TMessageType.CALL, 0));
-        get_medications_args args = new get_medications_args();
-        args.write(prot);
-        prot.writeMessageEnd();
-      }
-
-      public List<Medication> getResult() throws org.apache.thrift.TException {
-        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
-          throw new IllegalStateException("Method call not finished!");
-        }
-        org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
-        org.apache.thrift.protocol.TProtocol prot = client.getProtocolFactory().getProtocol(memoryTransport);
-        return (new Client(prot)).recv_get_medications();
-      }
-    }
-
-    public void get_medication_by_tag_id(String tag_id, org.apache.thrift.async.AsyncMethodCallback<get_medication_by_tag_id_call> resultHandler) throws org.apache.thrift.TException {
-      checkReady();
-      get_medication_by_tag_id_call method_call = new get_medication_by_tag_id_call(tag_id, resultHandler, this, ___protocolFactory, ___transport);
-      this.___currentMethod = method_call;
-      ___manager.call(method_call);
-    }
-
-    public static class get_medication_by_tag_id_call extends org.apache.thrift.async.TAsyncMethodCall {
+    public static class get_prescription_by_tag_id_call extends org.apache.thrift.async.TAsyncMethodCall {
       private String tag_id;
-      public get_medication_by_tag_id_call(String tag_id, org.apache.thrift.async.AsyncMethodCallback<get_medication_by_tag_id_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+      public get_prescription_by_tag_id_call(String tag_id, org.apache.thrift.async.AsyncMethodCallback<get_prescription_by_tag_id_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.tag_id = tag_id;
       }
 
       public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
-        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("get_medication_by_tag_id", org.apache.thrift.protocol.TMessageType.CALL, 0));
-        get_medication_by_tag_id_args args = new get_medication_by_tag_id_args();
+        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("get_prescription_by_tag_id", org.apache.thrift.protocol.TMessageType.CALL, 0));
+        get_prescription_by_tag_id_args args = new get_prescription_by_tag_id_args();
         args.setTag_id(tag_id);
         args.write(prot);
         prot.writeMessageEnd();
       }
 
-      public Medication getResult() throws org.apache.thrift.TException {
+      public Prescription getResult() throws org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
         org.apache.thrift.protocol.TProtocol prot = client.getProtocolFactory().getProtocol(memoryTransport);
-        return (new Client(prot)).recv_get_medication_by_tag_id();
+        return (new Client(prot)).recv_get_prescription_by_tag_id();
+      }
+    }
+
+    public void get_prescriptions_for_patient(String pantient_id, org.apache.thrift.async.AsyncMethodCallback<get_prescriptions_for_patient_call> resultHandler) throws org.apache.thrift.TException {
+      checkReady();
+      get_prescriptions_for_patient_call method_call = new get_prescriptions_for_patient_call(pantient_id, resultHandler, this, ___protocolFactory, ___transport);
+      this.___currentMethod = method_call;
+      ___manager.call(method_call);
+    }
+
+    public static class get_prescriptions_for_patient_call extends org.apache.thrift.async.TAsyncMethodCall {
+      private String pantient_id;
+      public get_prescriptions_for_patient_call(String pantient_id, org.apache.thrift.async.AsyncMethodCallback<get_prescriptions_for_patient_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+        super(client, protocolFactory, transport, resultHandler, false);
+        this.pantient_id = pantient_id;
+      }
+
+      public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
+        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("get_prescriptions_for_patient", org.apache.thrift.protocol.TMessageType.CALL, 0));
+        get_prescriptions_for_patient_args args = new get_prescriptions_for_patient_args();
+        args.setPantient_id(pantient_id);
+        args.write(prot);
+        prot.writeMessageEnd();
+      }
+
+      public List<Prescription> getResult() throws org.apache.thrift.TException {
+        if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
+          throw new IllegalStateException("Method call not finished!");
+        }
+        org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
+        org.apache.thrift.protocol.TProtocol prot = client.getProtocolFactory().getProtocol(memoryTransport);
+        return (new Client(prot)).recv_get_prescriptions_for_patient();
       }
     }
 
@@ -320,97 +324,97 @@ public class MedicationService {
     }
 
     private static <I extends Iface> Map<String,  org.apache.thrift.ProcessFunction<I, ? extends  org.apache.thrift.TBase>> getProcessMap(Map<String,  org.apache.thrift.ProcessFunction<I, ? extends  org.apache.thrift.TBase>> processMap) {
-      processMap.put("add_medication", new add_medication());
-      processMap.put("remove_medication", new remove_medication());
-      processMap.put("get_medications", new get_medications());
-      processMap.put("get_medication_by_tag_id", new get_medication_by_tag_id());
+      processMap.put("add_prescription", new add_prescription());
+      processMap.put("remove_prescription", new remove_prescription());
+      processMap.put("get_prescription_by_tag_id", new get_prescription_by_tag_id());
+      processMap.put("get_prescriptions_for_patient", new get_prescriptions_for_patient());
       return processMap;
     }
 
-    private static class add_medication<I extends Iface> extends org.apache.thrift.ProcessFunction<I, add_medication_args> {
-      public add_medication() {
-        super("add_medication");
+    private static class add_prescription<I extends Iface> extends org.apache.thrift.ProcessFunction<I, add_prescription_args> {
+      public add_prescription() {
+        super("add_prescription");
       }
 
-      protected add_medication_args getEmptyArgsInstance() {
-        return new add_medication_args();
+      protected add_prescription_args getEmptyArgsInstance() {
+        return new add_prescription_args();
       }
 
-      protected add_medication_result getResult(I iface, add_medication_args args) throws org.apache.thrift.TException {
-        add_medication_result result = new add_medication_result();
-        result.success = iface.add_medication(args.medication);
+      protected add_prescription_result getResult(I iface, add_prescription_args args) throws org.apache.thrift.TException {
+        add_prescription_result result = new add_prescription_result();
+        result.success = iface.add_prescription(args.prescription);
         result.setSuccessIsSet(true);
         return result;
       }
     }
 
-    private static class remove_medication<I extends Iface> extends org.apache.thrift.ProcessFunction<I, remove_medication_args> {
-      public remove_medication() {
-        super("remove_medication");
+    private static class remove_prescription<I extends Iface> extends org.apache.thrift.ProcessFunction<I, remove_prescription_args> {
+      public remove_prescription() {
+        super("remove_prescription");
       }
 
-      protected remove_medication_args getEmptyArgsInstance() {
-        return new remove_medication_args();
+      protected remove_prescription_args getEmptyArgsInstance() {
+        return new remove_prescription_args();
       }
 
-      protected remove_medication_result getResult(I iface, remove_medication_args args) throws org.apache.thrift.TException {
-        remove_medication_result result = new remove_medication_result();
-        result.success = iface.remove_medication(args.medication);
+      protected remove_prescription_result getResult(I iface, remove_prescription_args args) throws org.apache.thrift.TException {
+        remove_prescription_result result = new remove_prescription_result();
+        result.success = iface.remove_prescription(args.prescription);
         result.setSuccessIsSet(true);
         return result;
       }
     }
 
-    private static class get_medications<I extends Iface> extends org.apache.thrift.ProcessFunction<I, get_medications_args> {
-      public get_medications() {
-        super("get_medications");
+    private static class get_prescription_by_tag_id<I extends Iface> extends org.apache.thrift.ProcessFunction<I, get_prescription_by_tag_id_args> {
+      public get_prescription_by_tag_id() {
+        super("get_prescription_by_tag_id");
       }
 
-      protected get_medications_args getEmptyArgsInstance() {
-        return new get_medications_args();
+      protected get_prescription_by_tag_id_args getEmptyArgsInstance() {
+        return new get_prescription_by_tag_id_args();
       }
 
-      protected get_medications_result getResult(I iface, get_medications_args args) throws org.apache.thrift.TException {
-        get_medications_result result = new get_medications_result();
-        result.success = iface.get_medications();
+      protected get_prescription_by_tag_id_result getResult(I iface, get_prescription_by_tag_id_args args) throws org.apache.thrift.TException {
+        get_prescription_by_tag_id_result result = new get_prescription_by_tag_id_result();
+        result.success = iface.get_prescription_by_tag_id(args.tag_id);
         return result;
       }
     }
 
-    private static class get_medication_by_tag_id<I extends Iface> extends org.apache.thrift.ProcessFunction<I, get_medication_by_tag_id_args> {
-      public get_medication_by_tag_id() {
-        super("get_medication_by_tag_id");
+    private static class get_prescriptions_for_patient<I extends Iface> extends org.apache.thrift.ProcessFunction<I, get_prescriptions_for_patient_args> {
+      public get_prescriptions_for_patient() {
+        super("get_prescriptions_for_patient");
       }
 
-      protected get_medication_by_tag_id_args getEmptyArgsInstance() {
-        return new get_medication_by_tag_id_args();
+      protected get_prescriptions_for_patient_args getEmptyArgsInstance() {
+        return new get_prescriptions_for_patient_args();
       }
 
-      protected get_medication_by_tag_id_result getResult(I iface, get_medication_by_tag_id_args args) throws org.apache.thrift.TException {
-        get_medication_by_tag_id_result result = new get_medication_by_tag_id_result();
-        result.success = iface.get_medication_by_tag_id(args.tag_id);
+      protected get_prescriptions_for_patient_result getResult(I iface, get_prescriptions_for_patient_args args) throws org.apache.thrift.TException {
+        get_prescriptions_for_patient_result result = new get_prescriptions_for_patient_result();
+        result.success = iface.get_prescriptions_for_patient(args.pantient_id);
         return result;
       }
     }
 
   }
 
-  public static class add_medication_args implements org.apache.thrift.TBase<add_medication_args, add_medication_args._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("add_medication_args");
+  public static class add_prescription_args implements org.apache.thrift.TBase<add_prescription_args, add_prescription_args._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("add_prescription_args");
 
-    private static final org.apache.thrift.protocol.TField MEDICATION_FIELD_DESC = new org.apache.thrift.protocol.TField("medication", org.apache.thrift.protocol.TType.STRUCT, (short)1);
+    private static final org.apache.thrift.protocol.TField PRESCRIPTION_FIELD_DESC = new org.apache.thrift.protocol.TField("prescription", org.apache.thrift.protocol.TType.STRUCT, (short)1);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
-      schemes.put(StandardScheme.class, new add_medication_argsStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new add_medication_argsTupleSchemeFactory());
+      schemes.put(StandardScheme.class, new add_prescription_argsStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new add_prescription_argsTupleSchemeFactory());
     }
 
-    public Medication medication; // required
+    public Prescription prescription; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-      MEDICATION((short)1, "medication");
+      PRESCRIPTION((short)1, "prescription");
 
       private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -425,8 +429,8 @@ public class MedicationService {
        */
       public static _Fields findByThriftId(int fieldId) {
         switch(fieldId) {
-          case 1: // MEDICATION
-            return MEDICATION;
+          case 1: // PRESCRIPTION
+            return PRESCRIPTION;
           default:
             return null;
         }
@@ -470,71 +474,71 @@ public class MedicationService {
     public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
     static {
       Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-      tmpMap.put(_Fields.MEDICATION, new org.apache.thrift.meta_data.FieldMetaData("medication", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-          new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Medication.class)));
+      tmpMap.put(_Fields.PRESCRIPTION, new org.apache.thrift.meta_data.FieldMetaData("prescription", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Prescription.class)));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(add_medication_args.class, metaDataMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(add_prescription_args.class, metaDataMap);
     }
 
-    public add_medication_args() {
+    public add_prescription_args() {
     }
 
-    public add_medication_args(
-      Medication medication)
+    public add_prescription_args(
+      Prescription prescription)
     {
       this();
-      this.medication = medication;
+      this.prescription = prescription;
     }
 
     /**
      * Performs a deep copy on <i>other</i>.
      */
-    public add_medication_args(add_medication_args other) {
-      if (other.isSetMedication()) {
-        this.medication = new Medication(other.medication);
+    public add_prescription_args(add_prescription_args other) {
+      if (other.isSetPrescription()) {
+        this.prescription = new Prescription(other.prescription);
       }
     }
 
-    public add_medication_args deepCopy() {
-      return new add_medication_args(this);
+    public add_prescription_args deepCopy() {
+      return new add_prescription_args(this);
     }
 
     @Override
     public void clear() {
-      this.medication = null;
+      this.prescription = null;
     }
 
-    public Medication getMedication() {
-      return this.medication;
+    public Prescription getPrescription() {
+      return this.prescription;
     }
 
-    public add_medication_args setMedication(Medication medication) {
-      this.medication = medication;
+    public add_prescription_args setPrescription(Prescription prescription) {
+      this.prescription = prescription;
       return this;
     }
 
-    public void unsetMedication() {
-      this.medication = null;
+    public void unsetPrescription() {
+      this.prescription = null;
     }
 
-    /** Returns true if field medication is set (has been assigned a value) and false otherwise */
-    public boolean isSetMedication() {
-      return this.medication != null;
+    /** Returns true if field prescription is set (has been assigned a value) and false otherwise */
+    public boolean isSetPrescription() {
+      return this.prescription != null;
     }
 
-    public void setMedicationIsSet(boolean value) {
+    public void setPrescriptionIsSet(boolean value) {
       if (!value) {
-        this.medication = null;
+        this.prescription = null;
       }
     }
 
     public void setFieldValue(_Fields field, Object value) {
       switch (field) {
-      case MEDICATION:
+      case PRESCRIPTION:
         if (value == null) {
-          unsetMedication();
+          unsetPrescription();
         } else {
-          setMedication((Medication)value);
+          setPrescription((Prescription)value);
         }
         break;
 
@@ -543,8 +547,8 @@ public class MedicationService {
 
     public Object getFieldValue(_Fields field) {
       switch (field) {
-      case MEDICATION:
-        return getMedication();
+      case PRESCRIPTION:
+        return getPrescription();
 
       }
       throw new IllegalStateException();
@@ -557,8 +561,8 @@ public class MedicationService {
       }
 
       switch (field) {
-      case MEDICATION:
-        return isSetMedication();
+      case PRESCRIPTION:
+        return isSetPrescription();
       }
       throw new IllegalStateException();
     }
@@ -567,21 +571,21 @@ public class MedicationService {
     public boolean equals(Object that) {
       if (that == null)
         return false;
-      if (that instanceof add_medication_args)
-        return this.equals((add_medication_args)that);
+      if (that instanceof add_prescription_args)
+        return this.equals((add_prescription_args)that);
       return false;
     }
 
-    public boolean equals(add_medication_args that) {
+    public boolean equals(add_prescription_args that) {
       if (that == null)
         return false;
 
-      boolean this_present_medication = true && this.isSetMedication();
-      boolean that_present_medication = true && that.isSetMedication();
-      if (this_present_medication || that_present_medication) {
-        if (!(this_present_medication && that_present_medication))
+      boolean this_present_prescription = true && this.isSetPrescription();
+      boolean that_present_prescription = true && that.isSetPrescription();
+      if (this_present_prescription || that_present_prescription) {
+        if (!(this_present_prescription && that_present_prescription))
           return false;
-        if (!this.medication.equals(that.medication))
+        if (!this.prescription.equals(that.prescription))
           return false;
       }
 
@@ -593,20 +597,20 @@ public class MedicationService {
       return 0;
     }
 
-    public int compareTo(add_medication_args other) {
+    public int compareTo(add_prescription_args other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
       }
 
       int lastComparison = 0;
-      add_medication_args typedOther = (add_medication_args)other;
+      add_prescription_args typedOther = (add_prescription_args)other;
 
-      lastComparison = Boolean.valueOf(isSetMedication()).compareTo(typedOther.isSetMedication());
+      lastComparison = Boolean.valueOf(isSetPrescription()).compareTo(typedOther.isSetPrescription());
       if (lastComparison != 0) {
         return lastComparison;
       }
-      if (isSetMedication()) {
-        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.medication, typedOther.medication);
+      if (isSetPrescription()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.prescription, typedOther.prescription);
         if (lastComparison != 0) {
           return lastComparison;
         }
@@ -628,14 +632,14 @@ public class MedicationService {
 
     @Override
     public String toString() {
-      StringBuilder sb = new StringBuilder("add_medication_args(");
+      StringBuilder sb = new StringBuilder("add_prescription_args(");
       boolean first = true;
 
-      sb.append("medication:");
-      if (this.medication == null) {
+      sb.append("prescription:");
+      if (this.prescription == null) {
         sb.append("null");
       } else {
-        sb.append(this.medication);
+        sb.append(this.prescription);
       }
       first = false;
       sb.append(")");
@@ -662,15 +666,15 @@ public class MedicationService {
       }
     }
 
-    private static class add_medication_argsStandardSchemeFactory implements SchemeFactory {
-      public add_medication_argsStandardScheme getScheme() {
-        return new add_medication_argsStandardScheme();
+    private static class add_prescription_argsStandardSchemeFactory implements SchemeFactory {
+      public add_prescription_argsStandardScheme getScheme() {
+        return new add_prescription_argsStandardScheme();
       }
     }
 
-    private static class add_medication_argsStandardScheme extends StandardScheme<add_medication_args> {
+    private static class add_prescription_argsStandardScheme extends StandardScheme<add_prescription_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, add_medication_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, add_prescription_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -680,11 +684,11 @@ public class MedicationService {
             break;
           }
           switch (schemeField.id) {
-            case 1: // MEDICATION
+            case 1: // PRESCRIPTION
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.medication = new Medication();
-                struct.medication.read(iprot);
-                struct.setMedicationIsSet(true);
+                struct.prescription = new Prescription();
+                struct.prescription.read(iprot);
+                struct.setPrescriptionIsSet(true);
               } else { 
                 org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
               }
@@ -700,13 +704,13 @@ public class MedicationService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, add_medication_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, add_prescription_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
-        if (struct.medication != null) {
-          oprot.writeFieldBegin(MEDICATION_FIELD_DESC);
-          struct.medication.write(oprot);
+        if (struct.prescription != null) {
+          oprot.writeFieldBegin(PRESCRIPTION_FIELD_DESC);
+          struct.prescription.write(oprot);
           oprot.writeFieldEnd();
         }
         oprot.writeFieldStop();
@@ -715,50 +719,50 @@ public class MedicationService {
 
     }
 
-    private static class add_medication_argsTupleSchemeFactory implements SchemeFactory {
-      public add_medication_argsTupleScheme getScheme() {
-        return new add_medication_argsTupleScheme();
+    private static class add_prescription_argsTupleSchemeFactory implements SchemeFactory {
+      public add_prescription_argsTupleScheme getScheme() {
+        return new add_prescription_argsTupleScheme();
       }
     }
 
-    private static class add_medication_argsTupleScheme extends TupleScheme<add_medication_args> {
+    private static class add_prescription_argsTupleScheme extends TupleScheme<add_prescription_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, add_medication_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, add_prescription_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
-        if (struct.isSetMedication()) {
+        if (struct.isSetPrescription()) {
           optionals.set(0);
         }
         oprot.writeBitSet(optionals, 1);
-        if (struct.isSetMedication()) {
-          struct.medication.write(oprot);
+        if (struct.isSetPrescription()) {
+          struct.prescription.write(oprot);
         }
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, add_medication_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, add_prescription_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
-          struct.medication = new Medication();
-          struct.medication.read(iprot);
-          struct.setMedicationIsSet(true);
+          struct.prescription = new Prescription();
+          struct.prescription.read(iprot);
+          struct.setPrescriptionIsSet(true);
         }
       }
     }
 
   }
 
-  public static class add_medication_result implements org.apache.thrift.TBase<add_medication_result, add_medication_result._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("add_medication_result");
+  public static class add_prescription_result implements org.apache.thrift.TBase<add_prescription_result, add_prescription_result._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("add_prescription_result");
 
     private static final org.apache.thrift.protocol.TField SUCCESS_FIELD_DESC = new org.apache.thrift.protocol.TField("success", org.apache.thrift.protocol.TType.BOOL, (short)0);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
-      schemes.put(StandardScheme.class, new add_medication_resultStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new add_medication_resultTupleSchemeFactory());
+      schemes.put(StandardScheme.class, new add_prescription_resultStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new add_prescription_resultTupleSchemeFactory());
     }
 
     public boolean success; // required
@@ -830,13 +834,13 @@ public class MedicationService {
       tmpMap.put(_Fields.SUCCESS, new org.apache.thrift.meta_data.FieldMetaData("success", org.apache.thrift.TFieldRequirementType.DEFAULT, 
           new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.BOOL)));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(add_medication_result.class, metaDataMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(add_prescription_result.class, metaDataMap);
     }
 
-    public add_medication_result() {
+    public add_prescription_result() {
     }
 
-    public add_medication_result(
+    public add_prescription_result(
       boolean success)
     {
       this();
@@ -847,14 +851,14 @@ public class MedicationService {
     /**
      * Performs a deep copy on <i>other</i>.
      */
-    public add_medication_result(add_medication_result other) {
+    public add_prescription_result(add_prescription_result other) {
       __isset_bit_vector.clear();
       __isset_bit_vector.or(other.__isset_bit_vector);
       this.success = other.success;
     }
 
-    public add_medication_result deepCopy() {
-      return new add_medication_result(this);
+    public add_prescription_result deepCopy() {
+      return new add_prescription_result(this);
     }
 
     @Override
@@ -867,7 +871,7 @@ public class MedicationService {
       return this.success;
     }
 
-    public add_medication_result setSuccess(boolean success) {
+    public add_prescription_result setSuccess(boolean success) {
       this.success = success;
       setSuccessIsSet(true);
       return this;
@@ -925,12 +929,12 @@ public class MedicationService {
     public boolean equals(Object that) {
       if (that == null)
         return false;
-      if (that instanceof add_medication_result)
-        return this.equals((add_medication_result)that);
+      if (that instanceof add_prescription_result)
+        return this.equals((add_prescription_result)that);
       return false;
     }
 
-    public boolean equals(add_medication_result that) {
+    public boolean equals(add_prescription_result that) {
       if (that == null)
         return false;
 
@@ -951,13 +955,13 @@ public class MedicationService {
       return 0;
     }
 
-    public int compareTo(add_medication_result other) {
+    public int compareTo(add_prescription_result other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
       }
 
       int lastComparison = 0;
-      add_medication_result typedOther = (add_medication_result)other;
+      add_prescription_result typedOther = (add_prescription_result)other;
 
       lastComparison = Boolean.valueOf(isSetSuccess()).compareTo(typedOther.isSetSuccess());
       if (lastComparison != 0) {
@@ -986,7 +990,7 @@ public class MedicationService {
 
     @Override
     public String toString() {
-      StringBuilder sb = new StringBuilder("add_medication_result(");
+      StringBuilder sb = new StringBuilder("add_prescription_result(");
       boolean first = true;
 
       sb.append("success:");
@@ -1016,15 +1020,15 @@ public class MedicationService {
       }
     }
 
-    private static class add_medication_resultStandardSchemeFactory implements SchemeFactory {
-      public add_medication_resultStandardScheme getScheme() {
-        return new add_medication_resultStandardScheme();
+    private static class add_prescription_resultStandardSchemeFactory implements SchemeFactory {
+      public add_prescription_resultStandardScheme getScheme() {
+        return new add_prescription_resultStandardScheme();
       }
     }
 
-    private static class add_medication_resultStandardScheme extends StandardScheme<add_medication_result> {
+    private static class add_prescription_resultStandardScheme extends StandardScheme<add_prescription_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, add_medication_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, add_prescription_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -1053,7 +1057,7 @@ public class MedicationService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, add_medication_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, add_prescription_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -1066,16 +1070,16 @@ public class MedicationService {
 
     }
 
-    private static class add_medication_resultTupleSchemeFactory implements SchemeFactory {
-      public add_medication_resultTupleScheme getScheme() {
-        return new add_medication_resultTupleScheme();
+    private static class add_prescription_resultTupleSchemeFactory implements SchemeFactory {
+      public add_prescription_resultTupleScheme getScheme() {
+        return new add_prescription_resultTupleScheme();
       }
     }
 
-    private static class add_medication_resultTupleScheme extends TupleScheme<add_medication_result> {
+    private static class add_prescription_resultTupleScheme extends TupleScheme<add_prescription_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, add_medication_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, add_prescription_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -1088,7 +1092,7 @@ public class MedicationService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, add_medication_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, add_prescription_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -1100,22 +1104,22 @@ public class MedicationService {
 
   }
 
-  public static class remove_medication_args implements org.apache.thrift.TBase<remove_medication_args, remove_medication_args._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("remove_medication_args");
+  public static class remove_prescription_args implements org.apache.thrift.TBase<remove_prescription_args, remove_prescription_args._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("remove_prescription_args");
 
-    private static final org.apache.thrift.protocol.TField MEDICATION_FIELD_DESC = new org.apache.thrift.protocol.TField("medication", org.apache.thrift.protocol.TType.STRUCT, (short)1);
+    private static final org.apache.thrift.protocol.TField PRESCRIPTION_FIELD_DESC = new org.apache.thrift.protocol.TField("prescription", org.apache.thrift.protocol.TType.STRUCT, (short)1);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
-      schemes.put(StandardScheme.class, new remove_medication_argsStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new remove_medication_argsTupleSchemeFactory());
+      schemes.put(StandardScheme.class, new remove_prescription_argsStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new remove_prescription_argsTupleSchemeFactory());
     }
 
-    public Medication medication; // required
+    public Prescription prescription; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-      MEDICATION((short)1, "medication");
+      PRESCRIPTION((short)1, "prescription");
 
       private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -1130,8 +1134,8 @@ public class MedicationService {
        */
       public static _Fields findByThriftId(int fieldId) {
         switch(fieldId) {
-          case 1: // MEDICATION
-            return MEDICATION;
+          case 1: // PRESCRIPTION
+            return PRESCRIPTION;
           default:
             return null;
         }
@@ -1175,71 +1179,71 @@ public class MedicationService {
     public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
     static {
       Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-      tmpMap.put(_Fields.MEDICATION, new org.apache.thrift.meta_data.FieldMetaData("medication", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-          new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Medication.class)));
+      tmpMap.put(_Fields.PRESCRIPTION, new org.apache.thrift.meta_data.FieldMetaData("prescription", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Prescription.class)));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(remove_medication_args.class, metaDataMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(remove_prescription_args.class, metaDataMap);
     }
 
-    public remove_medication_args() {
+    public remove_prescription_args() {
     }
 
-    public remove_medication_args(
-      Medication medication)
+    public remove_prescription_args(
+      Prescription prescription)
     {
       this();
-      this.medication = medication;
+      this.prescription = prescription;
     }
 
     /**
      * Performs a deep copy on <i>other</i>.
      */
-    public remove_medication_args(remove_medication_args other) {
-      if (other.isSetMedication()) {
-        this.medication = new Medication(other.medication);
+    public remove_prescription_args(remove_prescription_args other) {
+      if (other.isSetPrescription()) {
+        this.prescription = new Prescription(other.prescription);
       }
     }
 
-    public remove_medication_args deepCopy() {
-      return new remove_medication_args(this);
+    public remove_prescription_args deepCopy() {
+      return new remove_prescription_args(this);
     }
 
     @Override
     public void clear() {
-      this.medication = null;
+      this.prescription = null;
     }
 
-    public Medication getMedication() {
-      return this.medication;
+    public Prescription getPrescription() {
+      return this.prescription;
     }
 
-    public remove_medication_args setMedication(Medication medication) {
-      this.medication = medication;
+    public remove_prescription_args setPrescription(Prescription prescription) {
+      this.prescription = prescription;
       return this;
     }
 
-    public void unsetMedication() {
-      this.medication = null;
+    public void unsetPrescription() {
+      this.prescription = null;
     }
 
-    /** Returns true if field medication is set (has been assigned a value) and false otherwise */
-    public boolean isSetMedication() {
-      return this.medication != null;
+    /** Returns true if field prescription is set (has been assigned a value) and false otherwise */
+    public boolean isSetPrescription() {
+      return this.prescription != null;
     }
 
-    public void setMedicationIsSet(boolean value) {
+    public void setPrescriptionIsSet(boolean value) {
       if (!value) {
-        this.medication = null;
+        this.prescription = null;
       }
     }
 
     public void setFieldValue(_Fields field, Object value) {
       switch (field) {
-      case MEDICATION:
+      case PRESCRIPTION:
         if (value == null) {
-          unsetMedication();
+          unsetPrescription();
         } else {
-          setMedication((Medication)value);
+          setPrescription((Prescription)value);
         }
         break;
 
@@ -1248,8 +1252,8 @@ public class MedicationService {
 
     public Object getFieldValue(_Fields field) {
       switch (field) {
-      case MEDICATION:
-        return getMedication();
+      case PRESCRIPTION:
+        return getPrescription();
 
       }
       throw new IllegalStateException();
@@ -1262,8 +1266,8 @@ public class MedicationService {
       }
 
       switch (field) {
-      case MEDICATION:
-        return isSetMedication();
+      case PRESCRIPTION:
+        return isSetPrescription();
       }
       throw new IllegalStateException();
     }
@@ -1272,21 +1276,21 @@ public class MedicationService {
     public boolean equals(Object that) {
       if (that == null)
         return false;
-      if (that instanceof remove_medication_args)
-        return this.equals((remove_medication_args)that);
+      if (that instanceof remove_prescription_args)
+        return this.equals((remove_prescription_args)that);
       return false;
     }
 
-    public boolean equals(remove_medication_args that) {
+    public boolean equals(remove_prescription_args that) {
       if (that == null)
         return false;
 
-      boolean this_present_medication = true && this.isSetMedication();
-      boolean that_present_medication = true && that.isSetMedication();
-      if (this_present_medication || that_present_medication) {
-        if (!(this_present_medication && that_present_medication))
+      boolean this_present_prescription = true && this.isSetPrescription();
+      boolean that_present_prescription = true && that.isSetPrescription();
+      if (this_present_prescription || that_present_prescription) {
+        if (!(this_present_prescription && that_present_prescription))
           return false;
-        if (!this.medication.equals(that.medication))
+        if (!this.prescription.equals(that.prescription))
           return false;
       }
 
@@ -1298,20 +1302,20 @@ public class MedicationService {
       return 0;
     }
 
-    public int compareTo(remove_medication_args other) {
+    public int compareTo(remove_prescription_args other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
       }
 
       int lastComparison = 0;
-      remove_medication_args typedOther = (remove_medication_args)other;
+      remove_prescription_args typedOther = (remove_prescription_args)other;
 
-      lastComparison = Boolean.valueOf(isSetMedication()).compareTo(typedOther.isSetMedication());
+      lastComparison = Boolean.valueOf(isSetPrescription()).compareTo(typedOther.isSetPrescription());
       if (lastComparison != 0) {
         return lastComparison;
       }
-      if (isSetMedication()) {
-        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.medication, typedOther.medication);
+      if (isSetPrescription()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.prescription, typedOther.prescription);
         if (lastComparison != 0) {
           return lastComparison;
         }
@@ -1333,14 +1337,14 @@ public class MedicationService {
 
     @Override
     public String toString() {
-      StringBuilder sb = new StringBuilder("remove_medication_args(");
+      StringBuilder sb = new StringBuilder("remove_prescription_args(");
       boolean first = true;
 
-      sb.append("medication:");
-      if (this.medication == null) {
+      sb.append("prescription:");
+      if (this.prescription == null) {
         sb.append("null");
       } else {
-        sb.append(this.medication);
+        sb.append(this.prescription);
       }
       first = false;
       sb.append(")");
@@ -1367,15 +1371,15 @@ public class MedicationService {
       }
     }
 
-    private static class remove_medication_argsStandardSchemeFactory implements SchemeFactory {
-      public remove_medication_argsStandardScheme getScheme() {
-        return new remove_medication_argsStandardScheme();
+    private static class remove_prescription_argsStandardSchemeFactory implements SchemeFactory {
+      public remove_prescription_argsStandardScheme getScheme() {
+        return new remove_prescription_argsStandardScheme();
       }
     }
 
-    private static class remove_medication_argsStandardScheme extends StandardScheme<remove_medication_args> {
+    private static class remove_prescription_argsStandardScheme extends StandardScheme<remove_prescription_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, remove_medication_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, remove_prescription_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -1385,11 +1389,11 @@ public class MedicationService {
             break;
           }
           switch (schemeField.id) {
-            case 1: // MEDICATION
+            case 1: // PRESCRIPTION
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.medication = new Medication();
-                struct.medication.read(iprot);
-                struct.setMedicationIsSet(true);
+                struct.prescription = new Prescription();
+                struct.prescription.read(iprot);
+                struct.setPrescriptionIsSet(true);
               } else { 
                 org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
               }
@@ -1405,13 +1409,13 @@ public class MedicationService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, remove_medication_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, remove_prescription_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
-        if (struct.medication != null) {
-          oprot.writeFieldBegin(MEDICATION_FIELD_DESC);
-          struct.medication.write(oprot);
+        if (struct.prescription != null) {
+          oprot.writeFieldBegin(PRESCRIPTION_FIELD_DESC);
+          struct.prescription.write(oprot);
           oprot.writeFieldEnd();
         }
         oprot.writeFieldStop();
@@ -1420,50 +1424,50 @@ public class MedicationService {
 
     }
 
-    private static class remove_medication_argsTupleSchemeFactory implements SchemeFactory {
-      public remove_medication_argsTupleScheme getScheme() {
-        return new remove_medication_argsTupleScheme();
+    private static class remove_prescription_argsTupleSchemeFactory implements SchemeFactory {
+      public remove_prescription_argsTupleScheme getScheme() {
+        return new remove_prescription_argsTupleScheme();
       }
     }
 
-    private static class remove_medication_argsTupleScheme extends TupleScheme<remove_medication_args> {
+    private static class remove_prescription_argsTupleScheme extends TupleScheme<remove_prescription_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, remove_medication_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, remove_prescription_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
-        if (struct.isSetMedication()) {
+        if (struct.isSetPrescription()) {
           optionals.set(0);
         }
         oprot.writeBitSet(optionals, 1);
-        if (struct.isSetMedication()) {
-          struct.medication.write(oprot);
+        if (struct.isSetPrescription()) {
+          struct.prescription.write(oprot);
         }
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, remove_medication_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, remove_prescription_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
-          struct.medication = new Medication();
-          struct.medication.read(iprot);
-          struct.setMedicationIsSet(true);
+          struct.prescription = new Prescription();
+          struct.prescription.read(iprot);
+          struct.setPrescriptionIsSet(true);
         }
       }
     }
 
   }
 
-  public static class remove_medication_result implements org.apache.thrift.TBase<remove_medication_result, remove_medication_result._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("remove_medication_result");
+  public static class remove_prescription_result implements org.apache.thrift.TBase<remove_prescription_result, remove_prescription_result._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("remove_prescription_result");
 
     private static final org.apache.thrift.protocol.TField SUCCESS_FIELD_DESC = new org.apache.thrift.protocol.TField("success", org.apache.thrift.protocol.TType.BOOL, (short)0);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
-      schemes.put(StandardScheme.class, new remove_medication_resultStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new remove_medication_resultTupleSchemeFactory());
+      schemes.put(StandardScheme.class, new remove_prescription_resultStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new remove_prescription_resultTupleSchemeFactory());
     }
 
     public boolean success; // required
@@ -1535,13 +1539,13 @@ public class MedicationService {
       tmpMap.put(_Fields.SUCCESS, new org.apache.thrift.meta_data.FieldMetaData("success", org.apache.thrift.TFieldRequirementType.DEFAULT, 
           new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.BOOL)));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(remove_medication_result.class, metaDataMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(remove_prescription_result.class, metaDataMap);
     }
 
-    public remove_medication_result() {
+    public remove_prescription_result() {
     }
 
-    public remove_medication_result(
+    public remove_prescription_result(
       boolean success)
     {
       this();
@@ -1552,14 +1556,14 @@ public class MedicationService {
     /**
      * Performs a deep copy on <i>other</i>.
      */
-    public remove_medication_result(remove_medication_result other) {
+    public remove_prescription_result(remove_prescription_result other) {
       __isset_bit_vector.clear();
       __isset_bit_vector.or(other.__isset_bit_vector);
       this.success = other.success;
     }
 
-    public remove_medication_result deepCopy() {
-      return new remove_medication_result(this);
+    public remove_prescription_result deepCopy() {
+      return new remove_prescription_result(this);
     }
 
     @Override
@@ -1572,7 +1576,7 @@ public class MedicationService {
       return this.success;
     }
 
-    public remove_medication_result setSuccess(boolean success) {
+    public remove_prescription_result setSuccess(boolean success) {
       this.success = success;
       setSuccessIsSet(true);
       return this;
@@ -1630,12 +1634,12 @@ public class MedicationService {
     public boolean equals(Object that) {
       if (that == null)
         return false;
-      if (that instanceof remove_medication_result)
-        return this.equals((remove_medication_result)that);
+      if (that instanceof remove_prescription_result)
+        return this.equals((remove_prescription_result)that);
       return false;
     }
 
-    public boolean equals(remove_medication_result that) {
+    public boolean equals(remove_prescription_result that) {
       if (that == null)
         return false;
 
@@ -1656,13 +1660,13 @@ public class MedicationService {
       return 0;
     }
 
-    public int compareTo(remove_medication_result other) {
+    public int compareTo(remove_prescription_result other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
       }
 
       int lastComparison = 0;
-      remove_medication_result typedOther = (remove_medication_result)other;
+      remove_prescription_result typedOther = (remove_prescription_result)other;
 
       lastComparison = Boolean.valueOf(isSetSuccess()).compareTo(typedOther.isSetSuccess());
       if (lastComparison != 0) {
@@ -1691,7 +1695,7 @@ public class MedicationService {
 
     @Override
     public String toString() {
-      StringBuilder sb = new StringBuilder("remove_medication_result(");
+      StringBuilder sb = new StringBuilder("remove_prescription_result(");
       boolean first = true;
 
       sb.append("success:");
@@ -1721,15 +1725,15 @@ public class MedicationService {
       }
     }
 
-    private static class remove_medication_resultStandardSchemeFactory implements SchemeFactory {
-      public remove_medication_resultStandardScheme getScheme() {
-        return new remove_medication_resultStandardScheme();
+    private static class remove_prescription_resultStandardSchemeFactory implements SchemeFactory {
+      public remove_prescription_resultStandardScheme getScheme() {
+        return new remove_prescription_resultStandardScheme();
       }
     }
 
-    private static class remove_medication_resultStandardScheme extends StandardScheme<remove_medication_result> {
+    private static class remove_prescription_resultStandardScheme extends StandardScheme<remove_prescription_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, remove_medication_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, remove_prescription_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -1758,7 +1762,7 @@ public class MedicationService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, remove_medication_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, remove_prescription_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -1771,16 +1775,16 @@ public class MedicationService {
 
     }
 
-    private static class remove_medication_resultTupleSchemeFactory implements SchemeFactory {
-      public remove_medication_resultTupleScheme getScheme() {
-        return new remove_medication_resultTupleScheme();
+    private static class remove_prescription_resultTupleSchemeFactory implements SchemeFactory {
+      public remove_prescription_resultTupleScheme getScheme() {
+        return new remove_prescription_resultTupleScheme();
       }
     }
 
-    private static class remove_medication_resultTupleScheme extends TupleScheme<remove_medication_result> {
+    private static class remove_prescription_resultTupleScheme extends TupleScheme<remove_prescription_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, remove_medication_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, remove_prescription_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -1793,7 +1797,7 @@ public class MedicationService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, remove_medication_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, remove_prescription_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -1805,667 +1809,15 @@ public class MedicationService {
 
   }
 
-  public static class get_medications_args implements org.apache.thrift.TBase<get_medications_args, get_medications_args._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("get_medications_args");
-
-
-    private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
-    static {
-      schemes.put(StandardScheme.class, new get_medications_argsStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new get_medications_argsTupleSchemeFactory());
-    }
-
-
-    /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
-    public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-;
-
-      private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
-
-      static {
-        for (_Fields field : EnumSet.allOf(_Fields.class)) {
-          byName.put(field.getFieldName(), field);
-        }
-      }
-
-      /**
-       * Find the _Fields constant that matches fieldId, or null if its not found.
-       */
-      public static _Fields findByThriftId(int fieldId) {
-        switch(fieldId) {
-          default:
-            return null;
-        }
-      }
-
-      /**
-       * Find the _Fields constant that matches fieldId, throwing an exception
-       * if it is not found.
-       */
-      public static _Fields findByThriftIdOrThrow(int fieldId) {
-        _Fields fields = findByThriftId(fieldId);
-        if (fields == null) throw new IllegalArgumentException("Field " + fieldId + " doesn't exist!");
-        return fields;
-      }
-
-      /**
-       * Find the _Fields constant that matches name, or null if its not found.
-       */
-      public static _Fields findByName(String name) {
-        return byName.get(name);
-      }
-
-      private final short _thriftId;
-      private final String _fieldName;
-
-      _Fields(short thriftId, String fieldName) {
-        _thriftId = thriftId;
-        _fieldName = fieldName;
-      }
-
-      public short getThriftFieldId() {
-        return _thriftId;
-      }
-
-      public String getFieldName() {
-        return _fieldName;
-      }
-    }
-    public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
-    static {
-      Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-      metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(get_medications_args.class, metaDataMap);
-    }
-
-    public get_medications_args() {
-    }
-
-    /**
-     * Performs a deep copy on <i>other</i>.
-     */
-    public get_medications_args(get_medications_args other) {
-    }
-
-    public get_medications_args deepCopy() {
-      return new get_medications_args(this);
-    }
-
-    @Override
-    public void clear() {
-    }
-
-    public void setFieldValue(_Fields field, Object value) {
-      switch (field) {
-      }
-    }
-
-    public Object getFieldValue(_Fields field) {
-      switch (field) {
-      }
-      throw new IllegalStateException();
-    }
-
-    /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
-    public boolean isSet(_Fields field) {
-      if (field == null) {
-        throw new IllegalArgumentException();
-      }
-
-      switch (field) {
-      }
-      throw new IllegalStateException();
-    }
-
-    @Override
-    public boolean equals(Object that) {
-      if (that == null)
-        return false;
-      if (that instanceof get_medications_args)
-        return this.equals((get_medications_args)that);
-      return false;
-    }
-
-    public boolean equals(get_medications_args that) {
-      if (that == null)
-        return false;
-
-      return true;
-    }
-
-    @Override
-    public int hashCode() {
-      return 0;
-    }
-
-    public int compareTo(get_medications_args other) {
-      if (!getClass().equals(other.getClass())) {
-        return getClass().getName().compareTo(other.getClass().getName());
-      }
-
-      int lastComparison = 0;
-      get_medications_args typedOther = (get_medications_args)other;
-
-      return 0;
-    }
-
-    public _Fields fieldForId(int fieldId) {
-      return _Fields.findByThriftId(fieldId);
-    }
-
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
-      schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
-    }
-
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
-      schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
-    }
-
-    @Override
-    public String toString() {
-      StringBuilder sb = new StringBuilder("get_medications_args(");
-      boolean first = true;
-
-      sb.append(")");
-      return sb.toString();
-    }
-
-    public void validate() throws org.apache.thrift.TException {
-      // check for required fields
-    }
-
-    private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
-      try {
-        write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (org.apache.thrift.TException te) {
-        throw new java.io.IOException(te);
-      }
-    }
-
-    private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
-      try {
-        read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (org.apache.thrift.TException te) {
-        throw new java.io.IOException(te);
-      }
-    }
-
-    private static class get_medications_argsStandardSchemeFactory implements SchemeFactory {
-      public get_medications_argsStandardScheme getScheme() {
-        return new get_medications_argsStandardScheme();
-      }
-    }
-
-    private static class get_medications_argsStandardScheme extends StandardScheme<get_medications_args> {
-
-      public void read(org.apache.thrift.protocol.TProtocol iprot, get_medications_args struct) throws org.apache.thrift.TException {
-        org.apache.thrift.protocol.TField schemeField;
-        iprot.readStructBegin();
-        while (true)
-        {
-          schemeField = iprot.readFieldBegin();
-          if (schemeField.type == org.apache.thrift.protocol.TType.STOP) { 
-            break;
-          }
-          switch (schemeField.id) {
-            default:
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-          }
-          iprot.readFieldEnd();
-        }
-        iprot.readStructEnd();
-
-        // check for required fields of primitive type, which can't be checked in the validate method
-        struct.validate();
-      }
-
-      public void write(org.apache.thrift.protocol.TProtocol oprot, get_medications_args struct) throws org.apache.thrift.TException {
-        struct.validate();
-
-        oprot.writeStructBegin(STRUCT_DESC);
-        oprot.writeFieldStop();
-        oprot.writeStructEnd();
-      }
-
-    }
-
-    private static class get_medications_argsTupleSchemeFactory implements SchemeFactory {
-      public get_medications_argsTupleScheme getScheme() {
-        return new get_medications_argsTupleScheme();
-      }
-    }
-
-    private static class get_medications_argsTupleScheme extends TupleScheme<get_medications_args> {
-
-      @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, get_medications_args struct) throws org.apache.thrift.TException {
-        TTupleProtocol oprot = (TTupleProtocol) prot;
-      }
-
-      @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, get_medications_args struct) throws org.apache.thrift.TException {
-        TTupleProtocol iprot = (TTupleProtocol) prot;
-      }
-    }
-
-  }
-
-  public static class get_medications_result implements org.apache.thrift.TBase<get_medications_result, get_medications_result._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("get_medications_result");
-
-    private static final org.apache.thrift.protocol.TField SUCCESS_FIELD_DESC = new org.apache.thrift.protocol.TField("success", org.apache.thrift.protocol.TType.LIST, (short)0);
-
-    private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
-    static {
-      schemes.put(StandardScheme.class, new get_medications_resultStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new get_medications_resultTupleSchemeFactory());
-    }
-
-    public List<Medication> success; // required
-
-    /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
-    public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-      SUCCESS((short)0, "success");
-
-      private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
-
-      static {
-        for (_Fields field : EnumSet.allOf(_Fields.class)) {
-          byName.put(field.getFieldName(), field);
-        }
-      }
-
-      /**
-       * Find the _Fields constant that matches fieldId, or null if its not found.
-       */
-      public static _Fields findByThriftId(int fieldId) {
-        switch(fieldId) {
-          case 0: // SUCCESS
-            return SUCCESS;
-          default:
-            return null;
-        }
-      }
-
-      /**
-       * Find the _Fields constant that matches fieldId, throwing an exception
-       * if it is not found.
-       */
-      public static _Fields findByThriftIdOrThrow(int fieldId) {
-        _Fields fields = findByThriftId(fieldId);
-        if (fields == null) throw new IllegalArgumentException("Field " + fieldId + " doesn't exist!");
-        return fields;
-      }
-
-      /**
-       * Find the _Fields constant that matches name, or null if its not found.
-       */
-      public static _Fields findByName(String name) {
-        return byName.get(name);
-      }
-
-      private final short _thriftId;
-      private final String _fieldName;
-
-      _Fields(short thriftId, String fieldName) {
-        _thriftId = thriftId;
-        _fieldName = fieldName;
-      }
-
-      public short getThriftFieldId() {
-        return _thriftId;
-      }
-
-      public String getFieldName() {
-        return _fieldName;
-      }
-    }
-
-    // isset id assignments
-    public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
-    static {
-      Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-      tmpMap.put(_Fields.SUCCESS, new org.apache.thrift.meta_data.FieldMetaData("success", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-          new org.apache.thrift.meta_data.ListMetaData(org.apache.thrift.protocol.TType.LIST, 
-              new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Medication.class))));
-      metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(get_medications_result.class, metaDataMap);
-    }
-
-    public get_medications_result() {
-    }
-
-    public get_medications_result(
-      List<Medication> success)
-    {
-      this();
-      this.success = success;
-    }
-
-    /**
-     * Performs a deep copy on <i>other</i>.
-     */
-    public get_medications_result(get_medications_result other) {
-      if (other.isSetSuccess()) {
-        List<Medication> __this__success = new ArrayList<Medication>();
-        for (Medication other_element : other.success) {
-          __this__success.add(new Medication(other_element));
-        }
-        this.success = __this__success;
-      }
-    }
-
-    public get_medications_result deepCopy() {
-      return new get_medications_result(this);
-    }
-
-    @Override
-    public void clear() {
-      this.success = null;
-    }
-
-    public int getSuccessSize() {
-      return (this.success == null) ? 0 : this.success.size();
-    }
-
-    public java.util.Iterator<Medication> getSuccessIterator() {
-      return (this.success == null) ? null : this.success.iterator();
-    }
-
-    public void addToSuccess(Medication elem) {
-      if (this.success == null) {
-        this.success = new ArrayList<Medication>();
-      }
-      this.success.add(elem);
-    }
-
-    public List<Medication> getSuccess() {
-      return this.success;
-    }
-
-    public get_medications_result setSuccess(List<Medication> success) {
-      this.success = success;
-      return this;
-    }
-
-    public void unsetSuccess() {
-      this.success = null;
-    }
-
-    /** Returns true if field success is set (has been assigned a value) and false otherwise */
-    public boolean isSetSuccess() {
-      return this.success != null;
-    }
-
-    public void setSuccessIsSet(boolean value) {
-      if (!value) {
-        this.success = null;
-      }
-    }
-
-    public void setFieldValue(_Fields field, Object value) {
-      switch (field) {
-      case SUCCESS:
-        if (value == null) {
-          unsetSuccess();
-        } else {
-          setSuccess((List<Medication>)value);
-        }
-        break;
-
-      }
-    }
-
-    public Object getFieldValue(_Fields field) {
-      switch (field) {
-      case SUCCESS:
-        return getSuccess();
-
-      }
-      throw new IllegalStateException();
-    }
-
-    /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
-    public boolean isSet(_Fields field) {
-      if (field == null) {
-        throw new IllegalArgumentException();
-      }
-
-      switch (field) {
-      case SUCCESS:
-        return isSetSuccess();
-      }
-      throw new IllegalStateException();
-    }
-
-    @Override
-    public boolean equals(Object that) {
-      if (that == null)
-        return false;
-      if (that instanceof get_medications_result)
-        return this.equals((get_medications_result)that);
-      return false;
-    }
-
-    public boolean equals(get_medications_result that) {
-      if (that == null)
-        return false;
-
-      boolean this_present_success = true && this.isSetSuccess();
-      boolean that_present_success = true && that.isSetSuccess();
-      if (this_present_success || that_present_success) {
-        if (!(this_present_success && that_present_success))
-          return false;
-        if (!this.success.equals(that.success))
-          return false;
-      }
-
-      return true;
-    }
-
-    @Override
-    public int hashCode() {
-      return 0;
-    }
-
-    public int compareTo(get_medications_result other) {
-      if (!getClass().equals(other.getClass())) {
-        return getClass().getName().compareTo(other.getClass().getName());
-      }
-
-      int lastComparison = 0;
-      get_medications_result typedOther = (get_medications_result)other;
-
-      lastComparison = Boolean.valueOf(isSetSuccess()).compareTo(typedOther.isSetSuccess());
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-      if (isSetSuccess()) {
-        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.success, typedOther.success);
-        if (lastComparison != 0) {
-          return lastComparison;
-        }
-      }
-      return 0;
-    }
-
-    public _Fields fieldForId(int fieldId) {
-      return _Fields.findByThriftId(fieldId);
-    }
-
-    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
-      schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
-    }
-
-    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
-      schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
-      }
-
-    @Override
-    public String toString() {
-      StringBuilder sb = new StringBuilder("get_medications_result(");
-      boolean first = true;
-
-      sb.append("success:");
-      if (this.success == null) {
-        sb.append("null");
-      } else {
-        sb.append(this.success);
-      }
-      first = false;
-      sb.append(")");
-      return sb.toString();
-    }
-
-    public void validate() throws org.apache.thrift.TException {
-      // check for required fields
-    }
-
-    private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
-      try {
-        write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
-      } catch (org.apache.thrift.TException te) {
-        throw new java.io.IOException(te);
-      }
-    }
-
-    private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
-      try {
-        read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
-      } catch (org.apache.thrift.TException te) {
-        throw new java.io.IOException(te);
-      }
-    }
-
-    private static class get_medications_resultStandardSchemeFactory implements SchemeFactory {
-      public get_medications_resultStandardScheme getScheme() {
-        return new get_medications_resultStandardScheme();
-      }
-    }
-
-    private static class get_medications_resultStandardScheme extends StandardScheme<get_medications_result> {
-
-      public void read(org.apache.thrift.protocol.TProtocol iprot, get_medications_result struct) throws org.apache.thrift.TException {
-        org.apache.thrift.protocol.TField schemeField;
-        iprot.readStructBegin();
-        while (true)
-        {
-          schemeField = iprot.readFieldBegin();
-          if (schemeField.type == org.apache.thrift.protocol.TType.STOP) { 
-            break;
-          }
-          switch (schemeField.id) {
-            case 0: // SUCCESS
-              if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
-                {
-                  org.apache.thrift.protocol.TList _list24 = iprot.readListBegin();
-                  struct.success = new ArrayList<Medication>(_list24.size);
-                  for (int _i25 = 0; _i25 < _list24.size; ++_i25)
-                  {
-                    Medication _elem26; // required
-                    _elem26 = new Medication();
-                    _elem26.read(iprot);
-                    struct.success.add(_elem26);
-                  }
-                  iprot.readListEnd();
-                }
-                struct.setSuccessIsSet(true);
-              } else { 
-                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-              }
-              break;
-            default:
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-          }
-          iprot.readFieldEnd();
-        }
-        iprot.readStructEnd();
-
-        // check for required fields of primitive type, which can't be checked in the validate method
-        struct.validate();
-      }
-
-      public void write(org.apache.thrift.protocol.TProtocol oprot, get_medications_result struct) throws org.apache.thrift.TException {
-        struct.validate();
-
-        oprot.writeStructBegin(STRUCT_DESC);
-        if (struct.success != null) {
-          oprot.writeFieldBegin(SUCCESS_FIELD_DESC);
-          {
-            oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, struct.success.size()));
-            for (Medication _iter27 : struct.success)
-            {
-              _iter27.write(oprot);
-            }
-            oprot.writeListEnd();
-          }
-          oprot.writeFieldEnd();
-        }
-        oprot.writeFieldStop();
-        oprot.writeStructEnd();
-      }
-
-    }
-
-    private static class get_medications_resultTupleSchemeFactory implements SchemeFactory {
-      public get_medications_resultTupleScheme getScheme() {
-        return new get_medications_resultTupleScheme();
-      }
-    }
-
-    private static class get_medications_resultTupleScheme extends TupleScheme<get_medications_result> {
-
-      @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, get_medications_result struct) throws org.apache.thrift.TException {
-        TTupleProtocol oprot = (TTupleProtocol) prot;
-        BitSet optionals = new BitSet();
-        if (struct.isSetSuccess()) {
-          optionals.set(0);
-        }
-        oprot.writeBitSet(optionals, 1);
-        if (struct.isSetSuccess()) {
-          {
-            oprot.writeI32(struct.success.size());
-            for (Medication _iter28 : struct.success)
-            {
-              _iter28.write(oprot);
-            }
-          }
-        }
-      }
-
-      @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, get_medications_result struct) throws org.apache.thrift.TException {
-        TTupleProtocol iprot = (TTupleProtocol) prot;
-        BitSet incoming = iprot.readBitSet(1);
-        if (incoming.get(0)) {
-          {
-            org.apache.thrift.protocol.TList _list29 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-            struct.success = new ArrayList<Medication>(_list29.size);
-            for (int _i30 = 0; _i30 < _list29.size; ++_i30)
-            {
-              Medication _elem31; // required
-              _elem31 = new Medication();
-              _elem31.read(iprot);
-              struct.success.add(_elem31);
-            }
-          }
-          struct.setSuccessIsSet(true);
-        }
-      }
-    }
-
-  }
-
-  public static class get_medication_by_tag_id_args implements org.apache.thrift.TBase<get_medication_by_tag_id_args, get_medication_by_tag_id_args._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("get_medication_by_tag_id_args");
+  public static class get_prescription_by_tag_id_args implements org.apache.thrift.TBase<get_prescription_by_tag_id_args, get_prescription_by_tag_id_args._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("get_prescription_by_tag_id_args");
 
     private static final org.apache.thrift.protocol.TField TAG_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("tag_id", org.apache.thrift.protocol.TType.STRING, (short)1);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
-      schemes.put(StandardScheme.class, new get_medication_by_tag_id_argsStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new get_medication_by_tag_id_argsTupleSchemeFactory());
+      schemes.put(StandardScheme.class, new get_prescription_by_tag_id_argsStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new get_prescription_by_tag_id_argsTupleSchemeFactory());
     }
 
     public String tag_id; // required
@@ -2535,13 +1887,13 @@ public class MedicationService {
       tmpMap.put(_Fields.TAG_ID, new org.apache.thrift.meta_data.FieldMetaData("tag_id", org.apache.thrift.TFieldRequirementType.DEFAULT, 
           new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING          , "NFCID")));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(get_medication_by_tag_id_args.class, metaDataMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(get_prescription_by_tag_id_args.class, metaDataMap);
     }
 
-    public get_medication_by_tag_id_args() {
+    public get_prescription_by_tag_id_args() {
     }
 
-    public get_medication_by_tag_id_args(
+    public get_prescription_by_tag_id_args(
       String tag_id)
     {
       this();
@@ -2551,14 +1903,14 @@ public class MedicationService {
     /**
      * Performs a deep copy on <i>other</i>.
      */
-    public get_medication_by_tag_id_args(get_medication_by_tag_id_args other) {
+    public get_prescription_by_tag_id_args(get_prescription_by_tag_id_args other) {
       if (other.isSetTag_id()) {
         this.tag_id = other.tag_id;
       }
     }
 
-    public get_medication_by_tag_id_args deepCopy() {
-      return new get_medication_by_tag_id_args(this);
+    public get_prescription_by_tag_id_args deepCopy() {
+      return new get_prescription_by_tag_id_args(this);
     }
 
     @Override
@@ -2570,7 +1922,7 @@ public class MedicationService {
       return this.tag_id;
     }
 
-    public get_medication_by_tag_id_args setTag_id(String tag_id) {
+    public get_prescription_by_tag_id_args setTag_id(String tag_id) {
       this.tag_id = tag_id;
       return this;
     }
@@ -2629,12 +1981,12 @@ public class MedicationService {
     public boolean equals(Object that) {
       if (that == null)
         return false;
-      if (that instanceof get_medication_by_tag_id_args)
-        return this.equals((get_medication_by_tag_id_args)that);
+      if (that instanceof get_prescription_by_tag_id_args)
+        return this.equals((get_prescription_by_tag_id_args)that);
       return false;
     }
 
-    public boolean equals(get_medication_by_tag_id_args that) {
+    public boolean equals(get_prescription_by_tag_id_args that) {
       if (that == null)
         return false;
 
@@ -2655,13 +2007,13 @@ public class MedicationService {
       return 0;
     }
 
-    public int compareTo(get_medication_by_tag_id_args other) {
+    public int compareTo(get_prescription_by_tag_id_args other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
       }
 
       int lastComparison = 0;
-      get_medication_by_tag_id_args typedOther = (get_medication_by_tag_id_args)other;
+      get_prescription_by_tag_id_args typedOther = (get_prescription_by_tag_id_args)other;
 
       lastComparison = Boolean.valueOf(isSetTag_id()).compareTo(typedOther.isSetTag_id());
       if (lastComparison != 0) {
@@ -2690,7 +2042,7 @@ public class MedicationService {
 
     @Override
     public String toString() {
-      StringBuilder sb = new StringBuilder("get_medication_by_tag_id_args(");
+      StringBuilder sb = new StringBuilder("get_prescription_by_tag_id_args(");
       boolean first = true;
 
       sb.append("tag_id:");
@@ -2724,15 +2076,15 @@ public class MedicationService {
       }
     }
 
-    private static class get_medication_by_tag_id_argsStandardSchemeFactory implements SchemeFactory {
-      public get_medication_by_tag_id_argsStandardScheme getScheme() {
-        return new get_medication_by_tag_id_argsStandardScheme();
+    private static class get_prescription_by_tag_id_argsStandardSchemeFactory implements SchemeFactory {
+      public get_prescription_by_tag_id_argsStandardScheme getScheme() {
+        return new get_prescription_by_tag_id_argsStandardScheme();
       }
     }
 
-    private static class get_medication_by_tag_id_argsStandardScheme extends StandardScheme<get_medication_by_tag_id_args> {
+    private static class get_prescription_by_tag_id_argsStandardScheme extends StandardScheme<get_prescription_by_tag_id_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, get_medication_by_tag_id_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, get_prescription_by_tag_id_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -2761,7 +2113,7 @@ public class MedicationService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, get_medication_by_tag_id_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, get_prescription_by_tag_id_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -2776,16 +2128,16 @@ public class MedicationService {
 
     }
 
-    private static class get_medication_by_tag_id_argsTupleSchemeFactory implements SchemeFactory {
-      public get_medication_by_tag_id_argsTupleScheme getScheme() {
-        return new get_medication_by_tag_id_argsTupleScheme();
+    private static class get_prescription_by_tag_id_argsTupleSchemeFactory implements SchemeFactory {
+      public get_prescription_by_tag_id_argsTupleScheme getScheme() {
+        return new get_prescription_by_tag_id_argsTupleScheme();
       }
     }
 
-    private static class get_medication_by_tag_id_argsTupleScheme extends TupleScheme<get_medication_by_tag_id_args> {
+    private static class get_prescription_by_tag_id_argsTupleScheme extends TupleScheme<get_prescription_by_tag_id_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, get_medication_by_tag_id_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, get_prescription_by_tag_id_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetTag_id()) {
@@ -2798,7 +2150,7 @@ public class MedicationService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, get_medication_by_tag_id_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, get_prescription_by_tag_id_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -2810,18 +2162,18 @@ public class MedicationService {
 
   }
 
-  public static class get_medication_by_tag_id_result implements org.apache.thrift.TBase<get_medication_by_tag_id_result, get_medication_by_tag_id_result._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("get_medication_by_tag_id_result");
+  public static class get_prescription_by_tag_id_result implements org.apache.thrift.TBase<get_prescription_by_tag_id_result, get_prescription_by_tag_id_result._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("get_prescription_by_tag_id_result");
 
     private static final org.apache.thrift.protocol.TField SUCCESS_FIELD_DESC = new org.apache.thrift.protocol.TField("success", org.apache.thrift.protocol.TType.STRUCT, (short)0);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
-      schemes.put(StandardScheme.class, new get_medication_by_tag_id_resultStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new get_medication_by_tag_id_resultTupleSchemeFactory());
+      schemes.put(StandardScheme.class, new get_prescription_by_tag_id_resultStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new get_prescription_by_tag_id_resultTupleSchemeFactory());
     }
 
-    public Medication success; // required
+    public Prescription success; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -2886,16 +2238,16 @@ public class MedicationService {
     static {
       Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
       tmpMap.put(_Fields.SUCCESS, new org.apache.thrift.meta_data.FieldMetaData("success", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-          new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Medication.class)));
+          new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Prescription.class)));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(get_medication_by_tag_id_result.class, metaDataMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(get_prescription_by_tag_id_result.class, metaDataMap);
     }
 
-    public get_medication_by_tag_id_result() {
+    public get_prescription_by_tag_id_result() {
     }
 
-    public get_medication_by_tag_id_result(
-      Medication success)
+    public get_prescription_by_tag_id_result(
+      Prescription success)
     {
       this();
       this.success = success;
@@ -2904,14 +2256,14 @@ public class MedicationService {
     /**
      * Performs a deep copy on <i>other</i>.
      */
-    public get_medication_by_tag_id_result(get_medication_by_tag_id_result other) {
+    public get_prescription_by_tag_id_result(get_prescription_by_tag_id_result other) {
       if (other.isSetSuccess()) {
-        this.success = new Medication(other.success);
+        this.success = new Prescription(other.success);
       }
     }
 
-    public get_medication_by_tag_id_result deepCopy() {
-      return new get_medication_by_tag_id_result(this);
+    public get_prescription_by_tag_id_result deepCopy() {
+      return new get_prescription_by_tag_id_result(this);
     }
 
     @Override
@@ -2919,11 +2271,11 @@ public class MedicationService {
       this.success = null;
     }
 
-    public Medication getSuccess() {
+    public Prescription getSuccess() {
       return this.success;
     }
 
-    public get_medication_by_tag_id_result setSuccess(Medication success) {
+    public get_prescription_by_tag_id_result setSuccess(Prescription success) {
       this.success = success;
       return this;
     }
@@ -2949,7 +2301,7 @@ public class MedicationService {
         if (value == null) {
           unsetSuccess();
         } else {
-          setSuccess((Medication)value);
+          setSuccess((Prescription)value);
         }
         break;
 
@@ -2982,12 +2334,12 @@ public class MedicationService {
     public boolean equals(Object that) {
       if (that == null)
         return false;
-      if (that instanceof get_medication_by_tag_id_result)
-        return this.equals((get_medication_by_tag_id_result)that);
+      if (that instanceof get_prescription_by_tag_id_result)
+        return this.equals((get_prescription_by_tag_id_result)that);
       return false;
     }
 
-    public boolean equals(get_medication_by_tag_id_result that) {
+    public boolean equals(get_prescription_by_tag_id_result that) {
       if (that == null)
         return false;
 
@@ -3008,13 +2360,13 @@ public class MedicationService {
       return 0;
     }
 
-    public int compareTo(get_medication_by_tag_id_result other) {
+    public int compareTo(get_prescription_by_tag_id_result other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
       }
 
       int lastComparison = 0;
-      get_medication_by_tag_id_result typedOther = (get_medication_by_tag_id_result)other;
+      get_prescription_by_tag_id_result typedOther = (get_prescription_by_tag_id_result)other;
 
       lastComparison = Boolean.valueOf(isSetSuccess()).compareTo(typedOther.isSetSuccess());
       if (lastComparison != 0) {
@@ -3043,7 +2395,7 @@ public class MedicationService {
 
     @Override
     public String toString() {
-      StringBuilder sb = new StringBuilder("get_medication_by_tag_id_result(");
+      StringBuilder sb = new StringBuilder("get_prescription_by_tag_id_result(");
       boolean first = true;
 
       sb.append("success:");
@@ -3077,15 +2429,15 @@ public class MedicationService {
       }
     }
 
-    private static class get_medication_by_tag_id_resultStandardSchemeFactory implements SchemeFactory {
-      public get_medication_by_tag_id_resultStandardScheme getScheme() {
-        return new get_medication_by_tag_id_resultStandardScheme();
+    private static class get_prescription_by_tag_id_resultStandardSchemeFactory implements SchemeFactory {
+      public get_prescription_by_tag_id_resultStandardScheme getScheme() {
+        return new get_prescription_by_tag_id_resultStandardScheme();
       }
     }
 
-    private static class get_medication_by_tag_id_resultStandardScheme extends StandardScheme<get_medication_by_tag_id_result> {
+    private static class get_prescription_by_tag_id_resultStandardScheme extends StandardScheme<get_prescription_by_tag_id_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, get_medication_by_tag_id_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, get_prescription_by_tag_id_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -3097,7 +2449,7 @@ public class MedicationService {
           switch (schemeField.id) {
             case 0: // SUCCESS
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.success = new Medication();
+                struct.success = new Prescription();
                 struct.success.read(iprot);
                 struct.setSuccessIsSet(true);
               } else { 
@@ -3115,7 +2467,7 @@ public class MedicationService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, get_medication_by_tag_id_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, get_prescription_by_tag_id_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -3130,16 +2482,16 @@ public class MedicationService {
 
     }
 
-    private static class get_medication_by_tag_id_resultTupleSchemeFactory implements SchemeFactory {
-      public get_medication_by_tag_id_resultTupleScheme getScheme() {
-        return new get_medication_by_tag_id_resultTupleScheme();
+    private static class get_prescription_by_tag_id_resultTupleSchemeFactory implements SchemeFactory {
+      public get_prescription_by_tag_id_resultTupleScheme getScheme() {
+        return new get_prescription_by_tag_id_resultTupleScheme();
       }
     }
 
-    private static class get_medication_by_tag_id_resultTupleScheme extends TupleScheme<get_medication_by_tag_id_result> {
+    private static class get_prescription_by_tag_id_resultTupleScheme extends TupleScheme<get_prescription_by_tag_id_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, get_medication_by_tag_id_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, get_prescription_by_tag_id_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -3152,12 +2504,772 @@ public class MedicationService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, get_medication_by_tag_id_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, get_prescription_by_tag_id_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
-          struct.success = new Medication();
+          struct.success = new Prescription();
           struct.success.read(iprot);
+          struct.setSuccessIsSet(true);
+        }
+      }
+    }
+
+  }
+
+  public static class get_prescriptions_for_patient_args implements org.apache.thrift.TBase<get_prescriptions_for_patient_args, get_prescriptions_for_patient_args._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("get_prescriptions_for_patient_args");
+
+    private static final org.apache.thrift.protocol.TField PANTIENT_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("pantient_id", org.apache.thrift.protocol.TType.STRING, (short)1);
+
+    private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
+    static {
+      schemes.put(StandardScheme.class, new get_prescriptions_for_patient_argsStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new get_prescriptions_for_patient_argsTupleSchemeFactory());
+    }
+
+    public String pantient_id; // required
+
+    /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
+    public enum _Fields implements org.apache.thrift.TFieldIdEnum {
+      PANTIENT_ID((short)1, "pantient_id");
+
+      private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
+
+      static {
+        for (_Fields field : EnumSet.allOf(_Fields.class)) {
+          byName.put(field.getFieldName(), field);
+        }
+      }
+
+      /**
+       * Find the _Fields constant that matches fieldId, or null if its not found.
+       */
+      public static _Fields findByThriftId(int fieldId) {
+        switch(fieldId) {
+          case 1: // PANTIENT_ID
+            return PANTIENT_ID;
+          default:
+            return null;
+        }
+      }
+
+      /**
+       * Find the _Fields constant that matches fieldId, throwing an exception
+       * if it is not found.
+       */
+      public static _Fields findByThriftIdOrThrow(int fieldId) {
+        _Fields fields = findByThriftId(fieldId);
+        if (fields == null) throw new IllegalArgumentException("Field " + fieldId + " doesn't exist!");
+        return fields;
+      }
+
+      /**
+       * Find the _Fields constant that matches name, or null if its not found.
+       */
+      public static _Fields findByName(String name) {
+        return byName.get(name);
+      }
+
+      private final short _thriftId;
+      private final String _fieldName;
+
+      _Fields(short thriftId, String fieldName) {
+        _thriftId = thriftId;
+        _fieldName = fieldName;
+      }
+
+      public short getThriftFieldId() {
+        return _thriftId;
+      }
+
+      public String getFieldName() {
+        return _fieldName;
+      }
+    }
+
+    // isset id assignments
+    public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
+    static {
+      Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
+      tmpMap.put(_Fields.PANTIENT_ID, new org.apache.thrift.meta_data.FieldMetaData("pantient_id", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING          , "ObjectID")));
+      metaDataMap = Collections.unmodifiableMap(tmpMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(get_prescriptions_for_patient_args.class, metaDataMap);
+    }
+
+    public get_prescriptions_for_patient_args() {
+    }
+
+    public get_prescriptions_for_patient_args(
+      String pantient_id)
+    {
+      this();
+      this.pantient_id = pantient_id;
+    }
+
+    /**
+     * Performs a deep copy on <i>other</i>.
+     */
+    public get_prescriptions_for_patient_args(get_prescriptions_for_patient_args other) {
+      if (other.isSetPantient_id()) {
+        this.pantient_id = other.pantient_id;
+      }
+    }
+
+    public get_prescriptions_for_patient_args deepCopy() {
+      return new get_prescriptions_for_patient_args(this);
+    }
+
+    @Override
+    public void clear() {
+      this.pantient_id = null;
+    }
+
+    public String getPantient_id() {
+      return this.pantient_id;
+    }
+
+    public get_prescriptions_for_patient_args setPantient_id(String pantient_id) {
+      this.pantient_id = pantient_id;
+      return this;
+    }
+
+    public void unsetPantient_id() {
+      this.pantient_id = null;
+    }
+
+    /** Returns true if field pantient_id is set (has been assigned a value) and false otherwise */
+    public boolean isSetPantient_id() {
+      return this.pantient_id != null;
+    }
+
+    public void setPantient_idIsSet(boolean value) {
+      if (!value) {
+        this.pantient_id = null;
+      }
+    }
+
+    public void setFieldValue(_Fields field, Object value) {
+      switch (field) {
+      case PANTIENT_ID:
+        if (value == null) {
+          unsetPantient_id();
+        } else {
+          setPantient_id((String)value);
+        }
+        break;
+
+      }
+    }
+
+    public Object getFieldValue(_Fields field) {
+      switch (field) {
+      case PANTIENT_ID:
+        return getPantient_id();
+
+      }
+      throw new IllegalStateException();
+    }
+
+    /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+    public boolean isSet(_Fields field) {
+      if (field == null) {
+        throw new IllegalArgumentException();
+      }
+
+      switch (field) {
+      case PANTIENT_ID:
+        return isSetPantient_id();
+      }
+      throw new IllegalStateException();
+    }
+
+    @Override
+    public boolean equals(Object that) {
+      if (that == null)
+        return false;
+      if (that instanceof get_prescriptions_for_patient_args)
+        return this.equals((get_prescriptions_for_patient_args)that);
+      return false;
+    }
+
+    public boolean equals(get_prescriptions_for_patient_args that) {
+      if (that == null)
+        return false;
+
+      boolean this_present_pantient_id = true && this.isSetPantient_id();
+      boolean that_present_pantient_id = true && that.isSetPantient_id();
+      if (this_present_pantient_id || that_present_pantient_id) {
+        if (!(this_present_pantient_id && that_present_pantient_id))
+          return false;
+        if (!this.pantient_id.equals(that.pantient_id))
+          return false;
+      }
+
+      return true;
+    }
+
+    @Override
+    public int hashCode() {
+      return 0;
+    }
+
+    public int compareTo(get_prescriptions_for_patient_args other) {
+      if (!getClass().equals(other.getClass())) {
+        return getClass().getName().compareTo(other.getClass().getName());
+      }
+
+      int lastComparison = 0;
+      get_prescriptions_for_patient_args typedOther = (get_prescriptions_for_patient_args)other;
+
+      lastComparison = Boolean.valueOf(isSetPantient_id()).compareTo(typedOther.isSetPantient_id());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetPantient_id()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.pantient_id, typedOther.pantient_id);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      return 0;
+    }
+
+    public _Fields fieldForId(int fieldId) {
+      return _Fields.findByThriftId(fieldId);
+    }
+
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+      schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
+    }
+
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+      schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
+    }
+
+    @Override
+    public String toString() {
+      StringBuilder sb = new StringBuilder("get_prescriptions_for_patient_args(");
+      boolean first = true;
+
+      sb.append("pantient_id:");
+      if (this.pantient_id == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.pantient_id);
+      }
+      first = false;
+      sb.append(")");
+      return sb.toString();
+    }
+
+    public void validate() throws org.apache.thrift.TException {
+      // check for required fields
+    }
+
+    private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
+      try {
+        write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
+      } catch (org.apache.thrift.TException te) {
+        throw new java.io.IOException(te);
+      }
+    }
+
+    private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
+      try {
+        read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
+      } catch (org.apache.thrift.TException te) {
+        throw new java.io.IOException(te);
+      }
+    }
+
+    private static class get_prescriptions_for_patient_argsStandardSchemeFactory implements SchemeFactory {
+      public get_prescriptions_for_patient_argsStandardScheme getScheme() {
+        return new get_prescriptions_for_patient_argsStandardScheme();
+      }
+    }
+
+    private static class get_prescriptions_for_patient_argsStandardScheme extends StandardScheme<get_prescriptions_for_patient_args> {
+
+      public void read(org.apache.thrift.protocol.TProtocol iprot, get_prescriptions_for_patient_args struct) throws org.apache.thrift.TException {
+        org.apache.thrift.protocol.TField schemeField;
+        iprot.readStructBegin();
+        while (true)
+        {
+          schemeField = iprot.readFieldBegin();
+          if (schemeField.type == org.apache.thrift.protocol.TType.STOP) { 
+            break;
+          }
+          switch (schemeField.id) {
+            case 1: // PANTIENT_ID
+              if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+                struct.pantient_id = iprot.readString();
+                struct.setPantient_idIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            default:
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+          }
+          iprot.readFieldEnd();
+        }
+        iprot.readStructEnd();
+
+        // check for required fields of primitive type, which can't be checked in the validate method
+        struct.validate();
+      }
+
+      public void write(org.apache.thrift.protocol.TProtocol oprot, get_prescriptions_for_patient_args struct) throws org.apache.thrift.TException {
+        struct.validate();
+
+        oprot.writeStructBegin(STRUCT_DESC);
+        if (struct.pantient_id != null) {
+          oprot.writeFieldBegin(PANTIENT_ID_FIELD_DESC);
+          oprot.writeString(struct.pantient_id);
+          oprot.writeFieldEnd();
+        }
+        oprot.writeFieldStop();
+        oprot.writeStructEnd();
+      }
+
+    }
+
+    private static class get_prescriptions_for_patient_argsTupleSchemeFactory implements SchemeFactory {
+      public get_prescriptions_for_patient_argsTupleScheme getScheme() {
+        return new get_prescriptions_for_patient_argsTupleScheme();
+      }
+    }
+
+    private static class get_prescriptions_for_patient_argsTupleScheme extends TupleScheme<get_prescriptions_for_patient_args> {
+
+      @Override
+      public void write(org.apache.thrift.protocol.TProtocol prot, get_prescriptions_for_patient_args struct) throws org.apache.thrift.TException {
+        TTupleProtocol oprot = (TTupleProtocol) prot;
+        BitSet optionals = new BitSet();
+        if (struct.isSetPantient_id()) {
+          optionals.set(0);
+        }
+        oprot.writeBitSet(optionals, 1);
+        if (struct.isSetPantient_id()) {
+          oprot.writeString(struct.pantient_id);
+        }
+      }
+
+      @Override
+      public void read(org.apache.thrift.protocol.TProtocol prot, get_prescriptions_for_patient_args struct) throws org.apache.thrift.TException {
+        TTupleProtocol iprot = (TTupleProtocol) prot;
+        BitSet incoming = iprot.readBitSet(1);
+        if (incoming.get(0)) {
+          struct.pantient_id = iprot.readString();
+          struct.setPantient_idIsSet(true);
+        }
+      }
+    }
+
+  }
+
+  public static class get_prescriptions_for_patient_result implements org.apache.thrift.TBase<get_prescriptions_for_patient_result, get_prescriptions_for_patient_result._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("get_prescriptions_for_patient_result");
+
+    private static final org.apache.thrift.protocol.TField SUCCESS_FIELD_DESC = new org.apache.thrift.protocol.TField("success", org.apache.thrift.protocol.TType.LIST, (short)0);
+
+    private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
+    static {
+      schemes.put(StandardScheme.class, new get_prescriptions_for_patient_resultStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new get_prescriptions_for_patient_resultTupleSchemeFactory());
+    }
+
+    public List<Prescription> success; // required
+
+    /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
+    public enum _Fields implements org.apache.thrift.TFieldIdEnum {
+      SUCCESS((short)0, "success");
+
+      private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
+
+      static {
+        for (_Fields field : EnumSet.allOf(_Fields.class)) {
+          byName.put(field.getFieldName(), field);
+        }
+      }
+
+      /**
+       * Find the _Fields constant that matches fieldId, or null if its not found.
+       */
+      public static _Fields findByThriftId(int fieldId) {
+        switch(fieldId) {
+          case 0: // SUCCESS
+            return SUCCESS;
+          default:
+            return null;
+        }
+      }
+
+      /**
+       * Find the _Fields constant that matches fieldId, throwing an exception
+       * if it is not found.
+       */
+      public static _Fields findByThriftIdOrThrow(int fieldId) {
+        _Fields fields = findByThriftId(fieldId);
+        if (fields == null) throw new IllegalArgumentException("Field " + fieldId + " doesn't exist!");
+        return fields;
+      }
+
+      /**
+       * Find the _Fields constant that matches name, or null if its not found.
+       */
+      public static _Fields findByName(String name) {
+        return byName.get(name);
+      }
+
+      private final short _thriftId;
+      private final String _fieldName;
+
+      _Fields(short thriftId, String fieldName) {
+        _thriftId = thriftId;
+        _fieldName = fieldName;
+      }
+
+      public short getThriftFieldId() {
+        return _thriftId;
+      }
+
+      public String getFieldName() {
+        return _fieldName;
+      }
+    }
+
+    // isset id assignments
+    public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
+    static {
+      Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
+      tmpMap.put(_Fields.SUCCESS, new org.apache.thrift.meta_data.FieldMetaData("success", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.ListMetaData(org.apache.thrift.protocol.TType.LIST, 
+              new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Prescription.class))));
+      metaDataMap = Collections.unmodifiableMap(tmpMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(get_prescriptions_for_patient_result.class, metaDataMap);
+    }
+
+    public get_prescriptions_for_patient_result() {
+    }
+
+    public get_prescriptions_for_patient_result(
+      List<Prescription> success)
+    {
+      this();
+      this.success = success;
+    }
+
+    /**
+     * Performs a deep copy on <i>other</i>.
+     */
+    public get_prescriptions_for_patient_result(get_prescriptions_for_patient_result other) {
+      if (other.isSetSuccess()) {
+        List<Prescription> __this__success = new ArrayList<Prescription>();
+        for (Prescription other_element : other.success) {
+          __this__success.add(new Prescription(other_element));
+        }
+        this.success = __this__success;
+      }
+    }
+
+    public get_prescriptions_for_patient_result deepCopy() {
+      return new get_prescriptions_for_patient_result(this);
+    }
+
+    @Override
+    public void clear() {
+      this.success = null;
+    }
+
+    public int getSuccessSize() {
+      return (this.success == null) ? 0 : this.success.size();
+    }
+
+    public java.util.Iterator<Prescription> getSuccessIterator() {
+      return (this.success == null) ? null : this.success.iterator();
+    }
+
+    public void addToSuccess(Prescription elem) {
+      if (this.success == null) {
+        this.success = new ArrayList<Prescription>();
+      }
+      this.success.add(elem);
+    }
+
+    public List<Prescription> getSuccess() {
+      return this.success;
+    }
+
+    public get_prescriptions_for_patient_result setSuccess(List<Prescription> success) {
+      this.success = success;
+      return this;
+    }
+
+    public void unsetSuccess() {
+      this.success = null;
+    }
+
+    /** Returns true if field success is set (has been assigned a value) and false otherwise */
+    public boolean isSetSuccess() {
+      return this.success != null;
+    }
+
+    public void setSuccessIsSet(boolean value) {
+      if (!value) {
+        this.success = null;
+      }
+    }
+
+    public void setFieldValue(_Fields field, Object value) {
+      switch (field) {
+      case SUCCESS:
+        if (value == null) {
+          unsetSuccess();
+        } else {
+          setSuccess((List<Prescription>)value);
+        }
+        break;
+
+      }
+    }
+
+    public Object getFieldValue(_Fields field) {
+      switch (field) {
+      case SUCCESS:
+        return getSuccess();
+
+      }
+      throw new IllegalStateException();
+    }
+
+    /** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+    public boolean isSet(_Fields field) {
+      if (field == null) {
+        throw new IllegalArgumentException();
+      }
+
+      switch (field) {
+      case SUCCESS:
+        return isSetSuccess();
+      }
+      throw new IllegalStateException();
+    }
+
+    @Override
+    public boolean equals(Object that) {
+      if (that == null)
+        return false;
+      if (that instanceof get_prescriptions_for_patient_result)
+        return this.equals((get_prescriptions_for_patient_result)that);
+      return false;
+    }
+
+    public boolean equals(get_prescriptions_for_patient_result that) {
+      if (that == null)
+        return false;
+
+      boolean this_present_success = true && this.isSetSuccess();
+      boolean that_present_success = true && that.isSetSuccess();
+      if (this_present_success || that_present_success) {
+        if (!(this_present_success && that_present_success))
+          return false;
+        if (!this.success.equals(that.success))
+          return false;
+      }
+
+      return true;
+    }
+
+    @Override
+    public int hashCode() {
+      return 0;
+    }
+
+    public int compareTo(get_prescriptions_for_patient_result other) {
+      if (!getClass().equals(other.getClass())) {
+        return getClass().getName().compareTo(other.getClass().getName());
+      }
+
+      int lastComparison = 0;
+      get_prescriptions_for_patient_result typedOther = (get_prescriptions_for_patient_result)other;
+
+      lastComparison = Boolean.valueOf(isSetSuccess()).compareTo(typedOther.isSetSuccess());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetSuccess()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.success, typedOther.success);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      return 0;
+    }
+
+    public _Fields fieldForId(int fieldId) {
+      return _Fields.findByThriftId(fieldId);
+    }
+
+    public void read(org.apache.thrift.protocol.TProtocol iprot) throws org.apache.thrift.TException {
+      schemes.get(iprot.getScheme()).getScheme().read(iprot, this);
+    }
+
+    public void write(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
+      schemes.get(oprot.getScheme()).getScheme().write(oprot, this);
+      }
+
+    @Override
+    public String toString() {
+      StringBuilder sb = new StringBuilder("get_prescriptions_for_patient_result(");
+      boolean first = true;
+
+      sb.append("success:");
+      if (this.success == null) {
+        sb.append("null");
+      } else {
+        sb.append(this.success);
+      }
+      first = false;
+      sb.append(")");
+      return sb.toString();
+    }
+
+    public void validate() throws org.apache.thrift.TException {
+      // check for required fields
+    }
+
+    private void writeObject(java.io.ObjectOutputStream out) throws java.io.IOException {
+      try {
+        write(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(out)));
+      } catch (org.apache.thrift.TException te) {
+        throw new java.io.IOException(te);
+      }
+    }
+
+    private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
+      try {
+        read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
+      } catch (org.apache.thrift.TException te) {
+        throw new java.io.IOException(te);
+      }
+    }
+
+    private static class get_prescriptions_for_patient_resultStandardSchemeFactory implements SchemeFactory {
+      public get_prescriptions_for_patient_resultStandardScheme getScheme() {
+        return new get_prescriptions_for_patient_resultStandardScheme();
+      }
+    }
+
+    private static class get_prescriptions_for_patient_resultStandardScheme extends StandardScheme<get_prescriptions_for_patient_result> {
+
+      public void read(org.apache.thrift.protocol.TProtocol iprot, get_prescriptions_for_patient_result struct) throws org.apache.thrift.TException {
+        org.apache.thrift.protocol.TField schemeField;
+        iprot.readStructBegin();
+        while (true)
+        {
+          schemeField = iprot.readFieldBegin();
+          if (schemeField.type == org.apache.thrift.protocol.TType.STOP) { 
+            break;
+          }
+          switch (schemeField.id) {
+            case 0: // SUCCESS
+              if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
+                {
+                  org.apache.thrift.protocol.TList _list32 = iprot.readListBegin();
+                  struct.success = new ArrayList<Prescription>(_list32.size);
+                  for (int _i33 = 0; _i33 < _list32.size; ++_i33)
+                  {
+                    Prescription _elem34; // required
+                    _elem34 = new Prescription();
+                    _elem34.read(iprot);
+                    struct.success.add(_elem34);
+                  }
+                  iprot.readListEnd();
+                }
+                struct.setSuccessIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
+            default:
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+          }
+          iprot.readFieldEnd();
+        }
+        iprot.readStructEnd();
+
+        // check for required fields of primitive type, which can't be checked in the validate method
+        struct.validate();
+      }
+
+      public void write(org.apache.thrift.protocol.TProtocol oprot, get_prescriptions_for_patient_result struct) throws org.apache.thrift.TException {
+        struct.validate();
+
+        oprot.writeStructBegin(STRUCT_DESC);
+        if (struct.success != null) {
+          oprot.writeFieldBegin(SUCCESS_FIELD_DESC);
+          {
+            oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, struct.success.size()));
+            for (Prescription _iter35 : struct.success)
+            {
+              _iter35.write(oprot);
+            }
+            oprot.writeListEnd();
+          }
+          oprot.writeFieldEnd();
+        }
+        oprot.writeFieldStop();
+        oprot.writeStructEnd();
+      }
+
+    }
+
+    private static class get_prescriptions_for_patient_resultTupleSchemeFactory implements SchemeFactory {
+      public get_prescriptions_for_patient_resultTupleScheme getScheme() {
+        return new get_prescriptions_for_patient_resultTupleScheme();
+      }
+    }
+
+    private static class get_prescriptions_for_patient_resultTupleScheme extends TupleScheme<get_prescriptions_for_patient_result> {
+
+      @Override
+      public void write(org.apache.thrift.protocol.TProtocol prot, get_prescriptions_for_patient_result struct) throws org.apache.thrift.TException {
+        TTupleProtocol oprot = (TTupleProtocol) prot;
+        BitSet optionals = new BitSet();
+        if (struct.isSetSuccess()) {
+          optionals.set(0);
+        }
+        oprot.writeBitSet(optionals, 1);
+        if (struct.isSetSuccess()) {
+          {
+            oprot.writeI32(struct.success.size());
+            for (Prescription _iter36 : struct.success)
+            {
+              _iter36.write(oprot);
+            }
+          }
+        }
+      }
+
+      @Override
+      public void read(org.apache.thrift.protocol.TProtocol prot, get_prescriptions_for_patient_result struct) throws org.apache.thrift.TException {
+        TTupleProtocol iprot = (TTupleProtocol) prot;
+        BitSet incoming = iprot.readBitSet(1);
+        if (incoming.get(0)) {
+          {
+            org.apache.thrift.protocol.TList _list37 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+            struct.success = new ArrayList<Prescription>(_list37.size);
+            for (int _i38 = 0; _i38 < _list37.size; ++_i38)
+            {
+              Prescription _elem39; // required
+              _elem39 = new Prescription();
+              _elem39.read(iprot);
+              struct.success.add(_elem39);
+            }
+          }
           struct.setSuccessIsSet(true);
         }
       }

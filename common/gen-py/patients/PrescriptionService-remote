@@ -15,7 +15,7 @@ from thrift.transport import TSocket
 from thrift.transport import THttpClient
 from thrift.protocol import TBinaryProtocol
 
-import MedicationService
+import PrescriptionService
 from ttypes import *
 
 if len(sys.argv) <= 1 or sys.argv[1] == '--help':
@@ -23,10 +23,10 @@ if len(sys.argv) <= 1 or sys.argv[1] == '--help':
   print 'Usage: ' + sys.argv[0] + ' [-h host[:port]] [-u url] [-f[ramed]] function [arg1 [arg2...]]'
   print ''
   print 'Functions:'
-  print '  bool add_medication(Medication medication)'
-  print '  bool remove_medication(Medication medication)'
-  print '   get_medications()'
-  print '  Medication get_medication_by_tag_id(NFCID tag_id)'
+  print '  bool add_prescription(Prescription prescription)'
+  print '  bool remove_prescription(Prescription prescription)'
+  print '  Prescription get_prescription_by_tag_id(NFCID tag_id)'
+  print '   get_prescriptions_for_patient(ObjectID pantient_id)'
   print ''
   sys.exit(0)
 
@@ -75,32 +75,32 @@ else:
   else:
     transport = TTransport.TBufferedTransport(socket)
 protocol = TBinaryProtocol.TBinaryProtocol(transport)
-client = MedicationService.Client(protocol)
+client = PrescriptionService.Client(protocol)
 transport.open()
 
-if cmd == 'add_medication':
+if cmd == 'add_prescription':
   if len(args) != 1:
-    print 'add_medication requires 1 args'
+    print 'add_prescription requires 1 args'
     sys.exit(1)
-  pp.pprint(client.add_medication(eval(args[0]),))
+  pp.pprint(client.add_prescription(eval(args[0]),))
 
-elif cmd == 'remove_medication':
+elif cmd == 'remove_prescription':
   if len(args) != 1:
-    print 'remove_medication requires 1 args'
+    print 'remove_prescription requires 1 args'
     sys.exit(1)
-  pp.pprint(client.remove_medication(eval(args[0]),))
+  pp.pprint(client.remove_prescription(eval(args[0]),))
 
-elif cmd == 'get_medications':
-  if len(args) != 0:
-    print 'get_medications requires 0 args'
-    sys.exit(1)
-  pp.pprint(client.get_medications())
-
-elif cmd == 'get_medication_by_tag_id':
+elif cmd == 'get_prescription_by_tag_id':
   if len(args) != 1:
-    print 'get_medication_by_tag_id requires 1 args'
+    print 'get_prescription_by_tag_id requires 1 args'
     sys.exit(1)
-  pp.pprint(client.get_medication_by_tag_id(eval(args[0]),))
+  pp.pprint(client.get_prescription_by_tag_id(eval(args[0]),))
+
+elif cmd == 'get_prescriptions_for_patient':
+  if len(args) != 1:
+    print 'get_prescriptions_for_patient requires 1 args'
+    sys.exit(1)
+  pp.pprint(client.get_prescriptions_for_patient(eval(args[0]),))
 
 else:
   print 'Unrecognized method %s' % cmd

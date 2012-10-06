@@ -27,29 +27,29 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class MedicationService {
+public class PatientService {
 
   public interface Iface {
 
-    public boolean add_medication(Medication medication) throws org.apache.thrift.TException;
+    public boolean add_patient(Patient patient) throws org.apache.thrift.TException;
 
-    public boolean remove_medication(Medication medication) throws org.apache.thrift.TException;
+    public boolean remove_patient(Patient patient) throws org.apache.thrift.TException;
 
-    public List<Medication> get_medications() throws org.apache.thrift.TException;
+    public List<Patient> get_patients() throws org.apache.thrift.TException;
 
-    public Medication get_medication_by_tag_id(String tag_id) throws org.apache.thrift.TException;
+    public Patient get_patient_by_tag_id(String tag_id) throws org.apache.thrift.TException;
 
   }
 
   public interface AsyncIface {
 
-    public void add_medication(Medication medication, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.add_medication_call> resultHandler) throws org.apache.thrift.TException;
+    public void add_patient(Patient patient, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.add_patient_call> resultHandler) throws org.apache.thrift.TException;
 
-    public void remove_medication(Medication medication, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.remove_medication_call> resultHandler) throws org.apache.thrift.TException;
+    public void remove_patient(Patient patient, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.remove_patient_call> resultHandler) throws org.apache.thrift.TException;
 
-    public void get_medications(org.apache.thrift.async.AsyncMethodCallback<AsyncClient.get_medications_call> resultHandler) throws org.apache.thrift.TException;
+    public void get_patients(org.apache.thrift.async.AsyncMethodCallback<AsyncClient.get_patients_call> resultHandler) throws org.apache.thrift.TException;
 
-    public void get_medication_by_tag_id(String tag_id, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.get_medication_by_tag_id_call> resultHandler) throws org.apache.thrift.TException;
+    public void get_patient_by_tag_id(String tag_id, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.get_patient_by_tag_id_call> resultHandler) throws org.apache.thrift.TException;
 
   }
 
@@ -73,95 +73,95 @@ public class MedicationService {
       super(iprot, oprot);
     }
 
-    public boolean add_medication(Medication medication) throws org.apache.thrift.TException
+    public boolean add_patient(Patient patient) throws org.apache.thrift.TException
     {
-      send_add_medication(medication);
-      return recv_add_medication();
+      send_add_patient(patient);
+      return recv_add_patient();
     }
 
-    public void send_add_medication(Medication medication) throws org.apache.thrift.TException
+    public void send_add_patient(Patient patient) throws org.apache.thrift.TException
     {
-      add_medication_args args = new add_medication_args();
-      args.setMedication(medication);
-      sendBase("add_medication", args);
+      add_patient_args args = new add_patient_args();
+      args.setPatient(patient);
+      sendBase("add_patient", args);
     }
 
-    public boolean recv_add_medication() throws org.apache.thrift.TException
+    public boolean recv_add_patient() throws org.apache.thrift.TException
     {
-      add_medication_result result = new add_medication_result();
-      receiveBase(result, "add_medication");
+      add_patient_result result = new add_patient_result();
+      receiveBase(result, "add_patient");
       if (result.isSetSuccess()) {
         return result.success;
       }
-      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "add_medication failed: unknown result");
+      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "add_patient failed: unknown result");
     }
 
-    public boolean remove_medication(Medication medication) throws org.apache.thrift.TException
+    public boolean remove_patient(Patient patient) throws org.apache.thrift.TException
     {
-      send_remove_medication(medication);
-      return recv_remove_medication();
+      send_remove_patient(patient);
+      return recv_remove_patient();
     }
 
-    public void send_remove_medication(Medication medication) throws org.apache.thrift.TException
+    public void send_remove_patient(Patient patient) throws org.apache.thrift.TException
     {
-      remove_medication_args args = new remove_medication_args();
-      args.setMedication(medication);
-      sendBase("remove_medication", args);
+      remove_patient_args args = new remove_patient_args();
+      args.setPatient(patient);
+      sendBase("remove_patient", args);
     }
 
-    public boolean recv_remove_medication() throws org.apache.thrift.TException
+    public boolean recv_remove_patient() throws org.apache.thrift.TException
     {
-      remove_medication_result result = new remove_medication_result();
-      receiveBase(result, "remove_medication");
+      remove_patient_result result = new remove_patient_result();
+      receiveBase(result, "remove_patient");
       if (result.isSetSuccess()) {
         return result.success;
       }
-      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "remove_medication failed: unknown result");
+      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "remove_patient failed: unknown result");
     }
 
-    public List<Medication> get_medications() throws org.apache.thrift.TException
+    public List<Patient> get_patients() throws org.apache.thrift.TException
     {
-      send_get_medications();
-      return recv_get_medications();
+      send_get_patients();
+      return recv_get_patients();
     }
 
-    public void send_get_medications() throws org.apache.thrift.TException
+    public void send_get_patients() throws org.apache.thrift.TException
     {
-      get_medications_args args = new get_medications_args();
-      sendBase("get_medications", args);
+      get_patients_args args = new get_patients_args();
+      sendBase("get_patients", args);
     }
 
-    public List<Medication> recv_get_medications() throws org.apache.thrift.TException
+    public List<Patient> recv_get_patients() throws org.apache.thrift.TException
     {
-      get_medications_result result = new get_medications_result();
-      receiveBase(result, "get_medications");
+      get_patients_result result = new get_patients_result();
+      receiveBase(result, "get_patients");
       if (result.isSetSuccess()) {
         return result.success;
       }
-      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "get_medications failed: unknown result");
+      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "get_patients failed: unknown result");
     }
 
-    public Medication get_medication_by_tag_id(String tag_id) throws org.apache.thrift.TException
+    public Patient get_patient_by_tag_id(String tag_id) throws org.apache.thrift.TException
     {
-      send_get_medication_by_tag_id(tag_id);
-      return recv_get_medication_by_tag_id();
+      send_get_patient_by_tag_id(tag_id);
+      return recv_get_patient_by_tag_id();
     }
 
-    public void send_get_medication_by_tag_id(String tag_id) throws org.apache.thrift.TException
+    public void send_get_patient_by_tag_id(String tag_id) throws org.apache.thrift.TException
     {
-      get_medication_by_tag_id_args args = new get_medication_by_tag_id_args();
+      get_patient_by_tag_id_args args = new get_patient_by_tag_id_args();
       args.setTag_id(tag_id);
-      sendBase("get_medication_by_tag_id", args);
+      sendBase("get_patient_by_tag_id", args);
     }
 
-    public Medication recv_get_medication_by_tag_id() throws org.apache.thrift.TException
+    public Patient recv_get_patient_by_tag_id() throws org.apache.thrift.TException
     {
-      get_medication_by_tag_id_result result = new get_medication_by_tag_id_result();
-      receiveBase(result, "get_medication_by_tag_id");
+      get_patient_by_tag_id_result result = new get_patient_by_tag_id_result();
+      receiveBase(result, "get_patient_by_tag_id");
       if (result.isSetSuccess()) {
         return result.success;
       }
-      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "get_medication_by_tag_id failed: unknown result");
+      throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "get_patient_by_tag_id failed: unknown result");
     }
 
   }
@@ -182,24 +182,24 @@ public class MedicationService {
       super(protocolFactory, clientManager, transport);
     }
 
-    public void add_medication(Medication medication, org.apache.thrift.async.AsyncMethodCallback<add_medication_call> resultHandler) throws org.apache.thrift.TException {
+    public void add_patient(Patient patient, org.apache.thrift.async.AsyncMethodCallback<add_patient_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
-      add_medication_call method_call = new add_medication_call(medication, resultHandler, this, ___protocolFactory, ___transport);
+      add_patient_call method_call = new add_patient_call(patient, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
       ___manager.call(method_call);
     }
 
-    public static class add_medication_call extends org.apache.thrift.async.TAsyncMethodCall {
-      private Medication medication;
-      public add_medication_call(Medication medication, org.apache.thrift.async.AsyncMethodCallback<add_medication_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+    public static class add_patient_call extends org.apache.thrift.async.TAsyncMethodCall {
+      private Patient patient;
+      public add_patient_call(Patient patient, org.apache.thrift.async.AsyncMethodCallback<add_patient_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
-        this.medication = medication;
+        this.patient = patient;
       }
 
       public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
-        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("add_medication", org.apache.thrift.protocol.TMessageType.CALL, 0));
-        add_medication_args args = new add_medication_args();
-        args.setMedication(medication);
+        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("add_patient", org.apache.thrift.protocol.TMessageType.CALL, 0));
+        add_patient_args args = new add_patient_args();
+        args.setPatient(patient);
         args.write(prot);
         prot.writeMessageEnd();
       }
@@ -210,28 +210,28 @@ public class MedicationService {
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
         org.apache.thrift.protocol.TProtocol prot = client.getProtocolFactory().getProtocol(memoryTransport);
-        return (new Client(prot)).recv_add_medication();
+        return (new Client(prot)).recv_add_patient();
       }
     }
 
-    public void remove_medication(Medication medication, org.apache.thrift.async.AsyncMethodCallback<remove_medication_call> resultHandler) throws org.apache.thrift.TException {
+    public void remove_patient(Patient patient, org.apache.thrift.async.AsyncMethodCallback<remove_patient_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
-      remove_medication_call method_call = new remove_medication_call(medication, resultHandler, this, ___protocolFactory, ___transport);
+      remove_patient_call method_call = new remove_patient_call(patient, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
       ___manager.call(method_call);
     }
 
-    public static class remove_medication_call extends org.apache.thrift.async.TAsyncMethodCall {
-      private Medication medication;
-      public remove_medication_call(Medication medication, org.apache.thrift.async.AsyncMethodCallback<remove_medication_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+    public static class remove_patient_call extends org.apache.thrift.async.TAsyncMethodCall {
+      private Patient patient;
+      public remove_patient_call(Patient patient, org.apache.thrift.async.AsyncMethodCallback<remove_patient_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
-        this.medication = medication;
+        this.patient = patient;
       }
 
       public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
-        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("remove_medication", org.apache.thrift.protocol.TMessageType.CALL, 0));
-        remove_medication_args args = new remove_medication_args();
-        args.setMedication(medication);
+        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("remove_patient", org.apache.thrift.protocol.TMessageType.CALL, 0));
+        remove_patient_args args = new remove_patient_args();
+        args.setPatient(patient);
         args.write(prot);
         prot.writeMessageEnd();
       }
@@ -242,68 +242,68 @@ public class MedicationService {
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
         org.apache.thrift.protocol.TProtocol prot = client.getProtocolFactory().getProtocol(memoryTransport);
-        return (new Client(prot)).recv_remove_medication();
+        return (new Client(prot)).recv_remove_patient();
       }
     }
 
-    public void get_medications(org.apache.thrift.async.AsyncMethodCallback<get_medications_call> resultHandler) throws org.apache.thrift.TException {
+    public void get_patients(org.apache.thrift.async.AsyncMethodCallback<get_patients_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
-      get_medications_call method_call = new get_medications_call(resultHandler, this, ___protocolFactory, ___transport);
+      get_patients_call method_call = new get_patients_call(resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
       ___manager.call(method_call);
     }
 
-    public static class get_medications_call extends org.apache.thrift.async.TAsyncMethodCall {
-      public get_medications_call(org.apache.thrift.async.AsyncMethodCallback<get_medications_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+    public static class get_patients_call extends org.apache.thrift.async.TAsyncMethodCall {
+      public get_patients_call(org.apache.thrift.async.AsyncMethodCallback<get_patients_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
       }
 
       public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
-        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("get_medications", org.apache.thrift.protocol.TMessageType.CALL, 0));
-        get_medications_args args = new get_medications_args();
+        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("get_patients", org.apache.thrift.protocol.TMessageType.CALL, 0));
+        get_patients_args args = new get_patients_args();
         args.write(prot);
         prot.writeMessageEnd();
       }
 
-      public List<Medication> getResult() throws org.apache.thrift.TException {
+      public List<Patient> getResult() throws org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
         org.apache.thrift.protocol.TProtocol prot = client.getProtocolFactory().getProtocol(memoryTransport);
-        return (new Client(prot)).recv_get_medications();
+        return (new Client(prot)).recv_get_patients();
       }
     }
 
-    public void get_medication_by_tag_id(String tag_id, org.apache.thrift.async.AsyncMethodCallback<get_medication_by_tag_id_call> resultHandler) throws org.apache.thrift.TException {
+    public void get_patient_by_tag_id(String tag_id, org.apache.thrift.async.AsyncMethodCallback<get_patient_by_tag_id_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
-      get_medication_by_tag_id_call method_call = new get_medication_by_tag_id_call(tag_id, resultHandler, this, ___protocolFactory, ___transport);
+      get_patient_by_tag_id_call method_call = new get_patient_by_tag_id_call(tag_id, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
       ___manager.call(method_call);
     }
 
-    public static class get_medication_by_tag_id_call extends org.apache.thrift.async.TAsyncMethodCall {
+    public static class get_patient_by_tag_id_call extends org.apache.thrift.async.TAsyncMethodCall {
       private String tag_id;
-      public get_medication_by_tag_id_call(String tag_id, org.apache.thrift.async.AsyncMethodCallback<get_medication_by_tag_id_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+      public get_patient_by_tag_id_call(String tag_id, org.apache.thrift.async.AsyncMethodCallback<get_patient_by_tag_id_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.tag_id = tag_id;
       }
 
       public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
-        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("get_medication_by_tag_id", org.apache.thrift.protocol.TMessageType.CALL, 0));
-        get_medication_by_tag_id_args args = new get_medication_by_tag_id_args();
+        prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("get_patient_by_tag_id", org.apache.thrift.protocol.TMessageType.CALL, 0));
+        get_patient_by_tag_id_args args = new get_patient_by_tag_id_args();
         args.setTag_id(tag_id);
         args.write(prot);
         prot.writeMessageEnd();
       }
 
-      public Medication getResult() throws org.apache.thrift.TException {
+      public Patient getResult() throws org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         org.apache.thrift.transport.TMemoryInputTransport memoryTransport = new org.apache.thrift.transport.TMemoryInputTransport(getFrameBuffer().array());
         org.apache.thrift.protocol.TProtocol prot = client.getProtocolFactory().getProtocol(memoryTransport);
-        return (new Client(prot)).recv_get_medication_by_tag_id();
+        return (new Client(prot)).recv_get_patient_by_tag_id();
       }
     }
 
@@ -320,97 +320,97 @@ public class MedicationService {
     }
 
     private static <I extends Iface> Map<String,  org.apache.thrift.ProcessFunction<I, ? extends  org.apache.thrift.TBase>> getProcessMap(Map<String,  org.apache.thrift.ProcessFunction<I, ? extends  org.apache.thrift.TBase>> processMap) {
-      processMap.put("add_medication", new add_medication());
-      processMap.put("remove_medication", new remove_medication());
-      processMap.put("get_medications", new get_medications());
-      processMap.put("get_medication_by_tag_id", new get_medication_by_tag_id());
+      processMap.put("add_patient", new add_patient());
+      processMap.put("remove_patient", new remove_patient());
+      processMap.put("get_patients", new get_patients());
+      processMap.put("get_patient_by_tag_id", new get_patient_by_tag_id());
       return processMap;
     }
 
-    private static class add_medication<I extends Iface> extends org.apache.thrift.ProcessFunction<I, add_medication_args> {
-      public add_medication() {
-        super("add_medication");
+    private static class add_patient<I extends Iface> extends org.apache.thrift.ProcessFunction<I, add_patient_args> {
+      public add_patient() {
+        super("add_patient");
       }
 
-      protected add_medication_args getEmptyArgsInstance() {
-        return new add_medication_args();
+      protected add_patient_args getEmptyArgsInstance() {
+        return new add_patient_args();
       }
 
-      protected add_medication_result getResult(I iface, add_medication_args args) throws org.apache.thrift.TException {
-        add_medication_result result = new add_medication_result();
-        result.success = iface.add_medication(args.medication);
+      protected add_patient_result getResult(I iface, add_patient_args args) throws org.apache.thrift.TException {
+        add_patient_result result = new add_patient_result();
+        result.success = iface.add_patient(args.patient);
         result.setSuccessIsSet(true);
         return result;
       }
     }
 
-    private static class remove_medication<I extends Iface> extends org.apache.thrift.ProcessFunction<I, remove_medication_args> {
-      public remove_medication() {
-        super("remove_medication");
+    private static class remove_patient<I extends Iface> extends org.apache.thrift.ProcessFunction<I, remove_patient_args> {
+      public remove_patient() {
+        super("remove_patient");
       }
 
-      protected remove_medication_args getEmptyArgsInstance() {
-        return new remove_medication_args();
+      protected remove_patient_args getEmptyArgsInstance() {
+        return new remove_patient_args();
       }
 
-      protected remove_medication_result getResult(I iface, remove_medication_args args) throws org.apache.thrift.TException {
-        remove_medication_result result = new remove_medication_result();
-        result.success = iface.remove_medication(args.medication);
+      protected remove_patient_result getResult(I iface, remove_patient_args args) throws org.apache.thrift.TException {
+        remove_patient_result result = new remove_patient_result();
+        result.success = iface.remove_patient(args.patient);
         result.setSuccessIsSet(true);
         return result;
       }
     }
 
-    private static class get_medications<I extends Iface> extends org.apache.thrift.ProcessFunction<I, get_medications_args> {
-      public get_medications() {
-        super("get_medications");
+    private static class get_patients<I extends Iface> extends org.apache.thrift.ProcessFunction<I, get_patients_args> {
+      public get_patients() {
+        super("get_patients");
       }
 
-      protected get_medications_args getEmptyArgsInstance() {
-        return new get_medications_args();
+      protected get_patients_args getEmptyArgsInstance() {
+        return new get_patients_args();
       }
 
-      protected get_medications_result getResult(I iface, get_medications_args args) throws org.apache.thrift.TException {
-        get_medications_result result = new get_medications_result();
-        result.success = iface.get_medications();
+      protected get_patients_result getResult(I iface, get_patients_args args) throws org.apache.thrift.TException {
+        get_patients_result result = new get_patients_result();
+        result.success = iface.get_patients();
         return result;
       }
     }
 
-    private static class get_medication_by_tag_id<I extends Iface> extends org.apache.thrift.ProcessFunction<I, get_medication_by_tag_id_args> {
-      public get_medication_by_tag_id() {
-        super("get_medication_by_tag_id");
+    private static class get_patient_by_tag_id<I extends Iface> extends org.apache.thrift.ProcessFunction<I, get_patient_by_tag_id_args> {
+      public get_patient_by_tag_id() {
+        super("get_patient_by_tag_id");
       }
 
-      protected get_medication_by_tag_id_args getEmptyArgsInstance() {
-        return new get_medication_by_tag_id_args();
+      protected get_patient_by_tag_id_args getEmptyArgsInstance() {
+        return new get_patient_by_tag_id_args();
       }
 
-      protected get_medication_by_tag_id_result getResult(I iface, get_medication_by_tag_id_args args) throws org.apache.thrift.TException {
-        get_medication_by_tag_id_result result = new get_medication_by_tag_id_result();
-        result.success = iface.get_medication_by_tag_id(args.tag_id);
+      protected get_patient_by_tag_id_result getResult(I iface, get_patient_by_tag_id_args args) throws org.apache.thrift.TException {
+        get_patient_by_tag_id_result result = new get_patient_by_tag_id_result();
+        result.success = iface.get_patient_by_tag_id(args.tag_id);
         return result;
       }
     }
 
   }
 
-  public static class add_medication_args implements org.apache.thrift.TBase<add_medication_args, add_medication_args._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("add_medication_args");
+  public static class add_patient_args implements org.apache.thrift.TBase<add_patient_args, add_patient_args._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("add_patient_args");
 
-    private static final org.apache.thrift.protocol.TField MEDICATION_FIELD_DESC = new org.apache.thrift.protocol.TField("medication", org.apache.thrift.protocol.TType.STRUCT, (short)1);
+    private static final org.apache.thrift.protocol.TField PATIENT_FIELD_DESC = new org.apache.thrift.protocol.TField("patient", org.apache.thrift.protocol.TType.STRUCT, (short)1);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
-      schemes.put(StandardScheme.class, new add_medication_argsStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new add_medication_argsTupleSchemeFactory());
+      schemes.put(StandardScheme.class, new add_patient_argsStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new add_patient_argsTupleSchemeFactory());
     }
 
-    public Medication medication; // required
+    public Patient patient; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-      MEDICATION((short)1, "medication");
+      PATIENT((short)1, "patient");
 
       private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -425,8 +425,8 @@ public class MedicationService {
        */
       public static _Fields findByThriftId(int fieldId) {
         switch(fieldId) {
-          case 1: // MEDICATION
-            return MEDICATION;
+          case 1: // PATIENT
+            return PATIENT;
           default:
             return null;
         }
@@ -470,71 +470,71 @@ public class MedicationService {
     public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
     static {
       Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-      tmpMap.put(_Fields.MEDICATION, new org.apache.thrift.meta_data.FieldMetaData("medication", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-          new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Medication.class)));
+      tmpMap.put(_Fields.PATIENT, new org.apache.thrift.meta_data.FieldMetaData("patient", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Patient.class)));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(add_medication_args.class, metaDataMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(add_patient_args.class, metaDataMap);
     }
 
-    public add_medication_args() {
+    public add_patient_args() {
     }
 
-    public add_medication_args(
-      Medication medication)
+    public add_patient_args(
+      Patient patient)
     {
       this();
-      this.medication = medication;
+      this.patient = patient;
     }
 
     /**
      * Performs a deep copy on <i>other</i>.
      */
-    public add_medication_args(add_medication_args other) {
-      if (other.isSetMedication()) {
-        this.medication = new Medication(other.medication);
+    public add_patient_args(add_patient_args other) {
+      if (other.isSetPatient()) {
+        this.patient = new Patient(other.patient);
       }
     }
 
-    public add_medication_args deepCopy() {
-      return new add_medication_args(this);
+    public add_patient_args deepCopy() {
+      return new add_patient_args(this);
     }
 
     @Override
     public void clear() {
-      this.medication = null;
+      this.patient = null;
     }
 
-    public Medication getMedication() {
-      return this.medication;
+    public Patient getPatient() {
+      return this.patient;
     }
 
-    public add_medication_args setMedication(Medication medication) {
-      this.medication = medication;
+    public add_patient_args setPatient(Patient patient) {
+      this.patient = patient;
       return this;
     }
 
-    public void unsetMedication() {
-      this.medication = null;
+    public void unsetPatient() {
+      this.patient = null;
     }
 
-    /** Returns true if field medication is set (has been assigned a value) and false otherwise */
-    public boolean isSetMedication() {
-      return this.medication != null;
+    /** Returns true if field patient is set (has been assigned a value) and false otherwise */
+    public boolean isSetPatient() {
+      return this.patient != null;
     }
 
-    public void setMedicationIsSet(boolean value) {
+    public void setPatientIsSet(boolean value) {
       if (!value) {
-        this.medication = null;
+        this.patient = null;
       }
     }
 
     public void setFieldValue(_Fields field, Object value) {
       switch (field) {
-      case MEDICATION:
+      case PATIENT:
         if (value == null) {
-          unsetMedication();
+          unsetPatient();
         } else {
-          setMedication((Medication)value);
+          setPatient((Patient)value);
         }
         break;
 
@@ -543,8 +543,8 @@ public class MedicationService {
 
     public Object getFieldValue(_Fields field) {
       switch (field) {
-      case MEDICATION:
-        return getMedication();
+      case PATIENT:
+        return getPatient();
 
       }
       throw new IllegalStateException();
@@ -557,8 +557,8 @@ public class MedicationService {
       }
 
       switch (field) {
-      case MEDICATION:
-        return isSetMedication();
+      case PATIENT:
+        return isSetPatient();
       }
       throw new IllegalStateException();
     }
@@ -567,21 +567,21 @@ public class MedicationService {
     public boolean equals(Object that) {
       if (that == null)
         return false;
-      if (that instanceof add_medication_args)
-        return this.equals((add_medication_args)that);
+      if (that instanceof add_patient_args)
+        return this.equals((add_patient_args)that);
       return false;
     }
 
-    public boolean equals(add_medication_args that) {
+    public boolean equals(add_patient_args that) {
       if (that == null)
         return false;
 
-      boolean this_present_medication = true && this.isSetMedication();
-      boolean that_present_medication = true && that.isSetMedication();
-      if (this_present_medication || that_present_medication) {
-        if (!(this_present_medication && that_present_medication))
+      boolean this_present_patient = true && this.isSetPatient();
+      boolean that_present_patient = true && that.isSetPatient();
+      if (this_present_patient || that_present_patient) {
+        if (!(this_present_patient && that_present_patient))
           return false;
-        if (!this.medication.equals(that.medication))
+        if (!this.patient.equals(that.patient))
           return false;
       }
 
@@ -593,20 +593,20 @@ public class MedicationService {
       return 0;
     }
 
-    public int compareTo(add_medication_args other) {
+    public int compareTo(add_patient_args other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
       }
 
       int lastComparison = 0;
-      add_medication_args typedOther = (add_medication_args)other;
+      add_patient_args typedOther = (add_patient_args)other;
 
-      lastComparison = Boolean.valueOf(isSetMedication()).compareTo(typedOther.isSetMedication());
+      lastComparison = Boolean.valueOf(isSetPatient()).compareTo(typedOther.isSetPatient());
       if (lastComparison != 0) {
         return lastComparison;
       }
-      if (isSetMedication()) {
-        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.medication, typedOther.medication);
+      if (isSetPatient()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.patient, typedOther.patient);
         if (lastComparison != 0) {
           return lastComparison;
         }
@@ -628,14 +628,14 @@ public class MedicationService {
 
     @Override
     public String toString() {
-      StringBuilder sb = new StringBuilder("add_medication_args(");
+      StringBuilder sb = new StringBuilder("add_patient_args(");
       boolean first = true;
 
-      sb.append("medication:");
-      if (this.medication == null) {
+      sb.append("patient:");
+      if (this.patient == null) {
         sb.append("null");
       } else {
-        sb.append(this.medication);
+        sb.append(this.patient);
       }
       first = false;
       sb.append(")");
@@ -662,15 +662,15 @@ public class MedicationService {
       }
     }
 
-    private static class add_medication_argsStandardSchemeFactory implements SchemeFactory {
-      public add_medication_argsStandardScheme getScheme() {
-        return new add_medication_argsStandardScheme();
+    private static class add_patient_argsStandardSchemeFactory implements SchemeFactory {
+      public add_patient_argsStandardScheme getScheme() {
+        return new add_patient_argsStandardScheme();
       }
     }
 
-    private static class add_medication_argsStandardScheme extends StandardScheme<add_medication_args> {
+    private static class add_patient_argsStandardScheme extends StandardScheme<add_patient_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, add_medication_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, add_patient_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -680,11 +680,11 @@ public class MedicationService {
             break;
           }
           switch (schemeField.id) {
-            case 1: // MEDICATION
+            case 1: // PATIENT
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.medication = new Medication();
-                struct.medication.read(iprot);
-                struct.setMedicationIsSet(true);
+                struct.patient = new Patient();
+                struct.patient.read(iprot);
+                struct.setPatientIsSet(true);
               } else { 
                 org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
               }
@@ -700,13 +700,13 @@ public class MedicationService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, add_medication_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, add_patient_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
-        if (struct.medication != null) {
-          oprot.writeFieldBegin(MEDICATION_FIELD_DESC);
-          struct.medication.write(oprot);
+        if (struct.patient != null) {
+          oprot.writeFieldBegin(PATIENT_FIELD_DESC);
+          struct.patient.write(oprot);
           oprot.writeFieldEnd();
         }
         oprot.writeFieldStop();
@@ -715,50 +715,50 @@ public class MedicationService {
 
     }
 
-    private static class add_medication_argsTupleSchemeFactory implements SchemeFactory {
-      public add_medication_argsTupleScheme getScheme() {
-        return new add_medication_argsTupleScheme();
+    private static class add_patient_argsTupleSchemeFactory implements SchemeFactory {
+      public add_patient_argsTupleScheme getScheme() {
+        return new add_patient_argsTupleScheme();
       }
     }
 
-    private static class add_medication_argsTupleScheme extends TupleScheme<add_medication_args> {
+    private static class add_patient_argsTupleScheme extends TupleScheme<add_patient_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, add_medication_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, add_patient_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
-        if (struct.isSetMedication()) {
+        if (struct.isSetPatient()) {
           optionals.set(0);
         }
         oprot.writeBitSet(optionals, 1);
-        if (struct.isSetMedication()) {
-          struct.medication.write(oprot);
+        if (struct.isSetPatient()) {
+          struct.patient.write(oprot);
         }
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, add_medication_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, add_patient_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
-          struct.medication = new Medication();
-          struct.medication.read(iprot);
-          struct.setMedicationIsSet(true);
+          struct.patient = new Patient();
+          struct.patient.read(iprot);
+          struct.setPatientIsSet(true);
         }
       }
     }
 
   }
 
-  public static class add_medication_result implements org.apache.thrift.TBase<add_medication_result, add_medication_result._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("add_medication_result");
+  public static class add_patient_result implements org.apache.thrift.TBase<add_patient_result, add_patient_result._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("add_patient_result");
 
     private static final org.apache.thrift.protocol.TField SUCCESS_FIELD_DESC = new org.apache.thrift.protocol.TField("success", org.apache.thrift.protocol.TType.BOOL, (short)0);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
-      schemes.put(StandardScheme.class, new add_medication_resultStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new add_medication_resultTupleSchemeFactory());
+      schemes.put(StandardScheme.class, new add_patient_resultStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new add_patient_resultTupleSchemeFactory());
     }
 
     public boolean success; // required
@@ -830,13 +830,13 @@ public class MedicationService {
       tmpMap.put(_Fields.SUCCESS, new org.apache.thrift.meta_data.FieldMetaData("success", org.apache.thrift.TFieldRequirementType.DEFAULT, 
           new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.BOOL)));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(add_medication_result.class, metaDataMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(add_patient_result.class, metaDataMap);
     }
 
-    public add_medication_result() {
+    public add_patient_result() {
     }
 
-    public add_medication_result(
+    public add_patient_result(
       boolean success)
     {
       this();
@@ -847,14 +847,14 @@ public class MedicationService {
     /**
      * Performs a deep copy on <i>other</i>.
      */
-    public add_medication_result(add_medication_result other) {
+    public add_patient_result(add_patient_result other) {
       __isset_bit_vector.clear();
       __isset_bit_vector.or(other.__isset_bit_vector);
       this.success = other.success;
     }
 
-    public add_medication_result deepCopy() {
-      return new add_medication_result(this);
+    public add_patient_result deepCopy() {
+      return new add_patient_result(this);
     }
 
     @Override
@@ -867,7 +867,7 @@ public class MedicationService {
       return this.success;
     }
 
-    public add_medication_result setSuccess(boolean success) {
+    public add_patient_result setSuccess(boolean success) {
       this.success = success;
       setSuccessIsSet(true);
       return this;
@@ -925,12 +925,12 @@ public class MedicationService {
     public boolean equals(Object that) {
       if (that == null)
         return false;
-      if (that instanceof add_medication_result)
-        return this.equals((add_medication_result)that);
+      if (that instanceof add_patient_result)
+        return this.equals((add_patient_result)that);
       return false;
     }
 
-    public boolean equals(add_medication_result that) {
+    public boolean equals(add_patient_result that) {
       if (that == null)
         return false;
 
@@ -951,13 +951,13 @@ public class MedicationService {
       return 0;
     }
 
-    public int compareTo(add_medication_result other) {
+    public int compareTo(add_patient_result other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
       }
 
       int lastComparison = 0;
-      add_medication_result typedOther = (add_medication_result)other;
+      add_patient_result typedOther = (add_patient_result)other;
 
       lastComparison = Boolean.valueOf(isSetSuccess()).compareTo(typedOther.isSetSuccess());
       if (lastComparison != 0) {
@@ -986,7 +986,7 @@ public class MedicationService {
 
     @Override
     public String toString() {
-      StringBuilder sb = new StringBuilder("add_medication_result(");
+      StringBuilder sb = new StringBuilder("add_patient_result(");
       boolean first = true;
 
       sb.append("success:");
@@ -1016,15 +1016,15 @@ public class MedicationService {
       }
     }
 
-    private static class add_medication_resultStandardSchemeFactory implements SchemeFactory {
-      public add_medication_resultStandardScheme getScheme() {
-        return new add_medication_resultStandardScheme();
+    private static class add_patient_resultStandardSchemeFactory implements SchemeFactory {
+      public add_patient_resultStandardScheme getScheme() {
+        return new add_patient_resultStandardScheme();
       }
     }
 
-    private static class add_medication_resultStandardScheme extends StandardScheme<add_medication_result> {
+    private static class add_patient_resultStandardScheme extends StandardScheme<add_patient_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, add_medication_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, add_patient_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -1053,7 +1053,7 @@ public class MedicationService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, add_medication_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, add_patient_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -1066,16 +1066,16 @@ public class MedicationService {
 
     }
 
-    private static class add_medication_resultTupleSchemeFactory implements SchemeFactory {
-      public add_medication_resultTupleScheme getScheme() {
-        return new add_medication_resultTupleScheme();
+    private static class add_patient_resultTupleSchemeFactory implements SchemeFactory {
+      public add_patient_resultTupleScheme getScheme() {
+        return new add_patient_resultTupleScheme();
       }
     }
 
-    private static class add_medication_resultTupleScheme extends TupleScheme<add_medication_result> {
+    private static class add_patient_resultTupleScheme extends TupleScheme<add_patient_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, add_medication_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, add_patient_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -1088,7 +1088,7 @@ public class MedicationService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, add_medication_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, add_patient_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -1100,22 +1100,22 @@ public class MedicationService {
 
   }
 
-  public static class remove_medication_args implements org.apache.thrift.TBase<remove_medication_args, remove_medication_args._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("remove_medication_args");
+  public static class remove_patient_args implements org.apache.thrift.TBase<remove_patient_args, remove_patient_args._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("remove_patient_args");
 
-    private static final org.apache.thrift.protocol.TField MEDICATION_FIELD_DESC = new org.apache.thrift.protocol.TField("medication", org.apache.thrift.protocol.TType.STRUCT, (short)1);
+    private static final org.apache.thrift.protocol.TField PATIENT_FIELD_DESC = new org.apache.thrift.protocol.TField("patient", org.apache.thrift.protocol.TType.STRUCT, (short)1);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
-      schemes.put(StandardScheme.class, new remove_medication_argsStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new remove_medication_argsTupleSchemeFactory());
+      schemes.put(StandardScheme.class, new remove_patient_argsStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new remove_patient_argsTupleSchemeFactory());
     }
 
-    public Medication medication; // required
+    public Patient patient; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-      MEDICATION((short)1, "medication");
+      PATIENT((short)1, "patient");
 
       private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -1130,8 +1130,8 @@ public class MedicationService {
        */
       public static _Fields findByThriftId(int fieldId) {
         switch(fieldId) {
-          case 1: // MEDICATION
-            return MEDICATION;
+          case 1: // PATIENT
+            return PATIENT;
           default:
             return null;
         }
@@ -1175,71 +1175,71 @@ public class MedicationService {
     public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
     static {
       Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-      tmpMap.put(_Fields.MEDICATION, new org.apache.thrift.meta_data.FieldMetaData("medication", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-          new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Medication.class)));
+      tmpMap.put(_Fields.PATIENT, new org.apache.thrift.meta_data.FieldMetaData("patient", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+          new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Patient.class)));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(remove_medication_args.class, metaDataMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(remove_patient_args.class, metaDataMap);
     }
 
-    public remove_medication_args() {
+    public remove_patient_args() {
     }
 
-    public remove_medication_args(
-      Medication medication)
+    public remove_patient_args(
+      Patient patient)
     {
       this();
-      this.medication = medication;
+      this.patient = patient;
     }
 
     /**
      * Performs a deep copy on <i>other</i>.
      */
-    public remove_medication_args(remove_medication_args other) {
-      if (other.isSetMedication()) {
-        this.medication = new Medication(other.medication);
+    public remove_patient_args(remove_patient_args other) {
+      if (other.isSetPatient()) {
+        this.patient = new Patient(other.patient);
       }
     }
 
-    public remove_medication_args deepCopy() {
-      return new remove_medication_args(this);
+    public remove_patient_args deepCopy() {
+      return new remove_patient_args(this);
     }
 
     @Override
     public void clear() {
-      this.medication = null;
+      this.patient = null;
     }
 
-    public Medication getMedication() {
-      return this.medication;
+    public Patient getPatient() {
+      return this.patient;
     }
 
-    public remove_medication_args setMedication(Medication medication) {
-      this.medication = medication;
+    public remove_patient_args setPatient(Patient patient) {
+      this.patient = patient;
       return this;
     }
 
-    public void unsetMedication() {
-      this.medication = null;
+    public void unsetPatient() {
+      this.patient = null;
     }
 
-    /** Returns true if field medication is set (has been assigned a value) and false otherwise */
-    public boolean isSetMedication() {
-      return this.medication != null;
+    /** Returns true if field patient is set (has been assigned a value) and false otherwise */
+    public boolean isSetPatient() {
+      return this.patient != null;
     }
 
-    public void setMedicationIsSet(boolean value) {
+    public void setPatientIsSet(boolean value) {
       if (!value) {
-        this.medication = null;
+        this.patient = null;
       }
     }
 
     public void setFieldValue(_Fields field, Object value) {
       switch (field) {
-      case MEDICATION:
+      case PATIENT:
         if (value == null) {
-          unsetMedication();
+          unsetPatient();
         } else {
-          setMedication((Medication)value);
+          setPatient((Patient)value);
         }
         break;
 
@@ -1248,8 +1248,8 @@ public class MedicationService {
 
     public Object getFieldValue(_Fields field) {
       switch (field) {
-      case MEDICATION:
-        return getMedication();
+      case PATIENT:
+        return getPatient();
 
       }
       throw new IllegalStateException();
@@ -1262,8 +1262,8 @@ public class MedicationService {
       }
 
       switch (field) {
-      case MEDICATION:
-        return isSetMedication();
+      case PATIENT:
+        return isSetPatient();
       }
       throw new IllegalStateException();
     }
@@ -1272,21 +1272,21 @@ public class MedicationService {
     public boolean equals(Object that) {
       if (that == null)
         return false;
-      if (that instanceof remove_medication_args)
-        return this.equals((remove_medication_args)that);
+      if (that instanceof remove_patient_args)
+        return this.equals((remove_patient_args)that);
       return false;
     }
 
-    public boolean equals(remove_medication_args that) {
+    public boolean equals(remove_patient_args that) {
       if (that == null)
         return false;
 
-      boolean this_present_medication = true && this.isSetMedication();
-      boolean that_present_medication = true && that.isSetMedication();
-      if (this_present_medication || that_present_medication) {
-        if (!(this_present_medication && that_present_medication))
+      boolean this_present_patient = true && this.isSetPatient();
+      boolean that_present_patient = true && that.isSetPatient();
+      if (this_present_patient || that_present_patient) {
+        if (!(this_present_patient && that_present_patient))
           return false;
-        if (!this.medication.equals(that.medication))
+        if (!this.patient.equals(that.patient))
           return false;
       }
 
@@ -1298,20 +1298,20 @@ public class MedicationService {
       return 0;
     }
 
-    public int compareTo(remove_medication_args other) {
+    public int compareTo(remove_patient_args other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
       }
 
       int lastComparison = 0;
-      remove_medication_args typedOther = (remove_medication_args)other;
+      remove_patient_args typedOther = (remove_patient_args)other;
 
-      lastComparison = Boolean.valueOf(isSetMedication()).compareTo(typedOther.isSetMedication());
+      lastComparison = Boolean.valueOf(isSetPatient()).compareTo(typedOther.isSetPatient());
       if (lastComparison != 0) {
         return lastComparison;
       }
-      if (isSetMedication()) {
-        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.medication, typedOther.medication);
+      if (isSetPatient()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.patient, typedOther.patient);
         if (lastComparison != 0) {
           return lastComparison;
         }
@@ -1333,14 +1333,14 @@ public class MedicationService {
 
     @Override
     public String toString() {
-      StringBuilder sb = new StringBuilder("remove_medication_args(");
+      StringBuilder sb = new StringBuilder("remove_patient_args(");
       boolean first = true;
 
-      sb.append("medication:");
-      if (this.medication == null) {
+      sb.append("patient:");
+      if (this.patient == null) {
         sb.append("null");
       } else {
-        sb.append(this.medication);
+        sb.append(this.patient);
       }
       first = false;
       sb.append(")");
@@ -1367,15 +1367,15 @@ public class MedicationService {
       }
     }
 
-    private static class remove_medication_argsStandardSchemeFactory implements SchemeFactory {
-      public remove_medication_argsStandardScheme getScheme() {
-        return new remove_medication_argsStandardScheme();
+    private static class remove_patient_argsStandardSchemeFactory implements SchemeFactory {
+      public remove_patient_argsStandardScheme getScheme() {
+        return new remove_patient_argsStandardScheme();
       }
     }
 
-    private static class remove_medication_argsStandardScheme extends StandardScheme<remove_medication_args> {
+    private static class remove_patient_argsStandardScheme extends StandardScheme<remove_patient_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, remove_medication_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, remove_patient_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -1385,11 +1385,11 @@ public class MedicationService {
             break;
           }
           switch (schemeField.id) {
-            case 1: // MEDICATION
+            case 1: // PATIENT
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.medication = new Medication();
-                struct.medication.read(iprot);
-                struct.setMedicationIsSet(true);
+                struct.patient = new Patient();
+                struct.patient.read(iprot);
+                struct.setPatientIsSet(true);
               } else { 
                 org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
               }
@@ -1405,13 +1405,13 @@ public class MedicationService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, remove_medication_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, remove_patient_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
-        if (struct.medication != null) {
-          oprot.writeFieldBegin(MEDICATION_FIELD_DESC);
-          struct.medication.write(oprot);
+        if (struct.patient != null) {
+          oprot.writeFieldBegin(PATIENT_FIELD_DESC);
+          struct.patient.write(oprot);
           oprot.writeFieldEnd();
         }
         oprot.writeFieldStop();
@@ -1420,50 +1420,50 @@ public class MedicationService {
 
     }
 
-    private static class remove_medication_argsTupleSchemeFactory implements SchemeFactory {
-      public remove_medication_argsTupleScheme getScheme() {
-        return new remove_medication_argsTupleScheme();
+    private static class remove_patient_argsTupleSchemeFactory implements SchemeFactory {
+      public remove_patient_argsTupleScheme getScheme() {
+        return new remove_patient_argsTupleScheme();
       }
     }
 
-    private static class remove_medication_argsTupleScheme extends TupleScheme<remove_medication_args> {
+    private static class remove_patient_argsTupleScheme extends TupleScheme<remove_patient_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, remove_medication_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, remove_patient_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
-        if (struct.isSetMedication()) {
+        if (struct.isSetPatient()) {
           optionals.set(0);
         }
         oprot.writeBitSet(optionals, 1);
-        if (struct.isSetMedication()) {
-          struct.medication.write(oprot);
+        if (struct.isSetPatient()) {
+          struct.patient.write(oprot);
         }
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, remove_medication_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, remove_patient_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
-          struct.medication = new Medication();
-          struct.medication.read(iprot);
-          struct.setMedicationIsSet(true);
+          struct.patient = new Patient();
+          struct.patient.read(iprot);
+          struct.setPatientIsSet(true);
         }
       }
     }
 
   }
 
-  public static class remove_medication_result implements org.apache.thrift.TBase<remove_medication_result, remove_medication_result._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("remove_medication_result");
+  public static class remove_patient_result implements org.apache.thrift.TBase<remove_patient_result, remove_patient_result._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("remove_patient_result");
 
     private static final org.apache.thrift.protocol.TField SUCCESS_FIELD_DESC = new org.apache.thrift.protocol.TField("success", org.apache.thrift.protocol.TType.BOOL, (short)0);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
-      schemes.put(StandardScheme.class, new remove_medication_resultStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new remove_medication_resultTupleSchemeFactory());
+      schemes.put(StandardScheme.class, new remove_patient_resultStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new remove_patient_resultTupleSchemeFactory());
     }
 
     public boolean success; // required
@@ -1535,13 +1535,13 @@ public class MedicationService {
       tmpMap.put(_Fields.SUCCESS, new org.apache.thrift.meta_data.FieldMetaData("success", org.apache.thrift.TFieldRequirementType.DEFAULT, 
           new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.BOOL)));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(remove_medication_result.class, metaDataMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(remove_patient_result.class, metaDataMap);
     }
 
-    public remove_medication_result() {
+    public remove_patient_result() {
     }
 
-    public remove_medication_result(
+    public remove_patient_result(
       boolean success)
     {
       this();
@@ -1552,14 +1552,14 @@ public class MedicationService {
     /**
      * Performs a deep copy on <i>other</i>.
      */
-    public remove_medication_result(remove_medication_result other) {
+    public remove_patient_result(remove_patient_result other) {
       __isset_bit_vector.clear();
       __isset_bit_vector.or(other.__isset_bit_vector);
       this.success = other.success;
     }
 
-    public remove_medication_result deepCopy() {
-      return new remove_medication_result(this);
+    public remove_patient_result deepCopy() {
+      return new remove_patient_result(this);
     }
 
     @Override
@@ -1572,7 +1572,7 @@ public class MedicationService {
       return this.success;
     }
 
-    public remove_medication_result setSuccess(boolean success) {
+    public remove_patient_result setSuccess(boolean success) {
       this.success = success;
       setSuccessIsSet(true);
       return this;
@@ -1630,12 +1630,12 @@ public class MedicationService {
     public boolean equals(Object that) {
       if (that == null)
         return false;
-      if (that instanceof remove_medication_result)
-        return this.equals((remove_medication_result)that);
+      if (that instanceof remove_patient_result)
+        return this.equals((remove_patient_result)that);
       return false;
     }
 
-    public boolean equals(remove_medication_result that) {
+    public boolean equals(remove_patient_result that) {
       if (that == null)
         return false;
 
@@ -1656,13 +1656,13 @@ public class MedicationService {
       return 0;
     }
 
-    public int compareTo(remove_medication_result other) {
+    public int compareTo(remove_patient_result other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
       }
 
       int lastComparison = 0;
-      remove_medication_result typedOther = (remove_medication_result)other;
+      remove_patient_result typedOther = (remove_patient_result)other;
 
       lastComparison = Boolean.valueOf(isSetSuccess()).compareTo(typedOther.isSetSuccess());
       if (lastComparison != 0) {
@@ -1691,7 +1691,7 @@ public class MedicationService {
 
     @Override
     public String toString() {
-      StringBuilder sb = new StringBuilder("remove_medication_result(");
+      StringBuilder sb = new StringBuilder("remove_patient_result(");
       boolean first = true;
 
       sb.append("success:");
@@ -1721,15 +1721,15 @@ public class MedicationService {
       }
     }
 
-    private static class remove_medication_resultStandardSchemeFactory implements SchemeFactory {
-      public remove_medication_resultStandardScheme getScheme() {
-        return new remove_medication_resultStandardScheme();
+    private static class remove_patient_resultStandardSchemeFactory implements SchemeFactory {
+      public remove_patient_resultStandardScheme getScheme() {
+        return new remove_patient_resultStandardScheme();
       }
     }
 
-    private static class remove_medication_resultStandardScheme extends StandardScheme<remove_medication_result> {
+    private static class remove_patient_resultStandardScheme extends StandardScheme<remove_patient_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, remove_medication_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, remove_patient_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -1758,7 +1758,7 @@ public class MedicationService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, remove_medication_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, remove_patient_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -1771,16 +1771,16 @@ public class MedicationService {
 
     }
 
-    private static class remove_medication_resultTupleSchemeFactory implements SchemeFactory {
-      public remove_medication_resultTupleScheme getScheme() {
-        return new remove_medication_resultTupleScheme();
+    private static class remove_patient_resultTupleSchemeFactory implements SchemeFactory {
+      public remove_patient_resultTupleScheme getScheme() {
+        return new remove_patient_resultTupleScheme();
       }
     }
 
-    private static class remove_medication_resultTupleScheme extends TupleScheme<remove_medication_result> {
+    private static class remove_patient_resultTupleScheme extends TupleScheme<remove_patient_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, remove_medication_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, remove_patient_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -1793,7 +1793,7 @@ public class MedicationService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, remove_medication_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, remove_patient_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -1805,14 +1805,14 @@ public class MedicationService {
 
   }
 
-  public static class get_medications_args implements org.apache.thrift.TBase<get_medications_args, get_medications_args._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("get_medications_args");
+  public static class get_patients_args implements org.apache.thrift.TBase<get_patients_args, get_patients_args._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("get_patients_args");
 
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
-      schemes.put(StandardScheme.class, new get_medications_argsStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new get_medications_argsTupleSchemeFactory());
+      schemes.put(StandardScheme.class, new get_patients_argsStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new get_patients_argsTupleSchemeFactory());
     }
 
 
@@ -1875,20 +1875,20 @@ public class MedicationService {
     static {
       Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
       metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(get_medications_args.class, metaDataMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(get_patients_args.class, metaDataMap);
     }
 
-    public get_medications_args() {
+    public get_patients_args() {
     }
 
     /**
      * Performs a deep copy on <i>other</i>.
      */
-    public get_medications_args(get_medications_args other) {
+    public get_patients_args(get_patients_args other) {
     }
 
-    public get_medications_args deepCopy() {
-      return new get_medications_args(this);
+    public get_patients_args deepCopy() {
+      return new get_patients_args(this);
     }
 
     @Override
@@ -1921,12 +1921,12 @@ public class MedicationService {
     public boolean equals(Object that) {
       if (that == null)
         return false;
-      if (that instanceof get_medications_args)
-        return this.equals((get_medications_args)that);
+      if (that instanceof get_patients_args)
+        return this.equals((get_patients_args)that);
       return false;
     }
 
-    public boolean equals(get_medications_args that) {
+    public boolean equals(get_patients_args that) {
       if (that == null)
         return false;
 
@@ -1938,13 +1938,13 @@ public class MedicationService {
       return 0;
     }
 
-    public int compareTo(get_medications_args other) {
+    public int compareTo(get_patients_args other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
       }
 
       int lastComparison = 0;
-      get_medications_args typedOther = (get_medications_args)other;
+      get_patients_args typedOther = (get_patients_args)other;
 
       return 0;
     }
@@ -1963,7 +1963,7 @@ public class MedicationService {
 
     @Override
     public String toString() {
-      StringBuilder sb = new StringBuilder("get_medications_args(");
+      StringBuilder sb = new StringBuilder("get_patients_args(");
       boolean first = true;
 
       sb.append(")");
@@ -1990,15 +1990,15 @@ public class MedicationService {
       }
     }
 
-    private static class get_medications_argsStandardSchemeFactory implements SchemeFactory {
-      public get_medications_argsStandardScheme getScheme() {
-        return new get_medications_argsStandardScheme();
+    private static class get_patients_argsStandardSchemeFactory implements SchemeFactory {
+      public get_patients_argsStandardScheme getScheme() {
+        return new get_patients_argsStandardScheme();
       }
     }
 
-    private static class get_medications_argsStandardScheme extends StandardScheme<get_medications_args> {
+    private static class get_patients_argsStandardScheme extends StandardScheme<get_patients_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, get_medications_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, get_patients_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -2019,7 +2019,7 @@ public class MedicationService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, get_medications_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, get_patients_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -2029,39 +2029,39 @@ public class MedicationService {
 
     }
 
-    private static class get_medications_argsTupleSchemeFactory implements SchemeFactory {
-      public get_medications_argsTupleScheme getScheme() {
-        return new get_medications_argsTupleScheme();
+    private static class get_patients_argsTupleSchemeFactory implements SchemeFactory {
+      public get_patients_argsTupleScheme getScheme() {
+        return new get_patients_argsTupleScheme();
       }
     }
 
-    private static class get_medications_argsTupleScheme extends TupleScheme<get_medications_args> {
+    private static class get_patients_argsTupleScheme extends TupleScheme<get_patients_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, get_medications_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, get_patients_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, get_medications_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, get_patients_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
       }
     }
 
   }
 
-  public static class get_medications_result implements org.apache.thrift.TBase<get_medications_result, get_medications_result._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("get_medications_result");
+  public static class get_patients_result implements org.apache.thrift.TBase<get_patients_result, get_patients_result._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("get_patients_result");
 
     private static final org.apache.thrift.protocol.TField SUCCESS_FIELD_DESC = new org.apache.thrift.protocol.TField("success", org.apache.thrift.protocol.TType.LIST, (short)0);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
-      schemes.put(StandardScheme.class, new get_medications_resultStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new get_medications_resultTupleSchemeFactory());
+      schemes.put(StandardScheme.class, new get_patients_resultStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new get_patients_resultTupleSchemeFactory());
     }
 
-    public List<Medication> success; // required
+    public List<Patient> success; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -2127,16 +2127,16 @@ public class MedicationService {
       Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
       tmpMap.put(_Fields.SUCCESS, new org.apache.thrift.meta_data.FieldMetaData("success", org.apache.thrift.TFieldRequirementType.DEFAULT, 
           new org.apache.thrift.meta_data.ListMetaData(org.apache.thrift.protocol.TType.LIST, 
-              new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Medication.class))));
+              new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Patient.class))));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(get_medications_result.class, metaDataMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(get_patients_result.class, metaDataMap);
     }
 
-    public get_medications_result() {
+    public get_patients_result() {
     }
 
-    public get_medications_result(
-      List<Medication> success)
+    public get_patients_result(
+      List<Patient> success)
     {
       this();
       this.success = success;
@@ -2145,18 +2145,18 @@ public class MedicationService {
     /**
      * Performs a deep copy on <i>other</i>.
      */
-    public get_medications_result(get_medications_result other) {
+    public get_patients_result(get_patients_result other) {
       if (other.isSetSuccess()) {
-        List<Medication> __this__success = new ArrayList<Medication>();
-        for (Medication other_element : other.success) {
-          __this__success.add(new Medication(other_element));
+        List<Patient> __this__success = new ArrayList<Patient>();
+        for (Patient other_element : other.success) {
+          __this__success.add(new Patient(other_element));
         }
         this.success = __this__success;
       }
     }
 
-    public get_medications_result deepCopy() {
-      return new get_medications_result(this);
+    public get_patients_result deepCopy() {
+      return new get_patients_result(this);
     }
 
     @Override
@@ -2168,22 +2168,22 @@ public class MedicationService {
       return (this.success == null) ? 0 : this.success.size();
     }
 
-    public java.util.Iterator<Medication> getSuccessIterator() {
+    public java.util.Iterator<Patient> getSuccessIterator() {
       return (this.success == null) ? null : this.success.iterator();
     }
 
-    public void addToSuccess(Medication elem) {
+    public void addToSuccess(Patient elem) {
       if (this.success == null) {
-        this.success = new ArrayList<Medication>();
+        this.success = new ArrayList<Patient>();
       }
       this.success.add(elem);
     }
 
-    public List<Medication> getSuccess() {
+    public List<Patient> getSuccess() {
       return this.success;
     }
 
-    public get_medications_result setSuccess(List<Medication> success) {
+    public get_patients_result setSuccess(List<Patient> success) {
       this.success = success;
       return this;
     }
@@ -2209,7 +2209,7 @@ public class MedicationService {
         if (value == null) {
           unsetSuccess();
         } else {
-          setSuccess((List<Medication>)value);
+          setSuccess((List<Patient>)value);
         }
         break;
 
@@ -2242,12 +2242,12 @@ public class MedicationService {
     public boolean equals(Object that) {
       if (that == null)
         return false;
-      if (that instanceof get_medications_result)
-        return this.equals((get_medications_result)that);
+      if (that instanceof get_patients_result)
+        return this.equals((get_patients_result)that);
       return false;
     }
 
-    public boolean equals(get_medications_result that) {
+    public boolean equals(get_patients_result that) {
       if (that == null)
         return false;
 
@@ -2268,13 +2268,13 @@ public class MedicationService {
       return 0;
     }
 
-    public int compareTo(get_medications_result other) {
+    public int compareTo(get_patients_result other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
       }
 
       int lastComparison = 0;
-      get_medications_result typedOther = (get_medications_result)other;
+      get_patients_result typedOther = (get_patients_result)other;
 
       lastComparison = Boolean.valueOf(isSetSuccess()).compareTo(typedOther.isSetSuccess());
       if (lastComparison != 0) {
@@ -2303,7 +2303,7 @@ public class MedicationService {
 
     @Override
     public String toString() {
-      StringBuilder sb = new StringBuilder("get_medications_result(");
+      StringBuilder sb = new StringBuilder("get_patients_result(");
       boolean first = true;
 
       sb.append("success:");
@@ -2337,15 +2337,15 @@ public class MedicationService {
       }
     }
 
-    private static class get_medications_resultStandardSchemeFactory implements SchemeFactory {
-      public get_medications_resultStandardScheme getScheme() {
-        return new get_medications_resultStandardScheme();
+    private static class get_patients_resultStandardSchemeFactory implements SchemeFactory {
+      public get_patients_resultStandardScheme getScheme() {
+        return new get_patients_resultStandardScheme();
       }
     }
 
-    private static class get_medications_resultStandardScheme extends StandardScheme<get_medications_result> {
+    private static class get_patients_resultStandardScheme extends StandardScheme<get_patients_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, get_medications_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, get_patients_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -2358,14 +2358,14 @@ public class MedicationService {
             case 0: // SUCCESS
               if (schemeField.type == org.apache.thrift.protocol.TType.LIST) {
                 {
-                  org.apache.thrift.protocol.TList _list24 = iprot.readListBegin();
-                  struct.success = new ArrayList<Medication>(_list24.size);
-                  for (int _i25 = 0; _i25 < _list24.size; ++_i25)
+                  org.apache.thrift.protocol.TList _list16 = iprot.readListBegin();
+                  struct.success = new ArrayList<Patient>(_list16.size);
+                  for (int _i17 = 0; _i17 < _list16.size; ++_i17)
                   {
-                    Medication _elem26; // required
-                    _elem26 = new Medication();
-                    _elem26.read(iprot);
-                    struct.success.add(_elem26);
+                    Patient _elem18; // required
+                    _elem18 = new Patient();
+                    _elem18.read(iprot);
+                    struct.success.add(_elem18);
                   }
                   iprot.readListEnd();
                 }
@@ -2385,7 +2385,7 @@ public class MedicationService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, get_medications_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, get_patients_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -2393,9 +2393,9 @@ public class MedicationService {
           oprot.writeFieldBegin(SUCCESS_FIELD_DESC);
           {
             oprot.writeListBegin(new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, struct.success.size()));
-            for (Medication _iter27 : struct.success)
+            for (Patient _iter19 : struct.success)
             {
-              _iter27.write(oprot);
+              _iter19.write(oprot);
             }
             oprot.writeListEnd();
           }
@@ -2407,16 +2407,16 @@ public class MedicationService {
 
     }
 
-    private static class get_medications_resultTupleSchemeFactory implements SchemeFactory {
-      public get_medications_resultTupleScheme getScheme() {
-        return new get_medications_resultTupleScheme();
+    private static class get_patients_resultTupleSchemeFactory implements SchemeFactory {
+      public get_patients_resultTupleScheme getScheme() {
+        return new get_patients_resultTupleScheme();
       }
     }
 
-    private static class get_medications_resultTupleScheme extends TupleScheme<get_medications_result> {
+    private static class get_patients_resultTupleScheme extends TupleScheme<get_patients_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, get_medications_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, get_patients_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -2426,28 +2426,28 @@ public class MedicationService {
         if (struct.isSetSuccess()) {
           {
             oprot.writeI32(struct.success.size());
-            for (Medication _iter28 : struct.success)
+            for (Patient _iter20 : struct.success)
             {
-              _iter28.write(oprot);
+              _iter20.write(oprot);
             }
           }
         }
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, get_medications_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, get_patients_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
           {
-            org.apache.thrift.protocol.TList _list29 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
-            struct.success = new ArrayList<Medication>(_list29.size);
-            for (int _i30 = 0; _i30 < _list29.size; ++_i30)
+            org.apache.thrift.protocol.TList _list21 = new org.apache.thrift.protocol.TList(org.apache.thrift.protocol.TType.STRUCT, iprot.readI32());
+            struct.success = new ArrayList<Patient>(_list21.size);
+            for (int _i22 = 0; _i22 < _list21.size; ++_i22)
             {
-              Medication _elem31; // required
-              _elem31 = new Medication();
-              _elem31.read(iprot);
-              struct.success.add(_elem31);
+              Patient _elem23; // required
+              _elem23 = new Patient();
+              _elem23.read(iprot);
+              struct.success.add(_elem23);
             }
           }
           struct.setSuccessIsSet(true);
@@ -2457,15 +2457,15 @@ public class MedicationService {
 
   }
 
-  public static class get_medication_by_tag_id_args implements org.apache.thrift.TBase<get_medication_by_tag_id_args, get_medication_by_tag_id_args._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("get_medication_by_tag_id_args");
+  public static class get_patient_by_tag_id_args implements org.apache.thrift.TBase<get_patient_by_tag_id_args, get_patient_by_tag_id_args._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("get_patient_by_tag_id_args");
 
     private static final org.apache.thrift.protocol.TField TAG_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("tag_id", org.apache.thrift.protocol.TType.STRING, (short)1);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
-      schemes.put(StandardScheme.class, new get_medication_by_tag_id_argsStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new get_medication_by_tag_id_argsTupleSchemeFactory());
+      schemes.put(StandardScheme.class, new get_patient_by_tag_id_argsStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new get_patient_by_tag_id_argsTupleSchemeFactory());
     }
 
     public String tag_id; // required
@@ -2535,13 +2535,13 @@ public class MedicationService {
       tmpMap.put(_Fields.TAG_ID, new org.apache.thrift.meta_data.FieldMetaData("tag_id", org.apache.thrift.TFieldRequirementType.DEFAULT, 
           new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING          , "NFCID")));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(get_medication_by_tag_id_args.class, metaDataMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(get_patient_by_tag_id_args.class, metaDataMap);
     }
 
-    public get_medication_by_tag_id_args() {
+    public get_patient_by_tag_id_args() {
     }
 
-    public get_medication_by_tag_id_args(
+    public get_patient_by_tag_id_args(
       String tag_id)
     {
       this();
@@ -2551,14 +2551,14 @@ public class MedicationService {
     /**
      * Performs a deep copy on <i>other</i>.
      */
-    public get_medication_by_tag_id_args(get_medication_by_tag_id_args other) {
+    public get_patient_by_tag_id_args(get_patient_by_tag_id_args other) {
       if (other.isSetTag_id()) {
         this.tag_id = other.tag_id;
       }
     }
 
-    public get_medication_by_tag_id_args deepCopy() {
-      return new get_medication_by_tag_id_args(this);
+    public get_patient_by_tag_id_args deepCopy() {
+      return new get_patient_by_tag_id_args(this);
     }
 
     @Override
@@ -2570,7 +2570,7 @@ public class MedicationService {
       return this.tag_id;
     }
 
-    public get_medication_by_tag_id_args setTag_id(String tag_id) {
+    public get_patient_by_tag_id_args setTag_id(String tag_id) {
       this.tag_id = tag_id;
       return this;
     }
@@ -2629,12 +2629,12 @@ public class MedicationService {
     public boolean equals(Object that) {
       if (that == null)
         return false;
-      if (that instanceof get_medication_by_tag_id_args)
-        return this.equals((get_medication_by_tag_id_args)that);
+      if (that instanceof get_patient_by_tag_id_args)
+        return this.equals((get_patient_by_tag_id_args)that);
       return false;
     }
 
-    public boolean equals(get_medication_by_tag_id_args that) {
+    public boolean equals(get_patient_by_tag_id_args that) {
       if (that == null)
         return false;
 
@@ -2655,13 +2655,13 @@ public class MedicationService {
       return 0;
     }
 
-    public int compareTo(get_medication_by_tag_id_args other) {
+    public int compareTo(get_patient_by_tag_id_args other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
       }
 
       int lastComparison = 0;
-      get_medication_by_tag_id_args typedOther = (get_medication_by_tag_id_args)other;
+      get_patient_by_tag_id_args typedOther = (get_patient_by_tag_id_args)other;
 
       lastComparison = Boolean.valueOf(isSetTag_id()).compareTo(typedOther.isSetTag_id());
       if (lastComparison != 0) {
@@ -2690,7 +2690,7 @@ public class MedicationService {
 
     @Override
     public String toString() {
-      StringBuilder sb = new StringBuilder("get_medication_by_tag_id_args(");
+      StringBuilder sb = new StringBuilder("get_patient_by_tag_id_args(");
       boolean first = true;
 
       sb.append("tag_id:");
@@ -2724,15 +2724,15 @@ public class MedicationService {
       }
     }
 
-    private static class get_medication_by_tag_id_argsStandardSchemeFactory implements SchemeFactory {
-      public get_medication_by_tag_id_argsStandardScheme getScheme() {
-        return new get_medication_by_tag_id_argsStandardScheme();
+    private static class get_patient_by_tag_id_argsStandardSchemeFactory implements SchemeFactory {
+      public get_patient_by_tag_id_argsStandardScheme getScheme() {
+        return new get_patient_by_tag_id_argsStandardScheme();
       }
     }
 
-    private static class get_medication_by_tag_id_argsStandardScheme extends StandardScheme<get_medication_by_tag_id_args> {
+    private static class get_patient_by_tag_id_argsStandardScheme extends StandardScheme<get_patient_by_tag_id_args> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, get_medication_by_tag_id_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, get_patient_by_tag_id_args struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -2761,7 +2761,7 @@ public class MedicationService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, get_medication_by_tag_id_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, get_patient_by_tag_id_args struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -2776,16 +2776,16 @@ public class MedicationService {
 
     }
 
-    private static class get_medication_by_tag_id_argsTupleSchemeFactory implements SchemeFactory {
-      public get_medication_by_tag_id_argsTupleScheme getScheme() {
-        return new get_medication_by_tag_id_argsTupleScheme();
+    private static class get_patient_by_tag_id_argsTupleSchemeFactory implements SchemeFactory {
+      public get_patient_by_tag_id_argsTupleScheme getScheme() {
+        return new get_patient_by_tag_id_argsTupleScheme();
       }
     }
 
-    private static class get_medication_by_tag_id_argsTupleScheme extends TupleScheme<get_medication_by_tag_id_args> {
+    private static class get_patient_by_tag_id_argsTupleScheme extends TupleScheme<get_patient_by_tag_id_args> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, get_medication_by_tag_id_args struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, get_patient_by_tag_id_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetTag_id()) {
@@ -2798,7 +2798,7 @@ public class MedicationService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, get_medication_by_tag_id_args struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, get_patient_by_tag_id_args struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
@@ -2810,18 +2810,18 @@ public class MedicationService {
 
   }
 
-  public static class get_medication_by_tag_id_result implements org.apache.thrift.TBase<get_medication_by_tag_id_result, get_medication_by_tag_id_result._Fields>, java.io.Serializable, Cloneable   {
-    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("get_medication_by_tag_id_result");
+  public static class get_patient_by_tag_id_result implements org.apache.thrift.TBase<get_patient_by_tag_id_result, get_patient_by_tag_id_result._Fields>, java.io.Serializable, Cloneable   {
+    private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("get_patient_by_tag_id_result");
 
     private static final org.apache.thrift.protocol.TField SUCCESS_FIELD_DESC = new org.apache.thrift.protocol.TField("success", org.apache.thrift.protocol.TType.STRUCT, (short)0);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
-      schemes.put(StandardScheme.class, new get_medication_by_tag_id_resultStandardSchemeFactory());
-      schemes.put(TupleScheme.class, new get_medication_by_tag_id_resultTupleSchemeFactory());
+      schemes.put(StandardScheme.class, new get_patient_by_tag_id_resultStandardSchemeFactory());
+      schemes.put(TupleScheme.class, new get_patient_by_tag_id_resultTupleSchemeFactory());
     }
 
-    public Medication success; // required
+    public Patient success; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -2886,16 +2886,16 @@ public class MedicationService {
     static {
       Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
       tmpMap.put(_Fields.SUCCESS, new org.apache.thrift.meta_data.FieldMetaData("success", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-          new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Medication.class)));
+          new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Patient.class)));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
-      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(get_medication_by_tag_id_result.class, metaDataMap);
+      org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(get_patient_by_tag_id_result.class, metaDataMap);
     }
 
-    public get_medication_by_tag_id_result() {
+    public get_patient_by_tag_id_result() {
     }
 
-    public get_medication_by_tag_id_result(
-      Medication success)
+    public get_patient_by_tag_id_result(
+      Patient success)
     {
       this();
       this.success = success;
@@ -2904,14 +2904,14 @@ public class MedicationService {
     /**
      * Performs a deep copy on <i>other</i>.
      */
-    public get_medication_by_tag_id_result(get_medication_by_tag_id_result other) {
+    public get_patient_by_tag_id_result(get_patient_by_tag_id_result other) {
       if (other.isSetSuccess()) {
-        this.success = new Medication(other.success);
+        this.success = new Patient(other.success);
       }
     }
 
-    public get_medication_by_tag_id_result deepCopy() {
-      return new get_medication_by_tag_id_result(this);
+    public get_patient_by_tag_id_result deepCopy() {
+      return new get_patient_by_tag_id_result(this);
     }
 
     @Override
@@ -2919,11 +2919,11 @@ public class MedicationService {
       this.success = null;
     }
 
-    public Medication getSuccess() {
+    public Patient getSuccess() {
       return this.success;
     }
 
-    public get_medication_by_tag_id_result setSuccess(Medication success) {
+    public get_patient_by_tag_id_result setSuccess(Patient success) {
       this.success = success;
       return this;
     }
@@ -2949,7 +2949,7 @@ public class MedicationService {
         if (value == null) {
           unsetSuccess();
         } else {
-          setSuccess((Medication)value);
+          setSuccess((Patient)value);
         }
         break;
 
@@ -2982,12 +2982,12 @@ public class MedicationService {
     public boolean equals(Object that) {
       if (that == null)
         return false;
-      if (that instanceof get_medication_by_tag_id_result)
-        return this.equals((get_medication_by_tag_id_result)that);
+      if (that instanceof get_patient_by_tag_id_result)
+        return this.equals((get_patient_by_tag_id_result)that);
       return false;
     }
 
-    public boolean equals(get_medication_by_tag_id_result that) {
+    public boolean equals(get_patient_by_tag_id_result that) {
       if (that == null)
         return false;
 
@@ -3008,13 +3008,13 @@ public class MedicationService {
       return 0;
     }
 
-    public int compareTo(get_medication_by_tag_id_result other) {
+    public int compareTo(get_patient_by_tag_id_result other) {
       if (!getClass().equals(other.getClass())) {
         return getClass().getName().compareTo(other.getClass().getName());
       }
 
       int lastComparison = 0;
-      get_medication_by_tag_id_result typedOther = (get_medication_by_tag_id_result)other;
+      get_patient_by_tag_id_result typedOther = (get_patient_by_tag_id_result)other;
 
       lastComparison = Boolean.valueOf(isSetSuccess()).compareTo(typedOther.isSetSuccess());
       if (lastComparison != 0) {
@@ -3043,7 +3043,7 @@ public class MedicationService {
 
     @Override
     public String toString() {
-      StringBuilder sb = new StringBuilder("get_medication_by_tag_id_result(");
+      StringBuilder sb = new StringBuilder("get_patient_by_tag_id_result(");
       boolean first = true;
 
       sb.append("success:");
@@ -3077,15 +3077,15 @@ public class MedicationService {
       }
     }
 
-    private static class get_medication_by_tag_id_resultStandardSchemeFactory implements SchemeFactory {
-      public get_medication_by_tag_id_resultStandardScheme getScheme() {
-        return new get_medication_by_tag_id_resultStandardScheme();
+    private static class get_patient_by_tag_id_resultStandardSchemeFactory implements SchemeFactory {
+      public get_patient_by_tag_id_resultStandardScheme getScheme() {
+        return new get_patient_by_tag_id_resultStandardScheme();
       }
     }
 
-    private static class get_medication_by_tag_id_resultStandardScheme extends StandardScheme<get_medication_by_tag_id_result> {
+    private static class get_patient_by_tag_id_resultStandardScheme extends StandardScheme<get_patient_by_tag_id_result> {
 
-      public void read(org.apache.thrift.protocol.TProtocol iprot, get_medication_by_tag_id_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol iprot, get_patient_by_tag_id_result struct) throws org.apache.thrift.TException {
         org.apache.thrift.protocol.TField schemeField;
         iprot.readStructBegin();
         while (true)
@@ -3097,7 +3097,7 @@ public class MedicationService {
           switch (schemeField.id) {
             case 0: // SUCCESS
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.success = new Medication();
+                struct.success = new Patient();
                 struct.success.read(iprot);
                 struct.setSuccessIsSet(true);
               } else { 
@@ -3115,7 +3115,7 @@ public class MedicationService {
         struct.validate();
       }
 
-      public void write(org.apache.thrift.protocol.TProtocol oprot, get_medication_by_tag_id_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol oprot, get_patient_by_tag_id_result struct) throws org.apache.thrift.TException {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
@@ -3130,16 +3130,16 @@ public class MedicationService {
 
     }
 
-    private static class get_medication_by_tag_id_resultTupleSchemeFactory implements SchemeFactory {
-      public get_medication_by_tag_id_resultTupleScheme getScheme() {
-        return new get_medication_by_tag_id_resultTupleScheme();
+    private static class get_patient_by_tag_id_resultTupleSchemeFactory implements SchemeFactory {
+      public get_patient_by_tag_id_resultTupleScheme getScheme() {
+        return new get_patient_by_tag_id_resultTupleScheme();
       }
     }
 
-    private static class get_medication_by_tag_id_resultTupleScheme extends TupleScheme<get_medication_by_tag_id_result> {
+    private static class get_patient_by_tag_id_resultTupleScheme extends TupleScheme<get_patient_by_tag_id_result> {
 
       @Override
-      public void write(org.apache.thrift.protocol.TProtocol prot, get_medication_by_tag_id_result struct) throws org.apache.thrift.TException {
+      public void write(org.apache.thrift.protocol.TProtocol prot, get_patient_by_tag_id_result struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
         if (struct.isSetSuccess()) {
@@ -3152,11 +3152,11 @@ public class MedicationService {
       }
 
       @Override
-      public void read(org.apache.thrift.protocol.TProtocol prot, get_medication_by_tag_id_result struct) throws org.apache.thrift.TException {
+      public void read(org.apache.thrift.protocol.TProtocol prot, get_patient_by_tag_id_result struct) throws org.apache.thrift.TException {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
-          struct.success = new Medication();
+          struct.success = new Patient();
           struct.success.read(iprot);
           struct.setSuccessIsSet(true);
         }

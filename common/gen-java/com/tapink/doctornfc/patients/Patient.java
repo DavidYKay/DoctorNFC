@@ -30,9 +30,10 @@ import org.slf4j.LoggerFactory;
 public class Patient implements org.apache.thrift.TBase<Patient, Patient._Fields>, java.io.Serializable, Cloneable {
   private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("Patient");
 
-  private static final org.apache.thrift.protocol.TField FIRST_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("first_name", org.apache.thrift.protocol.TType.STRING, (short)1);
-  private static final org.apache.thrift.protocol.TField LAST_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("last_name", org.apache.thrift.protocol.TType.STRING, (short)2);
-  private static final org.apache.thrift.protocol.TField EMAIL_FIELD_DESC = new org.apache.thrift.protocol.TField("email", org.apache.thrift.protocol.TType.STRING, (short)3);
+  private static final org.apache.thrift.protocol.TField ID_FIELD_DESC = new org.apache.thrift.protocol.TField("id", org.apache.thrift.protocol.TType.STRING, (short)1);
+  private static final org.apache.thrift.protocol.TField TAG_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("tag_id", org.apache.thrift.protocol.TType.STRING, (short)2);
+  private static final org.apache.thrift.protocol.TField FIRST_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("first_name", org.apache.thrift.protocol.TType.STRING, (short)3);
+  private static final org.apache.thrift.protocol.TField LAST_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("last_name", org.apache.thrift.protocol.TType.STRING, (short)4);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -40,15 +41,17 @@ public class Patient implements org.apache.thrift.TBase<Patient, Patient._Fields
     schemes.put(TupleScheme.class, new PatientTupleSchemeFactory());
   }
 
+  public String id; // required
+  public String tag_id; // required
   public String first_name; // required
   public String last_name; // required
-  public String email; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    FIRST_NAME((short)1, "first_name"),
-    LAST_NAME((short)2, "last_name"),
-    EMAIL((short)3, "email");
+    ID((short)1, "id"),
+    TAG_ID((short)2, "tag_id"),
+    FIRST_NAME((short)3, "first_name"),
+    LAST_NAME((short)4, "last_name");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -63,12 +66,14 @@ public class Patient implements org.apache.thrift.TBase<Patient, Patient._Fields
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // FIRST_NAME
+        case 1: // ID
+          return ID;
+        case 2: // TAG_ID
+          return TAG_ID;
+        case 3: // FIRST_NAME
           return FIRST_NAME;
-        case 2: // LAST_NAME
+        case 4: // LAST_NAME
           return LAST_NAME;
-        case 3: // EMAIL
-          return EMAIL;
         default:
           return null;
       }
@@ -112,11 +117,13 @@ public class Patient implements org.apache.thrift.TBase<Patient, Patient._Fields
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
+    tmpMap.put(_Fields.ID, new org.apache.thrift.meta_data.FieldMetaData("id", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING        , "ObjectID")));
+    tmpMap.put(_Fields.TAG_ID, new org.apache.thrift.meta_data.FieldMetaData("tag_id", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING        , "NFCID")));
     tmpMap.put(_Fields.FIRST_NAME, new org.apache.thrift.meta_data.FieldMetaData("first_name", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.LAST_NAME, new org.apache.thrift.meta_data.FieldMetaData("last_name", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
-    tmpMap.put(_Fields.EMAIL, new org.apache.thrift.meta_data.FieldMetaData("email", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(Patient.class, metaDataMap);
@@ -126,28 +133,33 @@ public class Patient implements org.apache.thrift.TBase<Patient, Patient._Fields
   }
 
   public Patient(
+    String id,
+    String tag_id,
     String first_name,
-    String last_name,
-    String email)
+    String last_name)
   {
     this();
+    this.id = id;
+    this.tag_id = tag_id;
     this.first_name = first_name;
     this.last_name = last_name;
-    this.email = email;
   }
 
   /**
    * Performs a deep copy on <i>other</i>.
    */
   public Patient(Patient other) {
+    if (other.isSetId()) {
+      this.id = other.id;
+    }
+    if (other.isSetTag_id()) {
+      this.tag_id = other.tag_id;
+    }
     if (other.isSetFirst_name()) {
       this.first_name = other.first_name;
     }
     if (other.isSetLast_name()) {
       this.last_name = other.last_name;
-    }
-    if (other.isSetEmail()) {
-      this.email = other.email;
     }
   }
 
@@ -157,9 +169,58 @@ public class Patient implements org.apache.thrift.TBase<Patient, Patient._Fields
 
   @Override
   public void clear() {
+    this.id = null;
+    this.tag_id = null;
     this.first_name = null;
     this.last_name = null;
-    this.email = null;
+  }
+
+  public String getId() {
+    return this.id;
+  }
+
+  public Patient setId(String id) {
+    this.id = id;
+    return this;
+  }
+
+  public void unsetId() {
+    this.id = null;
+  }
+
+  /** Returns true if field id is set (has been assigned a value) and false otherwise */
+  public boolean isSetId() {
+    return this.id != null;
+  }
+
+  public void setIdIsSet(boolean value) {
+    if (!value) {
+      this.id = null;
+    }
+  }
+
+  public String getTag_id() {
+    return this.tag_id;
+  }
+
+  public Patient setTag_id(String tag_id) {
+    this.tag_id = tag_id;
+    return this;
+  }
+
+  public void unsetTag_id() {
+    this.tag_id = null;
+  }
+
+  /** Returns true if field tag_id is set (has been assigned a value) and false otherwise */
+  public boolean isSetTag_id() {
+    return this.tag_id != null;
+  }
+
+  public void setTag_idIsSet(boolean value) {
+    if (!value) {
+      this.tag_id = null;
+    }
   }
 
   public String getFirst_name() {
@@ -210,32 +271,24 @@ public class Patient implements org.apache.thrift.TBase<Patient, Patient._Fields
     }
   }
 
-  public String getEmail() {
-    return this.email;
-  }
-
-  public Patient setEmail(String email) {
-    this.email = email;
-    return this;
-  }
-
-  public void unsetEmail() {
-    this.email = null;
-  }
-
-  /** Returns true if field email is set (has been assigned a value) and false otherwise */
-  public boolean isSetEmail() {
-    return this.email != null;
-  }
-
-  public void setEmailIsSet(boolean value) {
-    if (!value) {
-      this.email = null;
-    }
-  }
-
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
+    case ID:
+      if (value == null) {
+        unsetId();
+      } else {
+        setId((String)value);
+      }
+      break;
+
+    case TAG_ID:
+      if (value == null) {
+        unsetTag_id();
+      } else {
+        setTag_id((String)value);
+      }
+      break;
+
     case FIRST_NAME:
       if (value == null) {
         unsetFirst_name();
@@ -252,27 +305,22 @@ public class Patient implements org.apache.thrift.TBase<Patient, Patient._Fields
       }
       break;
 
-    case EMAIL:
-      if (value == null) {
-        unsetEmail();
-      } else {
-        setEmail((String)value);
-      }
-      break;
-
     }
   }
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
+    case ID:
+      return getId();
+
+    case TAG_ID:
+      return getTag_id();
+
     case FIRST_NAME:
       return getFirst_name();
 
     case LAST_NAME:
       return getLast_name();
-
-    case EMAIL:
-      return getEmail();
 
     }
     throw new IllegalStateException();
@@ -285,12 +333,14 @@ public class Patient implements org.apache.thrift.TBase<Patient, Patient._Fields
     }
 
     switch (field) {
+    case ID:
+      return isSetId();
+    case TAG_ID:
+      return isSetTag_id();
     case FIRST_NAME:
       return isSetFirst_name();
     case LAST_NAME:
       return isSetLast_name();
-    case EMAIL:
-      return isSetEmail();
     }
     throw new IllegalStateException();
   }
@@ -307,6 +357,24 @@ public class Patient implements org.apache.thrift.TBase<Patient, Patient._Fields
   public boolean equals(Patient that) {
     if (that == null)
       return false;
+
+    boolean this_present_id = true && this.isSetId();
+    boolean that_present_id = true && that.isSetId();
+    if (this_present_id || that_present_id) {
+      if (!(this_present_id && that_present_id))
+        return false;
+      if (!this.id.equals(that.id))
+        return false;
+    }
+
+    boolean this_present_tag_id = true && this.isSetTag_id();
+    boolean that_present_tag_id = true && that.isSetTag_id();
+    if (this_present_tag_id || that_present_tag_id) {
+      if (!(this_present_tag_id && that_present_tag_id))
+        return false;
+      if (!this.tag_id.equals(that.tag_id))
+        return false;
+    }
 
     boolean this_present_first_name = true && this.isSetFirst_name();
     boolean that_present_first_name = true && that.isSetFirst_name();
@@ -326,15 +394,6 @@ public class Patient implements org.apache.thrift.TBase<Patient, Patient._Fields
         return false;
     }
 
-    boolean this_present_email = true && this.isSetEmail();
-    boolean that_present_email = true && that.isSetEmail();
-    if (this_present_email || that_present_email) {
-      if (!(this_present_email && that_present_email))
-        return false;
-      if (!this.email.equals(that.email))
-        return false;
-    }
-
     return true;
   }
 
@@ -351,6 +410,26 @@ public class Patient implements org.apache.thrift.TBase<Patient, Patient._Fields
     int lastComparison = 0;
     Patient typedOther = (Patient)other;
 
+    lastComparison = Boolean.valueOf(isSetId()).compareTo(typedOther.isSetId());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetId()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.id, typedOther.id);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
+    lastComparison = Boolean.valueOf(isSetTag_id()).compareTo(typedOther.isSetTag_id());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetTag_id()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.tag_id, typedOther.tag_id);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
     lastComparison = Boolean.valueOf(isSetFirst_name()).compareTo(typedOther.isSetFirst_name());
     if (lastComparison != 0) {
       return lastComparison;
@@ -367,16 +446,6 @@ public class Patient implements org.apache.thrift.TBase<Patient, Patient._Fields
     }
     if (isSetLast_name()) {
       lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.last_name, typedOther.last_name);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetEmail()).compareTo(typedOther.isSetEmail());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetEmail()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.email, typedOther.email);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -401,6 +470,22 @@ public class Patient implements org.apache.thrift.TBase<Patient, Patient._Fields
     StringBuilder sb = new StringBuilder("Patient(");
     boolean first = true;
 
+    sb.append("id:");
+    if (this.id == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.id);
+    }
+    first = false;
+    if (!first) sb.append(", ");
+    sb.append("tag_id:");
+    if (this.tag_id == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.tag_id);
+    }
+    first = false;
+    if (!first) sb.append(", ");
     sb.append("first_name:");
     if (this.first_name == null) {
       sb.append("null");
@@ -414,14 +499,6 @@ public class Patient implements org.apache.thrift.TBase<Patient, Patient._Fields
       sb.append("null");
     } else {
       sb.append(this.last_name);
-    }
-    first = false;
-    if (!first) sb.append(", ");
-    sb.append("email:");
-    if (this.email == null) {
-      sb.append("null");
-    } else {
-      sb.append(this.email);
     }
     first = false;
     sb.append(")");
@@ -466,7 +543,23 @@ public class Patient implements org.apache.thrift.TBase<Patient, Patient._Fields
           break;
         }
         switch (schemeField.id) {
-          case 1: // FIRST_NAME
+          case 1: // ID
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+              struct.id = iprot.readString();
+              struct.setIdIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 2: // TAG_ID
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+              struct.tag_id = iprot.readString();
+              struct.setTag_idIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 3: // FIRST_NAME
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.first_name = iprot.readString();
               struct.setFirst_nameIsSet(true);
@@ -474,18 +567,10 @@ public class Patient implements org.apache.thrift.TBase<Patient, Patient._Fields
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 2: // LAST_NAME
+          case 4: // LAST_NAME
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.last_name = iprot.readString();
               struct.setLast_nameIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 3: // EMAIL
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-              struct.email = iprot.readString();
-              struct.setEmailIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -505,6 +590,16 @@ public class Patient implements org.apache.thrift.TBase<Patient, Patient._Fields
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
+      if (struct.id != null) {
+        oprot.writeFieldBegin(ID_FIELD_DESC);
+        oprot.writeString(struct.id);
+        oprot.writeFieldEnd();
+      }
+      if (struct.tag_id != null) {
+        oprot.writeFieldBegin(TAG_ID_FIELD_DESC);
+        oprot.writeString(struct.tag_id);
+        oprot.writeFieldEnd();
+      }
       if (struct.first_name != null) {
         oprot.writeFieldBegin(FIRST_NAME_FIELD_DESC);
         oprot.writeString(struct.first_name);
@@ -513,11 +608,6 @@ public class Patient implements org.apache.thrift.TBase<Patient, Patient._Fields
       if (struct.last_name != null) {
         oprot.writeFieldBegin(LAST_NAME_FIELD_DESC);
         oprot.writeString(struct.last_name);
-        oprot.writeFieldEnd();
-      }
-      if (struct.email != null) {
-        oprot.writeFieldBegin(EMAIL_FIELD_DESC);
-        oprot.writeString(struct.email);
         oprot.writeFieldEnd();
       }
       oprot.writeFieldStop();
@@ -538,42 +628,52 @@ public class Patient implements org.apache.thrift.TBase<Patient, Patient._Fields
     public void write(org.apache.thrift.protocol.TProtocol prot, Patient struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
       BitSet optionals = new BitSet();
-      if (struct.isSetFirst_name()) {
+      if (struct.isSetId()) {
         optionals.set(0);
       }
-      if (struct.isSetLast_name()) {
+      if (struct.isSetTag_id()) {
         optionals.set(1);
       }
-      if (struct.isSetEmail()) {
+      if (struct.isSetFirst_name()) {
         optionals.set(2);
       }
-      oprot.writeBitSet(optionals, 3);
+      if (struct.isSetLast_name()) {
+        optionals.set(3);
+      }
+      oprot.writeBitSet(optionals, 4);
+      if (struct.isSetId()) {
+        oprot.writeString(struct.id);
+      }
+      if (struct.isSetTag_id()) {
+        oprot.writeString(struct.tag_id);
+      }
       if (struct.isSetFirst_name()) {
         oprot.writeString(struct.first_name);
       }
       if (struct.isSetLast_name()) {
         oprot.writeString(struct.last_name);
       }
-      if (struct.isSetEmail()) {
-        oprot.writeString(struct.email);
-      }
     }
 
     @Override
     public void read(org.apache.thrift.protocol.TProtocol prot, Patient struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
-      BitSet incoming = iprot.readBitSet(3);
+      BitSet incoming = iprot.readBitSet(4);
       if (incoming.get(0)) {
+        struct.id = iprot.readString();
+        struct.setIdIsSet(true);
+      }
+      if (incoming.get(1)) {
+        struct.tag_id = iprot.readString();
+        struct.setTag_idIsSet(true);
+      }
+      if (incoming.get(2)) {
         struct.first_name = iprot.readString();
         struct.setFirst_nameIsSet(true);
       }
-      if (incoming.get(1)) {
+      if (incoming.get(3)) {
         struct.last_name = iprot.readString();
         struct.setLast_nameIsSet(true);
-      }
-      if (incoming.get(2)) {
-        struct.email = iprot.readString();
-        struct.setEmailIsSet(true);
       }
     }
   }

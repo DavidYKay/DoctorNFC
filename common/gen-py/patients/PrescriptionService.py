@@ -18,27 +18,31 @@ except:
 
 
 class Iface:
-  def add_medication(self, medication):
+  def add_prescription(self, prescription):
     """
     Parameters:
-     - medication
+     - prescription
     """
     pass
 
-  def remove_medication(self, medication):
+  def remove_prescription(self, prescription):
     """
     Parameters:
-     - medication
+     - prescription
     """
     pass
 
-  def get_medications(self, ):
-    pass
-
-  def get_medication_by_tag_id(self, tag_id):
+  def get_prescription_by_tag_id(self, tag_id):
     """
     Parameters:
      - tag_id
+    """
+    pass
+
+  def get_prescriptions_for_patient(self, pantient_id):
+    """
+    Parameters:
+     - pantient_id
     """
     pass
 
@@ -50,130 +54,135 @@ class Client(Iface):
       self._oprot = oprot
     self._seqid = 0
 
-  def add_medication(self, medication):
+  def add_prescription(self, prescription):
     """
     Parameters:
-     - medication
+     - prescription
     """
-    self.send_add_medication(medication)
-    return self.recv_add_medication()
+    self.send_add_prescription(prescription)
+    return self.recv_add_prescription()
 
-  def send_add_medication(self, medication):
-    self._oprot.writeMessageBegin('add_medication', TMessageType.CALL, self._seqid)
-    args = add_medication_args()
-    args.medication = medication
+  def send_add_prescription(self, prescription):
+    self._oprot.writeMessageBegin('add_prescription', TMessageType.CALL, self._seqid)
+    args = add_prescription_args()
+    args.prescription = prescription
     args.write(self._oprot)
     self._oprot.writeMessageEnd()
     self._oprot.trans.flush()
 
-  def recv_add_medication(self, ):
+  def recv_add_prescription(self, ):
     (fname, mtype, rseqid) = self._iprot.readMessageBegin()
     if mtype == TMessageType.EXCEPTION:
       x = TApplicationException()
       x.read(self._iprot)
       self._iprot.readMessageEnd()
       raise x
-    result = add_medication_result()
+    result = add_prescription_result()
     result.read(self._iprot)
     self._iprot.readMessageEnd()
     if result.success is not None:
       return result.success
-    raise TApplicationException(TApplicationException.MISSING_RESULT, "add_medication failed: unknown result");
+    raise TApplicationException(TApplicationException.MISSING_RESULT, "add_prescription failed: unknown result");
 
-  def remove_medication(self, medication):
+  def remove_prescription(self, prescription):
     """
     Parameters:
-     - medication
+     - prescription
     """
-    self.send_remove_medication(medication)
-    return self.recv_remove_medication()
+    self.send_remove_prescription(prescription)
+    return self.recv_remove_prescription()
 
-  def send_remove_medication(self, medication):
-    self._oprot.writeMessageBegin('remove_medication', TMessageType.CALL, self._seqid)
-    args = remove_medication_args()
-    args.medication = medication
+  def send_remove_prescription(self, prescription):
+    self._oprot.writeMessageBegin('remove_prescription', TMessageType.CALL, self._seqid)
+    args = remove_prescription_args()
+    args.prescription = prescription
     args.write(self._oprot)
     self._oprot.writeMessageEnd()
     self._oprot.trans.flush()
 
-  def recv_remove_medication(self, ):
+  def recv_remove_prescription(self, ):
     (fname, mtype, rseqid) = self._iprot.readMessageBegin()
     if mtype == TMessageType.EXCEPTION:
       x = TApplicationException()
       x.read(self._iprot)
       self._iprot.readMessageEnd()
       raise x
-    result = remove_medication_result()
+    result = remove_prescription_result()
     result.read(self._iprot)
     self._iprot.readMessageEnd()
     if result.success is not None:
       return result.success
-    raise TApplicationException(TApplicationException.MISSING_RESULT, "remove_medication failed: unknown result");
+    raise TApplicationException(TApplicationException.MISSING_RESULT, "remove_prescription failed: unknown result");
 
-  def get_medications(self, ):
-    self.send_get_medications()
-    return self.recv_get_medications()
-
-  def send_get_medications(self, ):
-    self._oprot.writeMessageBegin('get_medications', TMessageType.CALL, self._seqid)
-    args = get_medications_args()
-    args.write(self._oprot)
-    self._oprot.writeMessageEnd()
-    self._oprot.trans.flush()
-
-  def recv_get_medications(self, ):
-    (fname, mtype, rseqid) = self._iprot.readMessageBegin()
-    if mtype == TMessageType.EXCEPTION:
-      x = TApplicationException()
-      x.read(self._iprot)
-      self._iprot.readMessageEnd()
-      raise x
-    result = get_medications_result()
-    result.read(self._iprot)
-    self._iprot.readMessageEnd()
-    if result.success is not None:
-      return result.success
-    raise TApplicationException(TApplicationException.MISSING_RESULT, "get_medications failed: unknown result");
-
-  def get_medication_by_tag_id(self, tag_id):
+  def get_prescription_by_tag_id(self, tag_id):
     """
     Parameters:
      - tag_id
     """
-    self.send_get_medication_by_tag_id(tag_id)
-    return self.recv_get_medication_by_tag_id()
+    self.send_get_prescription_by_tag_id(tag_id)
+    return self.recv_get_prescription_by_tag_id()
 
-  def send_get_medication_by_tag_id(self, tag_id):
-    self._oprot.writeMessageBegin('get_medication_by_tag_id', TMessageType.CALL, self._seqid)
-    args = get_medication_by_tag_id_args()
+  def send_get_prescription_by_tag_id(self, tag_id):
+    self._oprot.writeMessageBegin('get_prescription_by_tag_id', TMessageType.CALL, self._seqid)
+    args = get_prescription_by_tag_id_args()
     args.tag_id = tag_id
     args.write(self._oprot)
     self._oprot.writeMessageEnd()
     self._oprot.trans.flush()
 
-  def recv_get_medication_by_tag_id(self, ):
+  def recv_get_prescription_by_tag_id(self, ):
     (fname, mtype, rseqid) = self._iprot.readMessageBegin()
     if mtype == TMessageType.EXCEPTION:
       x = TApplicationException()
       x.read(self._iprot)
       self._iprot.readMessageEnd()
       raise x
-    result = get_medication_by_tag_id_result()
+    result = get_prescription_by_tag_id_result()
     result.read(self._iprot)
     self._iprot.readMessageEnd()
     if result.success is not None:
       return result.success
-    raise TApplicationException(TApplicationException.MISSING_RESULT, "get_medication_by_tag_id failed: unknown result");
+    raise TApplicationException(TApplicationException.MISSING_RESULT, "get_prescription_by_tag_id failed: unknown result");
+
+  def get_prescriptions_for_patient(self, pantient_id):
+    """
+    Parameters:
+     - pantient_id
+    """
+    self.send_get_prescriptions_for_patient(pantient_id)
+    return self.recv_get_prescriptions_for_patient()
+
+  def send_get_prescriptions_for_patient(self, pantient_id):
+    self._oprot.writeMessageBegin('get_prescriptions_for_patient', TMessageType.CALL, self._seqid)
+    args = get_prescriptions_for_patient_args()
+    args.pantient_id = pantient_id
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()
+
+  def recv_get_prescriptions_for_patient(self, ):
+    (fname, mtype, rseqid) = self._iprot.readMessageBegin()
+    if mtype == TMessageType.EXCEPTION:
+      x = TApplicationException()
+      x.read(self._iprot)
+      self._iprot.readMessageEnd()
+      raise x
+    result = get_prescriptions_for_patient_result()
+    result.read(self._iprot)
+    self._iprot.readMessageEnd()
+    if result.success is not None:
+      return result.success
+    raise TApplicationException(TApplicationException.MISSING_RESULT, "get_prescriptions_for_patient failed: unknown result");
 
 
 class Processor(Iface, TProcessor):
   def __init__(self, handler):
     self._handler = handler
     self._processMap = {}
-    self._processMap["add_medication"] = Processor.process_add_medication
-    self._processMap["remove_medication"] = Processor.process_remove_medication
-    self._processMap["get_medications"] = Processor.process_get_medications
-    self._processMap["get_medication_by_tag_id"] = Processor.process_get_medication_by_tag_id
+    self._processMap["add_prescription"] = Processor.process_add_prescription
+    self._processMap["remove_prescription"] = Processor.process_remove_prescription
+    self._processMap["get_prescription_by_tag_id"] = Processor.process_get_prescription_by_tag_id
+    self._processMap["get_prescriptions_for_patient"] = Processor.process_get_prescriptions_for_patient
 
   def process(self, iprot, oprot):
     (name, type, seqid) = iprot.readMessageBegin()
@@ -190,46 +199,46 @@ class Processor(Iface, TProcessor):
       self._processMap[name](self, seqid, iprot, oprot)
     return True
 
-  def process_add_medication(self, seqid, iprot, oprot):
-    args = add_medication_args()
+  def process_add_prescription(self, seqid, iprot, oprot):
+    args = add_prescription_args()
     args.read(iprot)
     iprot.readMessageEnd()
-    result = add_medication_result()
-    result.success = self._handler.add_medication(args.medication)
-    oprot.writeMessageBegin("add_medication", TMessageType.REPLY, seqid)
+    result = add_prescription_result()
+    result.success = self._handler.add_prescription(args.prescription)
+    oprot.writeMessageBegin("add_prescription", TMessageType.REPLY, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()
     oprot.trans.flush()
 
-  def process_remove_medication(self, seqid, iprot, oprot):
-    args = remove_medication_args()
+  def process_remove_prescription(self, seqid, iprot, oprot):
+    args = remove_prescription_args()
     args.read(iprot)
     iprot.readMessageEnd()
-    result = remove_medication_result()
-    result.success = self._handler.remove_medication(args.medication)
-    oprot.writeMessageBegin("remove_medication", TMessageType.REPLY, seqid)
+    result = remove_prescription_result()
+    result.success = self._handler.remove_prescription(args.prescription)
+    oprot.writeMessageBegin("remove_prescription", TMessageType.REPLY, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()
     oprot.trans.flush()
 
-  def process_get_medications(self, seqid, iprot, oprot):
-    args = get_medications_args()
+  def process_get_prescription_by_tag_id(self, seqid, iprot, oprot):
+    args = get_prescription_by_tag_id_args()
     args.read(iprot)
     iprot.readMessageEnd()
-    result = get_medications_result()
-    result.success = self._handler.get_medications()
-    oprot.writeMessageBegin("get_medications", TMessageType.REPLY, seqid)
+    result = get_prescription_by_tag_id_result()
+    result.success = self._handler.get_prescription_by_tag_id(args.tag_id)
+    oprot.writeMessageBegin("get_prescription_by_tag_id", TMessageType.REPLY, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()
     oprot.trans.flush()
 
-  def process_get_medication_by_tag_id(self, seqid, iprot, oprot):
-    args = get_medication_by_tag_id_args()
+  def process_get_prescriptions_for_patient(self, seqid, iprot, oprot):
+    args = get_prescriptions_for_patient_args()
     args.read(iprot)
     iprot.readMessageEnd()
-    result = get_medication_by_tag_id_result()
-    result.success = self._handler.get_medication_by_tag_id(args.tag_id)
-    oprot.writeMessageBegin("get_medication_by_tag_id", TMessageType.REPLY, seqid)
+    result = get_prescriptions_for_patient_result()
+    result.success = self._handler.get_prescriptions_for_patient(args.pantient_id)
+    oprot.writeMessageBegin("get_prescriptions_for_patient", TMessageType.REPLY, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()
     oprot.trans.flush()
@@ -237,19 +246,19 @@ class Processor(Iface, TProcessor):
 
 # HELPER FUNCTIONS AND STRUCTURES
 
-class add_medication_args:
+class add_prescription_args:
   """
   Attributes:
-   - medication
+   - prescription
   """
 
   thrift_spec = (
     None, # 0
-    (1, TType.STRUCT, 'medication', (Medication, Medication.thrift_spec), None, ), # 1
+    (1, TType.STRUCT, 'prescription', (Prescription, Prescription.thrift_spec), None, ), # 1
   )
 
-  def __init__(self, medication=None,):
-    self.medication = medication
+  def __init__(self, prescription=None,):
+    self.prescription = prescription
 
   def read(self, iprot):
     if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
@@ -262,8 +271,8 @@ class add_medication_args:
         break
       if fid == 1:
         if ftype == TType.STRUCT:
-          self.medication = Medication()
-          self.medication.read(iprot)
+          self.prescription = Prescription()
+          self.prescription.read(iprot)
         else:
           iprot.skip(ftype)
       else:
@@ -275,10 +284,10 @@ class add_medication_args:
     if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
       oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
       return
-    oprot.writeStructBegin('add_medication_args')
-    if self.medication is not None:
-      oprot.writeFieldBegin('medication', TType.STRUCT, 1)
-      self.medication.write(oprot)
+    oprot.writeStructBegin('add_prescription_args')
+    if self.prescription is not None:
+      oprot.writeFieldBegin('prescription', TType.STRUCT, 1)
+      self.prescription.write(oprot)
       oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()
@@ -298,7 +307,7 @@ class add_medication_args:
   def __ne__(self, other):
     return not (self == other)
 
-class add_medication_result:
+class add_prescription_result:
   """
   Attributes:
    - success
@@ -334,7 +343,7 @@ class add_medication_result:
     if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
       oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
       return
-    oprot.writeStructBegin('add_medication_result')
+    oprot.writeStructBegin('add_prescription_result')
     if self.success is not None:
       oprot.writeFieldBegin('success', TType.BOOL, 0)
       oprot.writeBool(self.success)
@@ -357,19 +366,19 @@ class add_medication_result:
   def __ne__(self, other):
     return not (self == other)
 
-class remove_medication_args:
+class remove_prescription_args:
   """
   Attributes:
-   - medication
+   - prescription
   """
 
   thrift_spec = (
     None, # 0
-    (1, TType.STRUCT, 'medication', (Medication, Medication.thrift_spec), None, ), # 1
+    (1, TType.STRUCT, 'prescription', (Prescription, Prescription.thrift_spec), None, ), # 1
   )
 
-  def __init__(self, medication=None,):
-    self.medication = medication
+  def __init__(self, prescription=None,):
+    self.prescription = prescription
 
   def read(self, iprot):
     if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
@@ -382,8 +391,8 @@ class remove_medication_args:
         break
       if fid == 1:
         if ftype == TType.STRUCT:
-          self.medication = Medication()
-          self.medication.read(iprot)
+          self.prescription = Prescription()
+          self.prescription.read(iprot)
         else:
           iprot.skip(ftype)
       else:
@@ -395,10 +404,10 @@ class remove_medication_args:
     if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
       oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
       return
-    oprot.writeStructBegin('remove_medication_args')
-    if self.medication is not None:
-      oprot.writeFieldBegin('medication', TType.STRUCT, 1)
-      self.medication.write(oprot)
+    oprot.writeStructBegin('remove_prescription_args')
+    if self.prescription is not None:
+      oprot.writeFieldBegin('prescription', TType.STRUCT, 1)
+      self.prescription.write(oprot)
       oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()
@@ -418,7 +427,7 @@ class remove_medication_args:
   def __ne__(self, other):
     return not (self == other)
 
-class remove_medication_result:
+class remove_prescription_result:
   """
   Attributes:
    - success
@@ -454,7 +463,7 @@ class remove_medication_result:
     if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
       oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
       return
-    oprot.writeStructBegin('remove_medication_result')
+    oprot.writeStructBegin('remove_prescription_result')
     if self.success is not None:
       oprot.writeFieldBegin('success', TType.BOOL, 0)
       oprot.writeBool(self.success)
@@ -477,117 +486,7 @@ class remove_medication_result:
   def __ne__(self, other):
     return not (self == other)
 
-class get_medications_args:
-
-  thrift_spec = (
-  )
-
-  def read(self, iprot):
-    if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
-      fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
-      return
-    iprot.readStructBegin()
-    while True:
-      (fname, ftype, fid) = iprot.readFieldBegin()
-      if ftype == TType.STOP:
-        break
-      else:
-        iprot.skip(ftype)
-      iprot.readFieldEnd()
-    iprot.readStructEnd()
-
-  def write(self, oprot):
-    if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
-      oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
-      return
-    oprot.writeStructBegin('get_medications_args')
-    oprot.writeFieldStop()
-    oprot.writeStructEnd()
-
-  def validate(self):
-    return
-
-
-  def __repr__(self):
-    L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
-    return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
-
-  def __eq__(self, other):
-    return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
-
-  def __ne__(self, other):
-    return not (self == other)
-
-class get_medications_result:
-  """
-  Attributes:
-   - success
-  """
-
-  thrift_spec = (
-    (0, TType.LIST, 'success', (TType.STRUCT,(Medication, Medication.thrift_spec)), None, ), # 0
-  )
-
-  def __init__(self, success=None,):
-    self.success = success
-
-  def read(self, iprot):
-    if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
-      fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
-      return
-    iprot.readStructBegin()
-    while True:
-      (fname, ftype, fid) = iprot.readFieldBegin()
-      if ftype == TType.STOP:
-        break
-      if fid == 0:
-        if ftype == TType.LIST:
-          self.success = []
-          (_etype24, _size21) = iprot.readListBegin()
-          for _i25 in xrange(_size21):
-            _elem26 = Medication()
-            _elem26.read(iprot)
-            self.success.append(_elem26)
-          iprot.readListEnd()
-        else:
-          iprot.skip(ftype)
-      else:
-        iprot.skip(ftype)
-      iprot.readFieldEnd()
-    iprot.readStructEnd()
-
-  def write(self, oprot):
-    if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
-      oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
-      return
-    oprot.writeStructBegin('get_medications_result')
-    if self.success is not None:
-      oprot.writeFieldBegin('success', TType.LIST, 0)
-      oprot.writeListBegin(TType.STRUCT, len(self.success))
-      for iter27 in self.success:
-        iter27.write(oprot)
-      oprot.writeListEnd()
-      oprot.writeFieldEnd()
-    oprot.writeFieldStop()
-    oprot.writeStructEnd()
-
-  def validate(self):
-    return
-
-
-  def __repr__(self):
-    L = ['%s=%r' % (key, value)
-      for key, value in self.__dict__.iteritems()]
-    return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
-
-  def __eq__(self, other):
-    return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
-
-  def __ne__(self, other):
-    return not (self == other)
-
-class get_medication_by_tag_id_args:
+class get_prescription_by_tag_id_args:
   """
   Attributes:
    - tag_id
@@ -624,7 +523,7 @@ class get_medication_by_tag_id_args:
     if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
       oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
       return
-    oprot.writeStructBegin('get_medication_by_tag_id_args')
+    oprot.writeStructBegin('get_prescription_by_tag_id_args')
     if self.tag_id is not None:
       oprot.writeFieldBegin('tag_id', TType.STRING, 1)
       oprot.writeString(self.tag_id)
@@ -647,14 +546,14 @@ class get_medication_by_tag_id_args:
   def __ne__(self, other):
     return not (self == other)
 
-class get_medication_by_tag_id_result:
+class get_prescription_by_tag_id_result:
   """
   Attributes:
    - success
   """
 
   thrift_spec = (
-    (0, TType.STRUCT, 'success', (Medication, Medication.thrift_spec), None, ), # 0
+    (0, TType.STRUCT, 'success', (Prescription, Prescription.thrift_spec), None, ), # 0
   )
 
   def __init__(self, success=None,):
@@ -671,7 +570,7 @@ class get_medication_by_tag_id_result:
         break
       if fid == 0:
         if ftype == TType.STRUCT:
-          self.success = Medication()
+          self.success = Prescription()
           self.success.read(iprot)
         else:
           iprot.skip(ftype)
@@ -684,10 +583,138 @@ class get_medication_by_tag_id_result:
     if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
       oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
       return
-    oprot.writeStructBegin('get_medication_by_tag_id_result')
+    oprot.writeStructBegin('get_prescription_by_tag_id_result')
     if self.success is not None:
       oprot.writeFieldBegin('success', TType.STRUCT, 0)
       self.success.write(oprot)
+      oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()
+
+  def validate(self):
+    return
+
+
+  def __repr__(self):
+    L = ['%s=%r' % (key, value)
+      for key, value in self.__dict__.iteritems()]
+    return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
+
+  def __eq__(self, other):
+    return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
+
+  def __ne__(self, other):
+    return not (self == other)
+
+class get_prescriptions_for_patient_args:
+  """
+  Attributes:
+   - pantient_id
+  """
+
+  thrift_spec = (
+    None, # 0
+    (1, TType.STRING, 'pantient_id', None, None, ), # 1
+  )
+
+  def __init__(self, pantient_id=None,):
+    self.pantient_id = pantient_id
+
+  def read(self, iprot):
+    if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
+      fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+      return
+    iprot.readStructBegin()
+    while True:
+      (fname, ftype, fid) = iprot.readFieldBegin()
+      if ftype == TType.STOP:
+        break
+      if fid == 1:
+        if ftype == TType.STRING:
+          self.pantient_id = iprot.readString();
+        else:
+          iprot.skip(ftype)
+      else:
+        iprot.skip(ftype)
+      iprot.readFieldEnd()
+    iprot.readStructEnd()
+
+  def write(self, oprot):
+    if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
+      oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+      return
+    oprot.writeStructBegin('get_prescriptions_for_patient_args')
+    if self.pantient_id is not None:
+      oprot.writeFieldBegin('pantient_id', TType.STRING, 1)
+      oprot.writeString(self.pantient_id)
+      oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()
+
+  def validate(self):
+    return
+
+
+  def __repr__(self):
+    L = ['%s=%r' % (key, value)
+      for key, value in self.__dict__.iteritems()]
+    return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
+
+  def __eq__(self, other):
+    return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
+
+  def __ne__(self, other):
+    return not (self == other)
+
+class get_prescriptions_for_patient_result:
+  """
+  Attributes:
+   - success
+  """
+
+  thrift_spec = (
+    (0, TType.LIST, 'success', (TType.STRUCT,(Prescription, Prescription.thrift_spec)), None, ), # 0
+  )
+
+  def __init__(self, success=None,):
+    self.success = success
+
+  def read(self, iprot):
+    if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
+      fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+      return
+    iprot.readStructBegin()
+    while True:
+      (fname, ftype, fid) = iprot.readFieldBegin()
+      if ftype == TType.STOP:
+        break
+      if fid == 0:
+        if ftype == TType.LIST:
+          self.success = []
+          (_etype31, _size28) = iprot.readListBegin()
+          for _i32 in xrange(_size28):
+            _elem33 = Prescription()
+            _elem33.read(iprot)
+            self.success.append(_elem33)
+          iprot.readListEnd()
+        else:
+          iprot.skip(ftype)
+      else:
+        iprot.skip(ftype)
+      iprot.readFieldEnd()
+    iprot.readStructEnd()
+
+  def write(self, oprot):
+    if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
+      oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+      return
+    oprot.writeStructBegin('get_prescriptions_for_patient_result')
+    if self.success is not None:
+      oprot.writeFieldBegin('success', TType.LIST, 0)
+      oprot.writeListBegin(TType.STRUCT, len(self.success))
+      for iter34 in self.success:
+        iter34.write(oprot)
+      oprot.writeListEnd()
       oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()
