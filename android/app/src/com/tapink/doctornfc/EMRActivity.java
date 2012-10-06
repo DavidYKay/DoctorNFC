@@ -126,5 +126,4 @@ public class EMRActivity extends Activity {
 
 
 
-
 }
