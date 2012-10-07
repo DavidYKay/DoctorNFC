@@ -47,20 +47,59 @@
 
         </LinearLayout>
 
-     <LinearLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:padding="6dip"
-            android:orientation="horizontal" >
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CHIEF COMPLAINT:"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
             
-         <TextView
-            android:id="@+id/textView3"
+        </LinearLayout>
+        <View 
+   android:layout_width="fill_parent"
+   android:layout_height="1dp"       
+   android:background="#333333" />
+
+        <TextView
+            android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="6’6” - 185lbs"
-            />
-         
-         </LinearLayout>
+            android:text="• Chest pains"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="• Shortness of breath"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HISTORY:"
+            android:layout_marginTop="10dp"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+<View 
+   android:layout_width="fill_parent"
+   android:layout_height="1dp"       
+   android:background="#333333" />
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Christopher Kennedy, a 28-year-old male with a family history of heart disease. He states that he was having a crushing pain in his chest with no referring pain. His wife drove him to the ER. He is a social drinker and has never smoked. He denies ever experiencing cardiac symptoms before coming into the ER on September, 27th.
+" />
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="On physical examination, Kennedy appeared to be in pain. Auscultation of the heart revealed a low-pitched, rumbling systolic murmur, heard best over the left upper sternal border." />
 
     </LinearLayout>
