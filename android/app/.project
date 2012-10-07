@@ -32,9 +32,9 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>thrift-gen-java</name>
+			<name>gen-java</name>
 			<type>2</type>
-			<location>/home/dk/workspace/hackathon/DoctorNFC/common/gen-java</location>
+			<location>/Users/ckennedy/git/DoctorNFC/common/gen-java</location>
 		</link>
 	</linkedResources>
 </projectDescription>
