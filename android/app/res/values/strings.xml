@@ -8,7 +8,16 @@
   <string name="title_activity_prescribe">Prescribe Drug</string>
 
   <string name="prescribe">Prescribe</string>
+  <string name="warning">Warning!</string>
   
   <string name="search_hint">Search</string>
+  
+  <string name="dialog_confirm_prescribe">Are you sure you want to prescribe this medication?</string>
+  <string name="dialog_confirm_prescribe_verapamil">
+The interaction of Bisoprolol and Verapamil is known to cause adverse effects. Are you sure you want to administer this drug?
+  </string>
+  
+  <string name="ok">OK</string>
+  <string name="cancel">Cancel</string>
 
 </resources>

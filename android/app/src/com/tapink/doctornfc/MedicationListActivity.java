@@ -67,7 +67,7 @@ public class MedicationListActivity extends RoboListActivity {
   protected void onListItemClick(ListView l, View v, int position, long id) {
     String drugName = mAdapter.getItem(position);
     Intent intent = new Intent(this, PrescribeActivity.class);
-    intent.putExtra("DRUG_NAME", drugName);
+    intent.putExtra(Constants.DRUG_NAME, drugName);
 
     startActivityForResult(intent, NEW_PRESCRIPTION_REQUEST);
   }
