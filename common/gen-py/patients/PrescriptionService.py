@@ -39,10 +39,10 @@ class Iface:
     """
     pass
 
-  def get_prescriptions_for_patient(self, pantient_id):
+  def get_prescriptions_for_patient(self, patient_id):
     """
     Parameters:
-     - pantient_id
+     - patient_id
     """
     pass
 
@@ -144,18 +144,18 @@ class Client(Iface):
       return result.success
     raise TApplicationException(TApplicationException.MISSING_RESULT, "get_prescription_by_tag_id failed: unknown result");
 
-  def get_prescriptions_for_patient(self, pantient_id):
+  def get_prescriptions_for_patient(self, patient_id):
     """
     Parameters:
-     - pantient_id
+     - patient_id
     """
-    self.send_get_prescriptions_for_patient(pantient_id)
+    self.send_get_prescriptions_for_patient(patient_id)
     return self.recv_get_prescriptions_for_patient()
 
-  def send_get_prescriptions_for_patient(self, pantient_id):
+  def send_get_prescriptions_for_patient(self, patient_id):
     self._oprot.writeMessageBegin('get_prescriptions_for_patient', TMessageType.CALL, self._seqid)
     args = get_prescriptions_for_patient_args()
-    args.pantient_id = pantient_id
+    args.patient_id = patient_id
     args.write(self._oprot)
     self._oprot.writeMessageEnd()
     self._oprot.trans.flush()
@@ -237,7 +237,7 @@ class Processor(Iface, TProcessor):
     args.read(iprot)
     iprot.readMessageEnd()
     result = get_prescriptions_for_patient_result()
-    result.success = self._handler.get_prescriptions_for_patient(args.pantient_id)
+    result.success = self._handler.get_prescriptions_for_patient(args.patient_id)
     oprot.writeMessageBegin("get_prescriptions_for_patient", TMessageType.REPLY, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()
@@ -609,16 +609,16 @@ class get_prescription_by_tag_id_result:
 class get_prescriptions_for_patient_args:
   """
   Attributes:
-   - pantient_id
+   - patient_id
   """
 
   thrift_spec = (
     None, # 0
-    (1, TType.STRING, 'pantient_id', None, None, ), # 1
+    (1, TType.STRING, 'patient_id', None, None, ), # 1
   )
 
-  def __init__(self, pantient_id=None,):
-    self.pantient_id = pantient_id
+  def __init__(self, patient_id=None,):
+    self.patient_id = patient_id
 
   def read(self, iprot):
     if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
@@ -631,7 +631,7 @@ class get_prescriptions_for_patient_args:
         break
       if fid == 1:
         if ftype == TType.STRING:
-          self.pantient_id = iprot.readString();
+          self.patient_id = iprot.readString();
         else:
           iprot.skip(ftype)
       else:
@@ -644,9 +644,9 @@ class get_prescriptions_for_patient_args:
       oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
       return
     oprot.writeStructBegin('get_prescriptions_for_patient_args')
-    if self.pantient_id is not None:
-      oprot.writeFieldBegin('pantient_id', TType.STRING, 1)
-      oprot.writeString(self.pantient_id)
+    if self.patient_id is not None:
+      oprot.writeFieldBegin('patient_id', TType.STRING, 1)
+      oprot.writeString(self.patient_id)
       oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()

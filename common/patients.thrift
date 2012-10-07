@@ -49,5 +49,5 @@ service PrescriptionService {
     bool remove_prescription(1:Prescription prescription),
     Prescription get_prescription_by_tag_id(1:NFCID tag_id)
 
-    list<Prescription> get_prescriptions_for_patient(1:ObjectID pantient_id)
+    list<Prescription> get_prescriptions_for_patient(1:ObjectID patient_id)
 }

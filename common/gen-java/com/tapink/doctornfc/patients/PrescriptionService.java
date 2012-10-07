@@ -37,7 +37,7 @@ public class PrescriptionService {
 
     public Prescription get_prescription_by_tag_id(String tag_id) throws org.apache.thrift.TException;
 
-    public List<Prescription> get_prescriptions_for_patient(String pantient_id) throws org.apache.thrift.TException;
+    public List<Prescription> get_prescriptions_for_patient(String patient_id) throws org.apache.thrift.TException;
 
   }
 
@@ -49,7 +49,7 @@ public class PrescriptionService {
 
     public void get_prescription_by_tag_id(String tag_id, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.get_prescription_by_tag_id_call> resultHandler) throws org.apache.thrift.TException;
 
-    public void get_prescriptions_for_patient(String pantient_id, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.get_prescriptions_for_patient_call> resultHandler) throws org.apache.thrift.TException;
+    public void get_prescriptions_for_patient(String patient_id, org.apache.thrift.async.AsyncMethodCallback<AsyncClient.get_prescriptions_for_patient_call> resultHandler) throws org.apache.thrift.TException;
 
   }
 
@@ -142,16 +142,16 @@ public class PrescriptionService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "get_prescription_by_tag_id failed: unknown result");
     }
 
-    public List<Prescription> get_prescriptions_for_patient(String pantient_id) throws org.apache.thrift.TException
+    public List<Prescription> get_prescriptions_for_patient(String patient_id) throws org.apache.thrift.TException
     {
-      send_get_prescriptions_for_patient(pantient_id);
+      send_get_prescriptions_for_patient(patient_id);
       return recv_get_prescriptions_for_patient();
     }
 
-    public void send_get_prescriptions_for_patient(String pantient_id) throws org.apache.thrift.TException
+    public void send_get_prescriptions_for_patient(String patient_id) throws org.apache.thrift.TException
     {
       get_prescriptions_for_patient_args args = new get_prescriptions_for_patient_args();
-      args.setPantient_id(pantient_id);
+      args.setPatient_id(patient_id);
       sendBase("get_prescriptions_for_patient", args);
     }
 
@@ -279,24 +279,24 @@ public class PrescriptionService {
       }
     }
 
-    public void get_prescriptions_for_patient(String pantient_id, org.apache.thrift.async.AsyncMethodCallback<get_prescriptions_for_patient_call> resultHandler) throws org.apache.thrift.TException {
+    public void get_prescriptions_for_patient(String patient_id, org.apache.thrift.async.AsyncMethodCallback<get_prescriptions_for_patient_call> resultHandler) throws org.apache.thrift.TException {
       checkReady();
-      get_prescriptions_for_patient_call method_call = new get_prescriptions_for_patient_call(pantient_id, resultHandler, this, ___protocolFactory, ___transport);
+      get_prescriptions_for_patient_call method_call = new get_prescriptions_for_patient_call(patient_id, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
       ___manager.call(method_call);
     }
 
     public static class get_prescriptions_for_patient_call extends org.apache.thrift.async.TAsyncMethodCall {
-      private String pantient_id;
-      public get_prescriptions_for_patient_call(String pantient_id, org.apache.thrift.async.AsyncMethodCallback<get_prescriptions_for_patient_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+      private String patient_id;
+      public get_prescriptions_for_patient_call(String patient_id, org.apache.thrift.async.AsyncMethodCallback<get_prescriptions_for_patient_call> resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
-        this.pantient_id = pantient_id;
+        this.patient_id = patient_id;
       }
 
       public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
         prot.writeMessageBegin(new org.apache.thrift.protocol.TMessage("get_prescriptions_for_patient", org.apache.thrift.protocol.TMessageType.CALL, 0));
         get_prescriptions_for_patient_args args = new get_prescriptions_for_patient_args();
-        args.setPantient_id(pantient_id);
+        args.setPatient_id(patient_id);
         args.write(prot);
         prot.writeMessageEnd();
       }
@@ -392,7 +392,7 @@ public class PrescriptionService {
 
       protected get_prescriptions_for_patient_result getResult(I iface, get_prescriptions_for_patient_args args) throws org.apache.thrift.TException {
         get_prescriptions_for_patient_result result = new get_prescriptions_for_patient_result();
-        result.success = iface.get_prescriptions_for_patient(args.pantient_id);
+        result.success = iface.get_prescriptions_for_patient(args.patient_id);
         return result;
       }
     }
@@ -1014,6 +1014,8 @@ public class PrescriptionService {
 
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
+        // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
+        __isset_bit_vector = new BitSet(1);
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
       } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
@@ -1719,6 +1721,8 @@ public class PrescriptionService {
 
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
+        // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
+        __isset_bit_vector = new BitSet(1);
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
       } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
@@ -2520,7 +2524,7 @@ public class PrescriptionService {
   public static class get_prescriptions_for_patient_args implements org.apache.thrift.TBase<get_prescriptions_for_patient_args, get_prescriptions_for_patient_args._Fields>, java.io.Serializable, Cloneable   {
     private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("get_prescriptions_for_patient_args");
 
-    private static final org.apache.thrift.protocol.TField PANTIENT_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("pantient_id", org.apache.thrift.protocol.TType.STRING, (short)1);
+    private static final org.apache.thrift.protocol.TField PATIENT_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("patient_id", org.apache.thrift.protocol.TType.STRING, (short)1);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
@@ -2528,11 +2532,11 @@ public class PrescriptionService {
       schemes.put(TupleScheme.class, new get_prescriptions_for_patient_argsTupleSchemeFactory());
     }
 
-    public String pantient_id; // required
+    public String patient_id; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-      PANTIENT_ID((short)1, "pantient_id");
+      PATIENT_ID((short)1, "patient_id");
 
       private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -2547,8 +2551,8 @@ public class PrescriptionService {
        */
       public static _Fields findByThriftId(int fieldId) {
         switch(fieldId) {
-          case 1: // PANTIENT_ID
-            return PANTIENT_ID;
+          case 1: // PATIENT_ID
+            return PATIENT_ID;
           default:
             return null;
         }
@@ -2592,7 +2596,7 @@ public class PrescriptionService {
     public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
     static {
       Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-      tmpMap.put(_Fields.PANTIENT_ID, new org.apache.thrift.meta_data.FieldMetaData("pantient_id", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+      tmpMap.put(_Fields.PATIENT_ID, new org.apache.thrift.meta_data.FieldMetaData("patient_id", org.apache.thrift.TFieldRequirementType.DEFAULT, 
           new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING          , "ObjectID")));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
       org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(get_prescriptions_for_patient_args.class, metaDataMap);
@@ -2602,18 +2606,18 @@ public class PrescriptionService {
     }
 
     public get_prescriptions_for_patient_args(
-      String pantient_id)
+      String patient_id)
     {
       this();
-      this.pantient_id = pantient_id;
+      this.patient_id = patient_id;
     }
 
     /**
      * Performs a deep copy on <i>other</i>.
      */
     public get_prescriptions_for_patient_args(get_prescriptions_for_patient_args other) {
-      if (other.isSetPantient_id()) {
-        this.pantient_id = other.pantient_id;
+      if (other.isSetPatient_id()) {
+        this.patient_id = other.patient_id;
       }
     }
 
@@ -2623,40 +2627,40 @@ public class PrescriptionService {
 
     @Override
     public void clear() {
-      this.pantient_id = null;
+      this.patient_id = null;
     }
 
-    public String getPantient_id() {
-      return this.pantient_id;
+    public String getPatient_id() {
+      return this.patient_id;
     }
 
-    public get_prescriptions_for_patient_args setPantient_id(String pantient_id) {
-      this.pantient_id = pantient_id;
+    public get_prescriptions_for_patient_args setPatient_id(String patient_id) {
+      this.patient_id = patient_id;
       return this;
     }
 
-    public void unsetPantient_id() {
-      this.pantient_id = null;
+    public void unsetPatient_id() {
+      this.patient_id = null;
     }
 
-    /** Returns true if field pantient_id is set (has been assigned a value) and false otherwise */
-    public boolean isSetPantient_id() {
-      return this.pantient_id != null;
+    /** Returns true if field patient_id is set (has been assigned a value) and false otherwise */
+    public boolean isSetPatient_id() {
+      return this.patient_id != null;
     }
 
-    public void setPantient_idIsSet(boolean value) {
+    public void setPatient_idIsSet(boolean value) {
       if (!value) {
-        this.pantient_id = null;
+        this.patient_id = null;
       }
     }
 
     public void setFieldValue(_Fields field, Object value) {
       switch (field) {
-      case PANTIENT_ID:
+      case PATIENT_ID:
         if (value == null) {
-          unsetPantient_id();
+          unsetPatient_id();
         } else {
-          setPantient_id((String)value);
+          setPatient_id((String)value);
         }
         break;
 
@@ -2665,8 +2669,8 @@ public class PrescriptionService {
 
     public Object getFieldValue(_Fields field) {
       switch (field) {
-      case PANTIENT_ID:
-        return getPantient_id();
+      case PATIENT_ID:
+        return getPatient_id();
 
       }
       throw new IllegalStateException();
@@ -2679,8 +2683,8 @@ public class PrescriptionService {
       }
 
       switch (field) {
-      case PANTIENT_ID:
-        return isSetPantient_id();
+      case PATIENT_ID:
+        return isSetPatient_id();
       }
       throw new IllegalStateException();
     }
@@ -2698,12 +2702,12 @@ public class PrescriptionService {
       if (that == null)
         return false;
 
-      boolean this_present_pantient_id = true && this.isSetPantient_id();
-      boolean that_present_pantient_id = true && that.isSetPantient_id();
-      if (this_present_pantient_id || that_present_pantient_id) {
-        if (!(this_present_pantient_id && that_present_pantient_id))
+      boolean this_present_patient_id = true && this.isSetPatient_id();
+      boolean that_present_patient_id = true && that.isSetPatient_id();
+      if (this_present_patient_id || that_present_patient_id) {
+        if (!(this_present_patient_id && that_present_patient_id))
           return false;
-        if (!this.pantient_id.equals(that.pantient_id))
+        if (!this.patient_id.equals(that.patient_id))
           return false;
       }
 
@@ -2723,12 +2727,12 @@ public class PrescriptionService {
       int lastComparison = 0;
       get_prescriptions_for_patient_args typedOther = (get_prescriptions_for_patient_args)other;
 
-      lastComparison = Boolean.valueOf(isSetPantient_id()).compareTo(typedOther.isSetPantient_id());
+      lastComparison = Boolean.valueOf(isSetPatient_id()).compareTo(typedOther.isSetPatient_id());
       if (lastComparison != 0) {
         return lastComparison;
       }
-      if (isSetPantient_id()) {
-        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.pantient_id, typedOther.pantient_id);
+      if (isSetPatient_id()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.patient_id, typedOther.patient_id);
         if (lastComparison != 0) {
           return lastComparison;
         }
@@ -2753,11 +2757,11 @@ public class PrescriptionService {
       StringBuilder sb = new StringBuilder("get_prescriptions_for_patient_args(");
       boolean first = true;
 
-      sb.append("pantient_id:");
-      if (this.pantient_id == null) {
+      sb.append("patient_id:");
+      if (this.patient_id == null) {
         sb.append("null");
       } else {
-        sb.append(this.pantient_id);
+        sb.append(this.patient_id);
       }
       first = false;
       sb.append(")");
@@ -2802,10 +2806,10 @@ public class PrescriptionService {
             break;
           }
           switch (schemeField.id) {
-            case 1: // PANTIENT_ID
+            case 1: // PATIENT_ID
               if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
-                struct.pantient_id = iprot.readString();
-                struct.setPantient_idIsSet(true);
+                struct.patient_id = iprot.readString();
+                struct.setPatient_idIsSet(true);
               } else { 
                 org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
               }
@@ -2825,9 +2829,9 @@ public class PrescriptionService {
         struct.validate();
 
         oprot.writeStructBegin(STRUCT_DESC);
-        if (struct.pantient_id != null) {
-          oprot.writeFieldBegin(PANTIENT_ID_FIELD_DESC);
-          oprot.writeString(struct.pantient_id);
+        if (struct.patient_id != null) {
+          oprot.writeFieldBegin(PATIENT_ID_FIELD_DESC);
+          oprot.writeString(struct.patient_id);
           oprot.writeFieldEnd();
         }
         oprot.writeFieldStop();
@@ -2848,12 +2852,12 @@ public class PrescriptionService {
       public void write(org.apache.thrift.protocol.TProtocol prot, get_prescriptions_for_patient_args struct) throws org.apache.thrift.TException {
         TTupleProtocol oprot = (TTupleProtocol) prot;
         BitSet optionals = new BitSet();
-        if (struct.isSetPantient_id()) {
+        if (struct.isSetPatient_id()) {
           optionals.set(0);
         }
         oprot.writeBitSet(optionals, 1);
-        if (struct.isSetPantient_id()) {
-          oprot.writeString(struct.pantient_id);
+        if (struct.isSetPatient_id()) {
+          oprot.writeString(struct.patient_id);
         }
       }
 
@@ -2862,8 +2866,8 @@ public class PrescriptionService {
         TTupleProtocol iprot = (TTupleProtocol) prot;
         BitSet incoming = iprot.readBitSet(1);
         if (incoming.get(0)) {
-          struct.pantient_id = iprot.readString();
-          struct.setPantient_idIsSet(true);
+          struct.patient_id = iprot.readString();
+          struct.setPatient_idIsSet(true);
         }
       }
     }
