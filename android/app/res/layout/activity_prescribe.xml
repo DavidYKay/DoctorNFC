@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f1f5f8" >
+    
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_width="fill_parent"
 android:layout_height="fill_parent"
@@ -183,3 +189,16 @@ android:orientation="horizontal" >
 </EditText>
 
 </LinearLayout>
+
+<Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="#db4f50"
+        android:layout_marginTop="10dp"
+        android:text="+ Prescribe"
+        android:textColor="#ffffff" />
+
+
+</RelativeLayout>
