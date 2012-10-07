@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
-  android:layout_height="match_parent" >
+  android:layout_height="match_parent"
+  android:background="#f1f5f8" >
 
   <TextView
     android:id="@+id/hello"
@@ -10,7 +11,17 @@
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
     android:layout_alignParentTop="true"
-    android:text="My labs go here!"
+    android:text="My notes goes here!"
+    />
+  
+  <Button
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_alignParentBottom="true"
+    android:text="+ Create New Note"
+    android:background="#db4f50"
+    android:textColor="#ffffff"
     />
 
 </RelativeLayout>
