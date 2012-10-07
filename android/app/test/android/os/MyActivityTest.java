@@ -1,4 +1,5 @@
-package com.example;
+//package com.example;
+package android.os;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
@@ -39,6 +40,27 @@ public class MyActivityTest {
       assertThat(matcher.find(), equalTo(true));
     }
 
+
+  }
+
+  @Test
+  public void testLauncher() {
+
+
+    String[] inputs = {
+      "http://doctornfc.com/patients",
+      "http://doctornfc.com/patients/1",
+      "http://doctornfc.com/patients/kennedy",
+    };
+
+    //String regex = "http://doctornfc.com/patients(/[a-zA-Z0-9]+)?";
+    String regex = "http://doctornfc.com/patients(/[a-zA-Z0-9]+)?";
+    android.os.PatternMatcher matcher = new android.os.PatternMatcher(regex, 1);
+
+    for (String input : inputs) {
+//      Matcher matcher = pattern.matcher(input);
+      assertThat(matcher.match(input), equalTo(true));
+    }
 
   }
 }

@@ -30,7 +30,15 @@
         <action android:name="android.nfc.action.NDEF_DISCOVERED" />
         <data android:scheme="http"
           android:host="doctornfc.com"
-          android:pathPattern="/patients(/[a-zA-Z0-9]\+)?"
+          android:pathPattern="/patients"
+          />
+        <data android:scheme="http"
+          android:host="doctornfc.com"
+          android:pathPattern="/patients/([0-9]\+)"
+          />
+        <data android:scheme="http"
+          android:host="doctornfc.com"
+          android:pathPattern="/patients/([a-zA-Z])"
           />
           <!--android:pathPattern="/patients(/[a-zA-Z0-9]\+)?"-->
           <!--android:pathPattern="/patients.*"-->
