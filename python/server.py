@@ -17,6 +17,9 @@ from patients.ttypes import Medication, Prescription, Patient
 connection = mongo.Connection()
 database = connection.doctornfc
 
+def init_objects_from_dict_list(model_class, dict_list):
+  return [init_object_from_dict(model_class, item) for item in dict_list]
+
 def init_object_from_dict(model_class, data_dict):
   instance = model_class()
   instance.__dict__.update(data_dict)
@@ -82,6 +85,12 @@ class MegaHandler(object):
 
   def get_prescription_by_tag_id(self, tag_id):
       return self.handlers['prescriptions'].get_item_by_tag_id(tag_id)
+
+  def get_prescriptions_for_patient(self, patient_id):
+    handler = self.handlers['prescriptions']
+    cursor = handler.collection.find({'patient_id': patient_id})
+    return init_objects_from_dict_list(handler.model_class, list(cursor))
+
 
   """ Patients """
   def add_patient(self, patient):

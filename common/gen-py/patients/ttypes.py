@@ -254,8 +254,9 @@ class Prescription:
   Attributes:
    - id
    - tag_id
-   - patient
-   - medication
+   - patient_id
+   - medication_name
+   - medication_type
    - tablets
    - tablet_size
    - hours_between_doses
@@ -265,18 +266,20 @@ class Prescription:
     None, # 0
     (1, TType.STRING, 'id', None, None, ), # 1
     (2, TType.STRING, 'tag_id', None, None, ), # 2
-    (3, TType.STRUCT, 'patient', (Patient, Patient.thrift_spec), None, ), # 3
-    (4, TType.STRUCT, 'medication', (Medication, Medication.thrift_spec), None, ), # 4
-    (5, TType.I32, 'tablets', None, None, ), # 5
-    (6, TType.I32, 'tablet_size', None, None, ), # 6
-    (7, TType.I32, 'hours_between_doses', None, None, ), # 7
+    (3, TType.STRING, 'patient_id', None, None, ), # 3
+    (4, TType.STRING, 'medication_name', None, None, ), # 4
+    (5, TType.STRING, 'medication_type', None, None, ), # 5
+    (6, TType.I32, 'tablets', None, None, ), # 6
+    (7, TType.I32, 'tablet_size', None, None, ), # 7
+    (8, TType.I32, 'hours_between_doses', None, None, ), # 8
   )
 
-  def __init__(self, id=None, tag_id=None, patient=None, medication=None, tablets=None, tablet_size=None, hours_between_doses=None,):
+  def __init__(self, id=None, tag_id=None, patient_id=None, medication_name=None, medication_type=None, tablets=None, tablet_size=None, hours_between_doses=None,):
     self.id = id
     self.tag_id = tag_id
-    self.patient = patient
-    self.medication = medication
+    self.patient_id = patient_id
+    self.medication_name = medication_name
+    self.medication_type = medication_type
     self.tablets = tablets
     self.tablet_size = tablet_size
     self.hours_between_doses = hours_between_doses
@@ -301,28 +304,31 @@ class Prescription:
         else:
           iprot.skip(ftype)
       elif fid == 3:
-        if ftype == TType.STRUCT:
-          self.patient = Patient()
-          self.patient.read(iprot)
+        if ftype == TType.STRING:
+          self.patient_id = iprot.readString();
         else:
           iprot.skip(ftype)
       elif fid == 4:
-        if ftype == TType.STRUCT:
-          self.medication = Medication()
-          self.medication.read(iprot)
+        if ftype == TType.STRING:
+          self.medication_name = iprot.readString();
         else:
           iprot.skip(ftype)
       elif fid == 5:
-        if ftype == TType.I32:
-          self.tablets = iprot.readI32();
+        if ftype == TType.STRING:
+          self.medication_type = iprot.readString();
         else:
           iprot.skip(ftype)
       elif fid == 6:
         if ftype == TType.I32:
-          self.tablet_size = iprot.readI32();
+          self.tablets = iprot.readI32();
         else:
           iprot.skip(ftype)
       elif fid == 7:
+        if ftype == TType.I32:
+          self.tablet_size = iprot.readI32();
+        else:
+          iprot.skip(ftype)
+      elif fid == 8:
         if ftype == TType.I32:
           self.hours_between_doses = iprot.readI32();
         else:
@@ -345,24 +351,28 @@ class Prescription:
       oprot.writeFieldBegin('tag_id', TType.STRING, 2)
       oprot.writeString(self.tag_id)
       oprot.writeFieldEnd()
-    if self.patient is not None:
-      oprot.writeFieldBegin('patient', TType.STRUCT, 3)
-      self.patient.write(oprot)
+    if self.patient_id is not None:
+      oprot.writeFieldBegin('patient_id', TType.STRING, 3)
+      oprot.writeString(self.patient_id)
       oprot.writeFieldEnd()
-    if self.medication is not None:
-      oprot.writeFieldBegin('medication', TType.STRUCT, 4)
-      self.medication.write(oprot)
+    if self.medication_name is not None:
+      oprot.writeFieldBegin('medication_name', TType.STRING, 4)
+      oprot.writeString(self.medication_name)
+      oprot.writeFieldEnd()
+    if self.medication_type is not None:
+      oprot.writeFieldBegin('medication_type', TType.STRING, 5)
+      oprot.writeString(self.medication_type)
       oprot.writeFieldEnd()
     if self.tablets is not None:
-      oprot.writeFieldBegin('tablets', TType.I32, 5)
+      oprot.writeFieldBegin('tablets', TType.I32, 6)
       oprot.writeI32(self.tablets)
       oprot.writeFieldEnd()
     if self.tablet_size is not None:
-      oprot.writeFieldBegin('tablet_size', TType.I32, 6)
+      oprot.writeFieldBegin('tablet_size', TType.I32, 7)
       oprot.writeI32(self.tablet_size)
       oprot.writeFieldEnd()
     if self.hours_between_doses is not None:
-      oprot.writeFieldBegin('hours_between_doses', TType.I32, 7)
+      oprot.writeFieldBegin('hours_between_doses', TType.I32, 8)
       oprot.writeI32(self.hours_between_doses)
       oprot.writeFieldEnd()
     oprot.writeFieldStop()

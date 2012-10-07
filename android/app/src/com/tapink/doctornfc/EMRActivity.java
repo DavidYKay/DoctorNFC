@@ -1,22 +1,42 @@
 package com.tapink.doctornfc;
 
-import android.app.Activity;
+import java.util.List;
+
+import roboguice.activity.RoboActivity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AnalogClock;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-public class EMRActivity extends Activity {
+import com.google.inject.Inject;
+import com.tapink.doctornfc.adapters.PrescriptionAdapter;
+import com.tapink.doctornfc.callbacks.GetCallback;
+import com.tapink.doctornfc.model.PatientManager;
+import com.tapink.doctornfc.patients.Prescription;
+
+public class EMRActivity extends RoboActivity {
   private TabHost mTabs;
+
+  @Inject
+  private PatientManager mPatientManager;
+
+  private ListView mMedsList;
+  private Context mContext = this;
 
   private static final String[] words = {"lorem", "ipsum", "dolor",
     "sit", "amet", "consectetuer", "adipiscing", "elit",
     "morbi", "vel", "ligula", "vitae", "arcu", "aliquet",
     "mollis", "etiam", "vel", "erat", "placerat", "ante",
     "porttitor", "sodales", "pellentesque", "augue", "purus"};
+
+  protected static final String TAG = "EMRActivity";
 
   ////////////////////////////////////////////////////////////
   // Activity Lifecycle
@@ -31,6 +51,7 @@ public class EMRActivity extends Activity {
     mTabs.setup();
 
     initTabs();
+    refreshPrescriptions();
   }
 
   ////////////////////////////////////////////////////////////
@@ -58,8 +79,19 @@ public class EMRActivity extends Activity {
     //makeSimpleTab("medications");
 
     View medView = getLayoutInflater().inflate(R.layout.medications, mTabs.getTabWidget(), false);
-    ListView medsList = (ListView) medView.findViewById(R.id.meds_list);
-    medsList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, words));
+    Button newMedicationButton = (Button) medView.findViewById(R.id.new_medication_button);
+    newMedicationButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        startActivity(new Intent(
+            mContext,
+            MedicationListActivity.class
+            ));
+      }
+    });
+
+    mMedsList = (ListView) medView.findViewById(R.id.meds_list);
+    mMedsList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, words));
     addTab(
         medView,
         buildTabIndicator("medications"),
@@ -122,5 +154,37 @@ public class EMRActivity extends Activity {
   ////////////////////////////////////////////////////////////
 
 
+
+  ////////////////////////////////////////////////////////////
+  // Network
+  ////////////////////////////////////////////////////////////
+
+  private void refreshPrescriptions() {
+    mPatientManager.listPrescriptions(new GetCallback<Prescription>() {
+
+      @Override
+      public void failed(Exception exception) {
+        Log.e(TAG, exception.toString());
+      }
+
+      @Override
+      public void itemsReceived(List<Prescription> items) {
+        Log.v(TAG, "items: " + items.toString());
+
+        //mMedsList.getAdapter().setListItems(items);
+
+        PrescriptionAdapter adapter = new PrescriptionAdapter(EMRActivity.this);
+        adapter.setListItems(items);
+        mMedsList.setAdapter(adapter);
+      }
+
+      @Override
+      public void itemReceived(Prescription item) {
+        Log.v(TAG, "item: " + item.toString());
+
+      }
+
+    });
+  }
 
 }
