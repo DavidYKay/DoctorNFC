@@ -20,8 +20,13 @@
     </activity>
     
     <activity
+      android:name=".PrescribeActivity"
+      android:label="@string/title_activity_prescribe" >
+    </activity>
+    
+    <activity
       android:name=".EMRActivity"
-      android:label="@string/title_activity_main" >
+      android:label="@string/app_name" >
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 

@@ -3,11 +3,14 @@ package com.tapink.doctornfc;
 import java.util.List;
 
 import roboguice.activity.RoboActivity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AnalogClock;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -25,6 +28,7 @@ public class EMRActivity extends RoboActivity {
   private PatientManager mPatientManager;
 
   private ListView mMedsList;
+  private Context mContext = this;
 
   private static final String[] words = {"lorem", "ipsum", "dolor",
     "sit", "amet", "consectetuer", "adipiscing", "elit",
@@ -75,6 +79,17 @@ public class EMRActivity extends RoboActivity {
     //makeSimpleTab("medications");
 
     View medView = getLayoutInflater().inflate(R.layout.medications, mTabs.getTabWidget(), false);
+    Button newMedicationButton = (Button) medView.findViewById(R.id.new_medication_button);
+    newMedicationButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        startActivity(new Intent(
+            mContext,
+            PrescribeActivity.class
+            ));
+      }
+    });
+
     mMedsList = (ListView) medView.findViewById(R.id.meds_list);
     mMedsList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, words));
     addTab(
