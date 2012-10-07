@@ -57,6 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="CHIEF COMPLAINT:"
+                android:layout_marginTop="10dp"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             
