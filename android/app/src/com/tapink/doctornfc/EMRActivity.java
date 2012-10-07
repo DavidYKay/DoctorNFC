@@ -150,7 +150,6 @@ public class EMRActivity extends RoboActivity {
   ////////////////////////////////////////////////////////////
 
 
-
   ////////////////////////////////////////////////////////////
   // Network
   ////////////////////////////////////////////////////////////
@@ -167,8 +166,6 @@ public class EMRActivity extends RoboActivity {
       public void itemsReceived(List<Prescription> items) {
         Log.v(TAG, "items: " + items.toString());
 
-        //mMedsList.getAdapter().setListItems(items);
-
         PrescriptionAdapter adapter = new PrescriptionAdapter(EMRActivity.this);
         adapter.setListItems(items);
         mMedsList.setAdapter(adapter);
@@ -182,5 +179,4 @@ public class EMRActivity extends RoboActivity {
 
     });
   }
-
 }

@@ -50,13 +50,23 @@ try:
   # Connect!
   transport.open()
 
-  client.add_medication(medication)
+  #client.add_medication(medication)
 
-  medications = client.get_medications()
-  for medication in medications:
-      print "%s, %s, %s, %s" % (medication.name, medication.type,
-                            medication.side_effects,
-                            medication.interacting_drug_ids)
+  #medications = client.get_medications()
+  #for medication in medications:
+  #    print "%s, %s, %s, %s" % (medication.name, medication.type,
+  #                          medication.side_effects,
+  #                          medication.interacting_drug_ids)
+  prescriptions = client.get_prescriptions_for_patient('kennedy')
+  for prescription in prescriptions:
+    print "%s, %s, %s, %s, %s, %s" % (
+        prescription.patient_id,
+        prescription.medication_name,
+        prescription.medication_type,
+        prescription.tablets,
+        prescription.tablet_size,
+        prescription.hours_between_doses,
+                              )
 
 except Thrift.TException, tx:
   print '%s' % (tx.message)
