@@ -12,6 +12,9 @@
   
   <string name="search_hint">Search</string>
   
+  <string name="failure">Failure</string>
+
+  <string name="dialog_upload_failed">Upload Failed!</string>
   <string name="dialog_confirm_prescribe">Are you sure you want to prescribe this medication?</string>
   <string name="dialog_confirm_prescribe_verapamil">
 The interaction of Bisoprolol and Verapamil is known to cause adverse effects. Are you sure you want to administer this drug?

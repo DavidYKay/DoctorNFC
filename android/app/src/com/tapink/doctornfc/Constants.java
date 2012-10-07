@@ -275,7 +275,7 @@ public class Constants {
     "Zyrtec",
     "Zyvox",
   };
-  
+
   public static final String DRUG_NAME = "drug_name";
 
 }
