@@ -66,13 +66,10 @@ public class EMRActivity extends Activity {
         "medications"
         );
 
-    // Labs
-    //makeSimpleTab("labs");
-    makeTabWithLayout(R.layout.labs, "labs");
+    // Notes
+    //makeSimpleTab("notes");
+    makeTabWithLayout(R.layout.notes, "notes");
 
-    // XRay
-    //makeSimpleTab("xray");
-    makeTabWithLayout(R.layout.xray, "xray");
   }
 
   private void makeTabWithLayout(int layoutId, String tabName) {
