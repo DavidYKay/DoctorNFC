@@ -20,6 +20,11 @@
     </activity>
     
     <activity
+      android:name=".MedicationListActivity"
+      android:label="@string/title_activity_prescribe" >
+    </activity>
+    
+    <activity
       android:name=".PrescribeActivity"
       android:label="@string/title_activity_prescribe" >
     </activity>

@@ -85,7 +85,7 @@ public class EMRActivity extends RoboActivity {
       public void onClick(View v) {
         startActivity(new Intent(
             mContext,
-            PrescribeActivity.class
+            MedicationListActivity.class
             ));
       }
     });

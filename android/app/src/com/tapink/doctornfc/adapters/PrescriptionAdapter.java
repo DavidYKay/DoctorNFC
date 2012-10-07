@@ -37,7 +37,6 @@ public class PrescriptionAdapter extends BaseAdapter {
     return mItems.get(position);
   }
 
-
   @Override
   public long getItemId(int position) {
     return position;
@@ -49,7 +48,7 @@ public class PrescriptionAdapter extends BaseAdapter {
       convertView = mLayoutInflater.inflate(R.layout.row_prescription, parent, false);
     } else {
       TextView name = (TextView) convertView.findViewById(R.id.name);
-      TextView tablets = (TextView) convertView.findViewById(R.id.name);
+      TextView tablets = (TextView) convertView.findViewById(R.id.tablets);
 
       name.setText(mItems.get(position).medication_name);
       tablets.setText(String.valueOf(mItems.get(position).tablets));
