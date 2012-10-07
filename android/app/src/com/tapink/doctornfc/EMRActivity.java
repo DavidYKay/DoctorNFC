@@ -30,12 +30,6 @@ public class EMRActivity extends RoboActivity {
   private ListView mMedsList;
   private Context mContext = this;
 
-  private static final String[] words = {"lorem", "ipsum", "dolor",
-    "sit", "amet", "consectetuer", "adipiscing", "elit",
-    "morbi", "vel", "ligula", "vitae", "arcu", "aliquet",
-    "mollis", "etiam", "vel", "erat", "placerat", "ante",
-    "porttitor", "sodales", "pellentesque", "augue", "purus"};
-
   protected static final String TAG = "EMRActivity";
 
   ////////////////////////////////////////////////////////////
@@ -91,7 +85,7 @@ public class EMRActivity extends RoboActivity {
     });
 
     mMedsList = (ListView) medView.findViewById(R.id.meds_list);
-    mMedsList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, words));
+    mMedsList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Constants.LOREM_ARRAY));
     addTab(
         medView,
         buildTabIndicator("medications"),

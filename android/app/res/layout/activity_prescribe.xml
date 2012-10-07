@@ -5,12 +5,20 @@
   android:layout_height="match_parent" >
 
   <TextView
-    android:id="@android:id/empty"
     android:text="Prescription UI goes here"
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_alignParentTop="true"
+    />
+  
+  <Spinner
+    android:id="@+id/spinner"
     android:layout_width="wrap_content" 
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
     android:layout_centerVertical="true"
     />
+
 
 </RelativeLayout>

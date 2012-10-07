@@ -7,6 +7,12 @@ public class Constants {
 
   public static final String PATIENT_ID = "kennedy";
 
+  public static final String[] LOREM_ARRAY = {"lorem", "ipsum", "dolor",
+    "sit", "amet", "consectetuer", "adipiscing", "elit",
+    "morbi", "vel", "ligula", "vitae", "arcu", "aliquet",
+    "mollis", "etiam", "vel", "erat", "placerat", "ante",
+    "porttitor", "sodales", "pellentesque", "augue", "purus"};
+
   public static final String[] MEDICATIONS = {
     "Abilify",
     "AcipHex",
