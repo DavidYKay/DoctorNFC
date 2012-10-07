@@ -22,5 +22,8 @@ The interaction of Bisoprolol and Verapamil is known to cause adverse effects. A
   
   <string name="ok">OK</string>
   <string name="cancel">Cancel</string>
-
+  
+  <string name="notification_short">Time to take 2 tablets of Hydrochlorathizide!</string>
+  <string name="notification_title">Pill Reminder</string>
+  <string name="notification_message">Time to take 2 tablets of Hydrochlorathizide!</string> 
 </resources>
