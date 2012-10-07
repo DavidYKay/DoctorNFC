@@ -23,30 +23,17 @@ public class GetPrescriptionsAsyncTask extends AsyncTask<String, Integer, Option
   private PrescriptionService.Client mClient;
   private GetCallback<Prescription> mCallback;
 
-  //@Override
-  //protected Result doInBackground(Params... arg0) {
-  //  // TODO Auto-generated method stub
-  //  return null;
-  //}
-
-
   public GetPrescriptionsAsyncTask(GetCallback<Prescription> callback) {
     mCallback = callback;
+    try {
+      mClient = initClient();
+    } catch (TTransportException e) {
+      e.printStackTrace();
+      mCallback.failed(e);
+    }
   }
 
   protected Optional<List<Prescription>> doInBackground(String... patientIds) {
-    //int count = urls.length;
-    //long totalSize = 0;
-    //for (int i = 0; i < count; i++) {
-    //  totalSize += Downloader.downloadFile(urls[i]);
-    //  publishProgress((int) ((i / (float) count) * 100));
-    //  // Escape early if cancel() is called
-    //  if (isCancelled()) break;
-    //}
-    //return totalSize;
-
-    //return mClient.get_prescriptions_for_patient(Constants.PATIENT_ID);
-
     List<Prescription> prescriptions = new ArrayList<Prescription>();
     try {
       prescriptions = mClient.get_prescriptions_for_patient(patientIds[0]);
@@ -58,12 +45,10 @@ public class GetPrescriptionsAsyncTask extends AsyncTask<String, Integer, Option
   }
 
   protected void onProgressUpdate(Integer... progress) {
-    //setProgressPercent(progress[0]);
+
   }
 
   protected void onPostExecute(Optional<List<Prescription>> medications) {
-    //showDialog("Downloaded " + result + " bytes");
-    //
     if (medications.isPresent()) {
       mCallback.itemsReceived(medications.get());
     } else {
@@ -80,6 +65,5 @@ public class GetPrescriptionsAsyncTask extends AsyncTask<String, Integer, Option
 
     return new PrescriptionService.Client(protocol);
   }
-
 
 }

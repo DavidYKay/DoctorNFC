@@ -1,4 +1,4 @@
-package com.tapink.doctornfc;
+package com.tapink.doctornfc.model;
 
 import com.tapink.doctornfc.callbacks.AddCallback;
 import com.tapink.doctornfc.callbacks.GetCallback;
