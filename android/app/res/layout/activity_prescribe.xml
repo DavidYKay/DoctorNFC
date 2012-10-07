@@ -131,7 +131,8 @@ android:orientation="horizontal" >
   <Spinner
   android:id="@+id/spinner4"
   android:layout_width="wrap_content"
-  android:layout_height="wrap_content" />
+  android:layout_height="wrap_content"
+  android:minWidth="20dp" />
 
   <TextView
   android:id="@+id/textView9"
@@ -169,12 +170,15 @@ android:layout_gravity="top"
 android:padding="6dip"
 android:orientation="horizontal" >
 
-  <Spinner
-  android:id="@+id/spinner6"
-  android:layout_width="match_parent"
-  android:layout_height="wrap_content" />
-
 </LinearLayout>
 
+<EditText
+    android:id="@+id/editText1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ems="10" >
+
+    <requestFocus />
+</EditText>
 
 </LinearLayout>
