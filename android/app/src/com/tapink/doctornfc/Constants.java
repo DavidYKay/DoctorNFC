@@ -276,4 +276,6 @@ public class Constants {
     "Zyvox",
   };
 
+  public static final String DRUG_NAME = "drug_name";
+
 }

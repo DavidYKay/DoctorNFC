@@ -24,6 +24,8 @@ import com.tapink.doctornfc.patients.Prescription;
 public class EMRActivity extends RoboActivity {
   private TabHost mTabs;
 
+  static final int PRESCRIBE_MEDICATION_REQUEST = 0;
+
   @Inject
   private PatientManager mPatientManager;
 
@@ -46,6 +48,17 @@ public class EMRActivity extends RoboActivity {
 
     initTabs();
     refreshPrescriptions();
+  }
+
+  protected void onActivityResult(int requestCode, int resultCode,
+                                  Intent data) {
+    Log.v(TAG, "onActivityResult: " + requestCode);
+    if (requestCode == PRESCRIBE_MEDICATION_REQUEST) {
+      if (resultCode == RESULT_OK) {
+        String drugName = data.getStringExtra(Constants.DRUG_NAME);
+        Log.v(TAG, "drug: " + drugName);
+      }
+    }
   }
 
   ////////////////////////////////////////////////////////////
@@ -77,10 +90,12 @@ public class EMRActivity extends RoboActivity {
     newMedicationButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        startActivity(new Intent(
+        startActivityForResult(new Intent(
             mContext,
             MedicationListActivity.class
-            ));
+            ),
+            PRESCRIBE_MEDICATION_REQUEST
+                               );
       }
     });
 
@@ -109,19 +124,6 @@ public class EMRActivity extends RoboActivity {
 
   }
 
-//  private void makeSimpleTab(String tabName) {
-//    TextView text = new TextView(this);
-//    text.setText(tabName);
-//
-//    View content = text;
-//
-//    addTab(
-//        content,
-//        buildTabIndicator(tabName),
-//        tabName
-//        );
-//  }
-
   private void addTab(final View content, View indicator, String tag) {
     TabHost.TabSpec spec = mTabs.newTabSpec(tag);
     spec.setContent(new TabHost.TabContentFactory() {
@@ -148,7 +150,6 @@ public class EMRActivity extends RoboActivity {
   ////////////////////////////////////////////////////////////
 
 
-
   ////////////////////////////////////////////////////////////
   // Network
   ////////////////////////////////////////////////////////////
@@ -165,8 +166,6 @@ public class EMRActivity extends RoboActivity {
       public void itemsReceived(List<Prescription> items) {
         Log.v(TAG, "items: " + items.toString());
 
-        //mMedsList.getAdapter().setListItems(items);
-
         PrescriptionAdapter adapter = new PrescriptionAdapter(EMRActivity.this);
         adapter.setListItems(items);
         mMedsList.setAdapter(adapter);
@@ -180,5 +179,4 @@ public class EMRActivity extends RoboActivity {
 
     });
   }
-
 }

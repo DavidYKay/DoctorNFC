@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -19,6 +20,10 @@ public class MedicationListActivity extends RoboListActivity {
   EditText mSearchText;
 
   private ArrayAdapter<String> mAdapter;
+
+  static final int NEW_PRESCRIPTION_REQUEST = 1;
+
+  private static final String TAG = "MedicationListActivity";
 
   @Override
   public void onCreate(Bundle icicle) {
@@ -45,13 +50,26 @@ public class MedicationListActivity extends RoboListActivity {
 
   };
 
+  protected void onActivityResult(int requestCode, int resultCode,
+                                  Intent data) {
+    Log.v(TAG, "onActivityResult: " + requestCode);
+    if (requestCode == NEW_PRESCRIPTION_REQUEST) {
+      if (resultCode == RESULT_OK) {
+         setResult(
+             RESULT_OK,
+             data);
+         finish();
+      }
+    }
+  }
+
   @Override
   protected void onListItemClick(ListView l, View v, int position, long id) {
     String drugName = mAdapter.getItem(position);
     Intent intent = new Intent(this, PrescribeActivity.class);
-    intent.putExtra("DRUG_NAME", drugName);
+    intent.putExtra(Constants.DRUG_NAME, drugName);
 
-    startActivity(intent);
+    startActivityForResult(intent, NEW_PRESCRIPTION_REQUEST);
   }
 
 }

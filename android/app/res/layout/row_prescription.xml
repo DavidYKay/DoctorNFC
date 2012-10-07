@@ -19,4 +19,5 @@
     android:paddingRight="8dp"
     android:paddingLeft="8dp"
     />
+
 </LinearLayout>

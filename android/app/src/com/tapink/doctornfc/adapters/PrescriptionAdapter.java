@@ -25,7 +25,6 @@ public class PrescriptionAdapter extends BaseAdapter {
     mLayoutInflater = LayoutInflater.from(mContext);
   }
 
-
   @Override
   public int getCount() {
     return mItems.size();
@@ -46,13 +45,13 @@ public class PrescriptionAdapter extends BaseAdapter {
   public View getView(int position, View convertView, ViewGroup parent) {
     if (convertView == null) {
       convertView = mLayoutInflater.inflate(R.layout.row_prescription, parent, false);
-    } else {
-      TextView name = (TextView) convertView.findViewById(R.id.name);
-      TextView tablets = (TextView) convertView.findViewById(R.id.tablets);
-
-      name.setText(mItems.get(position).medication_name);
-      tablets.setText(String.valueOf(mItems.get(position).tablets));
     }
+
+    TextView name = (TextView) convertView.findViewById(R.id.name);
+    TextView tablets = (TextView) convertView.findViewById(R.id.tablets);
+
+    name.setText(mItems.get(position).medication_name);
+    tablets.setText(String.valueOf(mItems.get(position).tablets));
 
     return convertView;
   }
