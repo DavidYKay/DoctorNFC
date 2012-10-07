@@ -3,32 +3,14 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent" >
-  
-  <EditText
-    android:id="@+id/prescription_search"
-    android:hint="@string/search_hint"
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content"
-    android:layout_alignParentTop="true"
-    />
-
 
   <TextView
     android:id="@android:id/empty"
-    android:text="@string/hello_world"
+    android:text="Prescription UI goes here"
     android:layout_width="wrap_content" 
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
     android:layout_centerVertical="true"
-    />
-
-  <ListView
-    android:id="@android:id/list"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_centerHorizontal="true"
-    android:layout_below="@+id/prescription_search"
-    android:drawSelectorOnTop="false"
     />
 
 </RelativeLayout>
