@@ -9,7 +9,7 @@
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
     android:layout_centerVertical="true"
-    android:text="Thanks for scanning that tag!"
+    android:text="Not a recognzied type of tag."
     tools:context=".MainActivity" />
 
 </RelativeLayout>

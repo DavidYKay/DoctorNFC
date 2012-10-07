@@ -1,7 +1,12 @@
 package com.tapink.doctornfc;
 
+import java.util.List;
+
+import se.anyro.nfc_reader.NdefMessageParser;
+import se.anyro.nfc_reader.record.UriRecord;
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
@@ -54,6 +59,41 @@ public class NFCHandler extends Activity {
       handleNewMessages(msgs);
     }
   }
+
+  private void handleNewMessages(NdefMessage[] messages) {
+    for (NdefMessage message : messages) {
+      List<UriRecord> uriRecords = NdefMessageParser.parse(message);
+      // Only handle the first UriRecord
+      if (uriRecords.get(0) != null) {
+        UriRecord uriRecord = uriRecords.get(0);
+        launchUri(uriRecord.getUri());
+      }
+    }
+  }
+
+  private void launchUri(Uri uri) {
+    List<String> segments = uri.getPathSegments();
+    String dataType = segments.get(1);
+
+//    if (dataType.equals(DATA_MODEL_PATIENT)) {
+//      startActivity(new Intent(
+//          
+//          NFCHandler.this
+//                               ));
+//
+//    else if (dataType.equals(DATA_MODEL_PRESCRIPTION)) {
+//
+//    else if (dataType.equals(DATA_MODEL_MEDICATION)) {
+//
+//    } else {
+//      throw new InvalidDataTypeException("Datatype must be one of patients, prescriptions, medications.");
+//    }
+
+  }
+
+  ////////////////////////////////////////////////////////////
+  // NFC Utility
+  ////////////////////////////////////////////////////////////
 
   /**
    * Pulled from se.anyro.nfc_reader.TagViewer;
@@ -125,10 +165,6 @@ public class NFCHandler extends Activity {
     return sb.toString();
   }
 
-  private void handleNewMessages(NdefMessage[] messages) {
-
-
-  }
 
   ////////////////////////////////////////////////////////////
   // Math Utility
