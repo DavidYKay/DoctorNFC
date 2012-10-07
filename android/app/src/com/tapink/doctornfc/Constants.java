@@ -7,4 +7,12 @@ public class Constants {
 
   public static final String PATIENT_ID = "kennedy";
 
+  public static final String[] MEDICATIONS = {
+    "Bisoprolol",
+    "Verapamil",
+    "Hydrochlorothiazide",
+    "Penicillin",
+    "Amoxycillin",
+  };
+
 }
