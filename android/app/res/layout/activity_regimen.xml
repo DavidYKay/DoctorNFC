@@ -8,10 +8,38 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
-    android:layout_centerVertical="true"
-    android:text="@string/hello_world"
+    android:layout_alignParentTop="true"
+    android:text="Pill Regimen:"
+    android:textSize="48dp"
     />
-  
+
+  <LinearLayout 
+    android:id="@+id/center_wrapper"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" 
+    android:layout_centerVertical="true"
+    android:orientation="vertical" 
+    >
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerHorizontal="true"
+      android:layout_centerVertical="true"
+      android:text="* Bisoprolol: 1 Tablet every 24 hours"
+      android:textSize="36dp"
+      />
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerHorizontal="true"
+      android:layout_centerVertical="true"
+      android:text="* Hydrochlorothizide: 1 Tablet every 4 hours"
+      android:textSize="36dp"
+      />
+
+  </LinearLayout>
+
   <Button
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"

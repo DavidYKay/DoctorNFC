@@ -10,7 +10,35 @@
     android:layout_centerHorizontal="true"
     android:layout_alignParentTop="true"
     android:text="Prescription details:"
+    android:textSize="48dp"
     />
+
+  <LinearLayout 
+    android:id="@+id/center_wrapper"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" 
+    android:layout_centerVertical="true"
+    android:orientation="vertical" 
+    >
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerHorizontal="true"
+      android:layout_centerVertical="true"
+      android:text="* Bisoprolol: 30 50g tablets"
+      android:textSize="36dp"
+      />
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerHorizontal="true"
+      android:layout_centerVertical="true"
+      android:text="* Hydrochlorothizide: 120 50g tablets"
+      android:textSize="36dp"
+      />
+  </LinearLayout>
+
 
 </RelativeLayout>
 
