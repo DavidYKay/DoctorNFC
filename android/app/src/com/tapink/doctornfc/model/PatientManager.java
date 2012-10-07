@@ -1,5 +1,6 @@
 package com.tapink.doctornfc.model;
 
+import com.tapink.doctornfc.Constants;
 import com.tapink.doctornfc.callbacks.AddCallback;
 import com.tapink.doctornfc.callbacks.GetCallback;
 import com.tapink.doctornfc.callbacks.RemoveCallback;
@@ -19,7 +20,7 @@ public class PatientManager {
   }
 
   public void listPrescriptions(GetCallback<Prescription> callback) {
-    new GetPrescriptionsAsyncTask(callback).execute();
+    new GetPrescriptionsAsyncTask(callback).execute(Constants.PATIENT_ID);
   }
 
   public void listMedications(GetCallback<Medication> callback) {

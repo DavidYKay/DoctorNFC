@@ -32,11 +32,12 @@ public class Prescription implements org.apache.thrift.TBase<Prescription, Presc
 
   private static final org.apache.thrift.protocol.TField ID_FIELD_DESC = new org.apache.thrift.protocol.TField("id", org.apache.thrift.protocol.TType.STRING, (short)1);
   private static final org.apache.thrift.protocol.TField TAG_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("tag_id", org.apache.thrift.protocol.TType.STRING, (short)2);
-  private static final org.apache.thrift.protocol.TField PATIENT_FIELD_DESC = new org.apache.thrift.protocol.TField("patient", org.apache.thrift.protocol.TType.STRUCT, (short)3);
-  private static final org.apache.thrift.protocol.TField MEDICATION_FIELD_DESC = new org.apache.thrift.protocol.TField("medication", org.apache.thrift.protocol.TType.STRUCT, (short)4);
-  private static final org.apache.thrift.protocol.TField TABLETS_FIELD_DESC = new org.apache.thrift.protocol.TField("tablets", org.apache.thrift.protocol.TType.I32, (short)5);
-  private static final org.apache.thrift.protocol.TField TABLET_SIZE_FIELD_DESC = new org.apache.thrift.protocol.TField("tablet_size", org.apache.thrift.protocol.TType.I32, (short)6);
-  private static final org.apache.thrift.protocol.TField HOURS_BETWEEN_DOSES_FIELD_DESC = new org.apache.thrift.protocol.TField("hours_between_doses", org.apache.thrift.protocol.TType.I32, (short)7);
+  private static final org.apache.thrift.protocol.TField PATIENT_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("patient_id", org.apache.thrift.protocol.TType.STRING, (short)3);
+  private static final org.apache.thrift.protocol.TField MEDICATION_NAME_FIELD_DESC = new org.apache.thrift.protocol.TField("medication_name", org.apache.thrift.protocol.TType.STRING, (short)4);
+  private static final org.apache.thrift.protocol.TField MEDICATION_TYPE_FIELD_DESC = new org.apache.thrift.protocol.TField("medication_type", org.apache.thrift.protocol.TType.STRING, (short)5);
+  private static final org.apache.thrift.protocol.TField TABLETS_FIELD_DESC = new org.apache.thrift.protocol.TField("tablets", org.apache.thrift.protocol.TType.I32, (short)6);
+  private static final org.apache.thrift.protocol.TField TABLET_SIZE_FIELD_DESC = new org.apache.thrift.protocol.TField("tablet_size", org.apache.thrift.protocol.TType.I32, (short)7);
+  private static final org.apache.thrift.protocol.TField HOURS_BETWEEN_DOSES_FIELD_DESC = new org.apache.thrift.protocol.TField("hours_between_doses", org.apache.thrift.protocol.TType.I32, (short)8);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -46,8 +47,9 @@ public class Prescription implements org.apache.thrift.TBase<Prescription, Presc
 
   public String id; // required
   public String tag_id; // required
-  public Patient patient; // required
-  public Medication medication; // required
+  public String patient_id; // required
+  public String medication_name; // required
+  public String medication_type; // required
   public int tablets; // required
   public int tablet_size; // required
   public int hours_between_doses; // required
@@ -56,11 +58,12 @@ public class Prescription implements org.apache.thrift.TBase<Prescription, Presc
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
     ID((short)1, "id"),
     TAG_ID((short)2, "tag_id"),
-    PATIENT((short)3, "patient"),
-    MEDICATION((short)4, "medication"),
-    TABLETS((short)5, "tablets"),
-    TABLET_SIZE((short)6, "tablet_size"),
-    HOURS_BETWEEN_DOSES((short)7, "hours_between_doses");
+    PATIENT_ID((short)3, "patient_id"),
+    MEDICATION_NAME((short)4, "medication_name"),
+    MEDICATION_TYPE((short)5, "medication_type"),
+    TABLETS((short)6, "tablets"),
+    TABLET_SIZE((short)7, "tablet_size"),
+    HOURS_BETWEEN_DOSES((short)8, "hours_between_doses");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -79,15 +82,17 @@ public class Prescription implements org.apache.thrift.TBase<Prescription, Presc
           return ID;
         case 2: // TAG_ID
           return TAG_ID;
-        case 3: // PATIENT
-          return PATIENT;
-        case 4: // MEDICATION
-          return MEDICATION;
-        case 5: // TABLETS
+        case 3: // PATIENT_ID
+          return PATIENT_ID;
+        case 4: // MEDICATION_NAME
+          return MEDICATION_NAME;
+        case 5: // MEDICATION_TYPE
+          return MEDICATION_TYPE;
+        case 6: // TABLETS
           return TABLETS;
-        case 6: // TABLET_SIZE
+        case 7: // TABLET_SIZE
           return TABLET_SIZE;
-        case 7: // HOURS_BETWEEN_DOSES
+        case 8: // HOURS_BETWEEN_DOSES
           return HOURS_BETWEEN_DOSES;
         default:
           return null;
@@ -140,10 +145,12 @@ public class Prescription implements org.apache.thrift.TBase<Prescription, Presc
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING        , "ObjectID")));
     tmpMap.put(_Fields.TAG_ID, new org.apache.thrift.meta_data.FieldMetaData("tag_id", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING        , "NFCID")));
-    tmpMap.put(_Fields.PATIENT, new org.apache.thrift.meta_data.FieldMetaData("patient", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Patient.class)));
-    tmpMap.put(_Fields.MEDICATION, new org.apache.thrift.meta_data.FieldMetaData("medication", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-        new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, Medication.class)));
+    tmpMap.put(_Fields.PATIENT_ID, new org.apache.thrift.meta_data.FieldMetaData("patient_id", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING        , "ObjectID")));
+    tmpMap.put(_Fields.MEDICATION_NAME, new org.apache.thrift.meta_data.FieldMetaData("medication_name", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+    tmpMap.put(_Fields.MEDICATION_TYPE, new org.apache.thrift.meta_data.FieldMetaData("medication_type", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.TABLETS, new org.apache.thrift.meta_data.FieldMetaData("tablets", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
     tmpMap.put(_Fields.TABLET_SIZE, new org.apache.thrift.meta_data.FieldMetaData("tablet_size", org.apache.thrift.TFieldRequirementType.DEFAULT, 
@@ -160,8 +167,9 @@ public class Prescription implements org.apache.thrift.TBase<Prescription, Presc
   public Prescription(
     String id,
     String tag_id,
-    Patient patient,
-    Medication medication,
+    String patient_id,
+    String medication_name,
+    String medication_type,
     int tablets,
     int tablet_size,
     int hours_between_doses)
@@ -169,8 +177,9 @@ public class Prescription implements org.apache.thrift.TBase<Prescription, Presc
     this();
     this.id = id;
     this.tag_id = tag_id;
-    this.patient = patient;
-    this.medication = medication;
+    this.patient_id = patient_id;
+    this.medication_name = medication_name;
+    this.medication_type = medication_type;
     this.tablets = tablets;
     setTabletsIsSet(true);
     this.tablet_size = tablet_size;
@@ -191,11 +200,14 @@ public class Prescription implements org.apache.thrift.TBase<Prescription, Presc
     if (other.isSetTag_id()) {
       this.tag_id = other.tag_id;
     }
-    if (other.isSetPatient()) {
-      this.patient = new Patient(other.patient);
+    if (other.isSetPatient_id()) {
+      this.patient_id = other.patient_id;
     }
-    if (other.isSetMedication()) {
-      this.medication = new Medication(other.medication);
+    if (other.isSetMedication_name()) {
+      this.medication_name = other.medication_name;
+    }
+    if (other.isSetMedication_type()) {
+      this.medication_type = other.medication_type;
     }
     this.tablets = other.tablets;
     this.tablet_size = other.tablet_size;
@@ -210,8 +222,9 @@ public class Prescription implements org.apache.thrift.TBase<Prescription, Presc
   public void clear() {
     this.id = null;
     this.tag_id = null;
-    this.patient = null;
-    this.medication = null;
+    this.patient_id = null;
+    this.medication_name = null;
+    this.medication_type = null;
     setTabletsIsSet(false);
     this.tablets = 0;
     setTablet_sizeIsSet(false);
@@ -268,51 +281,75 @@ public class Prescription implements org.apache.thrift.TBase<Prescription, Presc
     }
   }
 
-  public Patient getPatient() {
-    return this.patient;
+  public String getPatient_id() {
+    return this.patient_id;
   }
 
-  public Prescription setPatient(Patient patient) {
-    this.patient = patient;
+  public Prescription setPatient_id(String patient_id) {
+    this.patient_id = patient_id;
     return this;
   }
 
-  public void unsetPatient() {
-    this.patient = null;
+  public void unsetPatient_id() {
+    this.patient_id = null;
   }
 
-  /** Returns true if field patient is set (has been assigned a value) and false otherwise */
-  public boolean isSetPatient() {
-    return this.patient != null;
+  /** Returns true if field patient_id is set (has been assigned a value) and false otherwise */
+  public boolean isSetPatient_id() {
+    return this.patient_id != null;
   }
 
-  public void setPatientIsSet(boolean value) {
+  public void setPatient_idIsSet(boolean value) {
     if (!value) {
-      this.patient = null;
+      this.patient_id = null;
     }
   }
 
-  public Medication getMedication() {
-    return this.medication;
+  public String getMedication_name() {
+    return this.medication_name;
   }
 
-  public Prescription setMedication(Medication medication) {
-    this.medication = medication;
+  public Prescription setMedication_name(String medication_name) {
+    this.medication_name = medication_name;
     return this;
   }
 
-  public void unsetMedication() {
-    this.medication = null;
+  public void unsetMedication_name() {
+    this.medication_name = null;
   }
 
-  /** Returns true if field medication is set (has been assigned a value) and false otherwise */
-  public boolean isSetMedication() {
-    return this.medication != null;
+  /** Returns true if field medication_name is set (has been assigned a value) and false otherwise */
+  public boolean isSetMedication_name() {
+    return this.medication_name != null;
   }
 
-  public void setMedicationIsSet(boolean value) {
+  public void setMedication_nameIsSet(boolean value) {
     if (!value) {
-      this.medication = null;
+      this.medication_name = null;
+    }
+  }
+
+  public String getMedication_type() {
+    return this.medication_type;
+  }
+
+  public Prescription setMedication_type(String medication_type) {
+    this.medication_type = medication_type;
+    return this;
+  }
+
+  public void unsetMedication_type() {
+    this.medication_type = null;
+  }
+
+  /** Returns true if field medication_type is set (has been assigned a value) and false otherwise */
+  public boolean isSetMedication_type() {
+    return this.medication_type != null;
+  }
+
+  public void setMedication_typeIsSet(boolean value) {
+    if (!value) {
+      this.medication_type = null;
     }
   }
 
@@ -403,19 +440,27 @@ public class Prescription implements org.apache.thrift.TBase<Prescription, Presc
       }
       break;
 
-    case PATIENT:
+    case PATIENT_ID:
       if (value == null) {
-        unsetPatient();
+        unsetPatient_id();
       } else {
-        setPatient((Patient)value);
+        setPatient_id((String)value);
       }
       break;
 
-    case MEDICATION:
+    case MEDICATION_NAME:
       if (value == null) {
-        unsetMedication();
+        unsetMedication_name();
       } else {
-        setMedication((Medication)value);
+        setMedication_name((String)value);
+      }
+      break;
+
+    case MEDICATION_TYPE:
+      if (value == null) {
+        unsetMedication_type();
+      } else {
+        setMedication_type((String)value);
       }
       break;
 
@@ -454,11 +499,14 @@ public class Prescription implements org.apache.thrift.TBase<Prescription, Presc
     case TAG_ID:
       return getTag_id();
 
-    case PATIENT:
-      return getPatient();
+    case PATIENT_ID:
+      return getPatient_id();
 
-    case MEDICATION:
-      return getMedication();
+    case MEDICATION_NAME:
+      return getMedication_name();
+
+    case MEDICATION_TYPE:
+      return getMedication_type();
 
     case TABLETS:
       return Integer.valueOf(getTablets());
@@ -484,10 +532,12 @@ public class Prescription implements org.apache.thrift.TBase<Prescription, Presc
       return isSetId();
     case TAG_ID:
       return isSetTag_id();
-    case PATIENT:
-      return isSetPatient();
-    case MEDICATION:
-      return isSetMedication();
+    case PATIENT_ID:
+      return isSetPatient_id();
+    case MEDICATION_NAME:
+      return isSetMedication_name();
+    case MEDICATION_TYPE:
+      return isSetMedication_type();
     case TABLETS:
       return isSetTablets();
     case TABLET_SIZE:
@@ -529,21 +579,30 @@ public class Prescription implements org.apache.thrift.TBase<Prescription, Presc
         return false;
     }
 
-    boolean this_present_patient = true && this.isSetPatient();
-    boolean that_present_patient = true && that.isSetPatient();
-    if (this_present_patient || that_present_patient) {
-      if (!(this_present_patient && that_present_patient))
+    boolean this_present_patient_id = true && this.isSetPatient_id();
+    boolean that_present_patient_id = true && that.isSetPatient_id();
+    if (this_present_patient_id || that_present_patient_id) {
+      if (!(this_present_patient_id && that_present_patient_id))
         return false;
-      if (!this.patient.equals(that.patient))
+      if (!this.patient_id.equals(that.patient_id))
         return false;
     }
 
-    boolean this_present_medication = true && this.isSetMedication();
-    boolean that_present_medication = true && that.isSetMedication();
-    if (this_present_medication || that_present_medication) {
-      if (!(this_present_medication && that_present_medication))
+    boolean this_present_medication_name = true && this.isSetMedication_name();
+    boolean that_present_medication_name = true && that.isSetMedication_name();
+    if (this_present_medication_name || that_present_medication_name) {
+      if (!(this_present_medication_name && that_present_medication_name))
         return false;
-      if (!this.medication.equals(that.medication))
+      if (!this.medication_name.equals(that.medication_name))
+        return false;
+    }
+
+    boolean this_present_medication_type = true && this.isSetMedication_type();
+    boolean that_present_medication_type = true && that.isSetMedication_type();
+    if (this_present_medication_type || that_present_medication_type) {
+      if (!(this_present_medication_type && that_present_medication_type))
+        return false;
+      if (!this.medication_type.equals(that.medication_type))
         return false;
     }
 
@@ -610,22 +669,32 @@ public class Prescription implements org.apache.thrift.TBase<Prescription, Presc
         return lastComparison;
       }
     }
-    lastComparison = Boolean.valueOf(isSetPatient()).compareTo(typedOther.isSetPatient());
+    lastComparison = Boolean.valueOf(isSetPatient_id()).compareTo(typedOther.isSetPatient_id());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetPatient()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.patient, typedOther.patient);
+    if (isSetPatient_id()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.patient_id, typedOther.patient_id);
       if (lastComparison != 0) {
         return lastComparison;
       }
     }
-    lastComparison = Boolean.valueOf(isSetMedication()).compareTo(typedOther.isSetMedication());
+    lastComparison = Boolean.valueOf(isSetMedication_name()).compareTo(typedOther.isSetMedication_name());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetMedication()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.medication, typedOther.medication);
+    if (isSetMedication_name()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.medication_name, typedOther.medication_name);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
+    lastComparison = Boolean.valueOf(isSetMedication_type()).compareTo(typedOther.isSetMedication_type());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetMedication_type()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.medication_type, typedOther.medication_type);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -696,19 +765,27 @@ public class Prescription implements org.apache.thrift.TBase<Prescription, Presc
     }
     first = false;
     if (!first) sb.append(", ");
-    sb.append("patient:");
-    if (this.patient == null) {
+    sb.append("patient_id:");
+    if (this.patient_id == null) {
       sb.append("null");
     } else {
-      sb.append(this.patient);
+      sb.append(this.patient_id);
     }
     first = false;
     if (!first) sb.append(", ");
-    sb.append("medication:");
-    if (this.medication == null) {
+    sb.append("medication_name:");
+    if (this.medication_name == null) {
       sb.append("null");
     } else {
-      sb.append(this.medication);
+      sb.append(this.medication_name);
+    }
+    first = false;
+    if (!first) sb.append(", ");
+    sb.append("medication_type:");
+    if (this.medication_type == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.medication_type);
     }
     first = false;
     if (!first) sb.append(", ");
@@ -783,25 +860,31 @@ public class Prescription implements org.apache.thrift.TBase<Prescription, Presc
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 3: // PATIENT
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.patient = new Patient();
-              struct.patient.read(iprot);
-              struct.setPatientIsSet(true);
+          case 3: // PATIENT_ID
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+              struct.patient_id = iprot.readString();
+              struct.setPatient_idIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 4: // MEDICATION
-            if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-              struct.medication = new Medication();
-              struct.medication.read(iprot);
-              struct.setMedicationIsSet(true);
+          case 4: // MEDICATION_NAME
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+              struct.medication_name = iprot.readString();
+              struct.setMedication_nameIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 5: // TABLETS
+          case 5: // MEDICATION_TYPE
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+              struct.medication_type = iprot.readString();
+              struct.setMedication_typeIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 6: // TABLETS
             if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
               struct.tablets = iprot.readI32();
               struct.setTabletsIsSet(true);
@@ -809,7 +892,7 @@ public class Prescription implements org.apache.thrift.TBase<Prescription, Presc
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 6: // TABLET_SIZE
+          case 7: // TABLET_SIZE
             if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
               struct.tablet_size = iprot.readI32();
               struct.setTablet_sizeIsSet(true);
@@ -817,7 +900,7 @@ public class Prescription implements org.apache.thrift.TBase<Prescription, Presc
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 7: // HOURS_BETWEEN_DOSES
+          case 8: // HOURS_BETWEEN_DOSES
             if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
               struct.hours_between_doses = iprot.readI32();
               struct.setHours_between_dosesIsSet(true);
@@ -850,14 +933,19 @@ public class Prescription implements org.apache.thrift.TBase<Prescription, Presc
         oprot.writeString(struct.tag_id);
         oprot.writeFieldEnd();
       }
-      if (struct.patient != null) {
-        oprot.writeFieldBegin(PATIENT_FIELD_DESC);
-        struct.patient.write(oprot);
+      if (struct.patient_id != null) {
+        oprot.writeFieldBegin(PATIENT_ID_FIELD_DESC);
+        oprot.writeString(struct.patient_id);
         oprot.writeFieldEnd();
       }
-      if (struct.medication != null) {
-        oprot.writeFieldBegin(MEDICATION_FIELD_DESC);
-        struct.medication.write(oprot);
+      if (struct.medication_name != null) {
+        oprot.writeFieldBegin(MEDICATION_NAME_FIELD_DESC);
+        oprot.writeString(struct.medication_name);
+        oprot.writeFieldEnd();
+      }
+      if (struct.medication_type != null) {
+        oprot.writeFieldBegin(MEDICATION_TYPE_FIELD_DESC);
+        oprot.writeString(struct.medication_type);
         oprot.writeFieldEnd();
       }
       oprot.writeFieldBegin(TABLETS_FIELD_DESC);
@@ -893,33 +981,39 @@ public class Prescription implements org.apache.thrift.TBase<Prescription, Presc
       if (struct.isSetTag_id()) {
         optionals.set(1);
       }
-      if (struct.isSetPatient()) {
+      if (struct.isSetPatient_id()) {
         optionals.set(2);
       }
-      if (struct.isSetMedication()) {
+      if (struct.isSetMedication_name()) {
         optionals.set(3);
       }
-      if (struct.isSetTablets()) {
+      if (struct.isSetMedication_type()) {
         optionals.set(4);
       }
-      if (struct.isSetTablet_size()) {
+      if (struct.isSetTablets()) {
         optionals.set(5);
       }
-      if (struct.isSetHours_between_doses()) {
+      if (struct.isSetTablet_size()) {
         optionals.set(6);
       }
-      oprot.writeBitSet(optionals, 7);
+      if (struct.isSetHours_between_doses()) {
+        optionals.set(7);
+      }
+      oprot.writeBitSet(optionals, 8);
       if (struct.isSetId()) {
         oprot.writeString(struct.id);
       }
       if (struct.isSetTag_id()) {
         oprot.writeString(struct.tag_id);
       }
-      if (struct.isSetPatient()) {
-        struct.patient.write(oprot);
+      if (struct.isSetPatient_id()) {
+        oprot.writeString(struct.patient_id);
       }
-      if (struct.isSetMedication()) {
-        struct.medication.write(oprot);
+      if (struct.isSetMedication_name()) {
+        oprot.writeString(struct.medication_name);
+      }
+      if (struct.isSetMedication_type()) {
+        oprot.writeString(struct.medication_type);
       }
       if (struct.isSetTablets()) {
         oprot.writeI32(struct.tablets);
@@ -935,7 +1029,7 @@ public class Prescription implements org.apache.thrift.TBase<Prescription, Presc
     @Override
     public void read(org.apache.thrift.protocol.TProtocol prot, Prescription struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
-      BitSet incoming = iprot.readBitSet(7);
+      BitSet incoming = iprot.readBitSet(8);
       if (incoming.get(0)) {
         struct.id = iprot.readString();
         struct.setIdIsSet(true);
@@ -945,24 +1039,26 @@ public class Prescription implements org.apache.thrift.TBase<Prescription, Presc
         struct.setTag_idIsSet(true);
       }
       if (incoming.get(2)) {
-        struct.patient = new Patient();
-        struct.patient.read(iprot);
-        struct.setPatientIsSet(true);
+        struct.patient_id = iprot.readString();
+        struct.setPatient_idIsSet(true);
       }
       if (incoming.get(3)) {
-        struct.medication = new Medication();
-        struct.medication.read(iprot);
-        struct.setMedicationIsSet(true);
+        struct.medication_name = iprot.readString();
+        struct.setMedication_nameIsSet(true);
       }
       if (incoming.get(4)) {
+        struct.medication_type = iprot.readString();
+        struct.setMedication_typeIsSet(true);
+      }
+      if (incoming.get(5)) {
         struct.tablets = iprot.readI32();
         struct.setTabletsIsSet(true);
       }
-      if (incoming.get(5)) {
+      if (incoming.get(6)) {
         struct.tablet_size = iprot.readI32();
         struct.setTablet_sizeIsSet(true);
       }
-      if (incoming.get(6)) {
+      if (incoming.get(7)) {
         struct.hours_between_doses = iprot.readI32();
         struct.setHours_between_dosesIsSet(true);
       }

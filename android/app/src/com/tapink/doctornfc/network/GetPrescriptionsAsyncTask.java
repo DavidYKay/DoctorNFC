@@ -16,24 +16,25 @@ import com.google.common.base.Optional;
 import com.tapink.doctornfc.Constants;
 import com.tapink.doctornfc.callbacks.GetCallback;
 import com.tapink.doctornfc.patients.Prescription;
-import com.tapink.doctornfc.patients.PrescriptionService;
+import com.tapink.doctornfc.patients.MedicationService;
 
 public class GetPrescriptionsAsyncTask extends AsyncTask<String, Integer, Optional<List<Prescription>>> {
 
-  private PrescriptionService.Client mClient;
+  private MedicationService.Client mClient;
   private GetCallback<Prescription> mCallback;
 
   public GetPrescriptionsAsyncTask(GetCallback<Prescription> callback) {
     mCallback = callback;
+  }
+
+  protected Optional<List<Prescription>> doInBackground(String... patientIds) {
     try {
       mClient = initClient();
     } catch (TTransportException e) {
       e.printStackTrace();
       mCallback.failed(e);
     }
-  }
 
-  protected Optional<List<Prescription>> doInBackground(String... patientIds) {
     List<Prescription> prescriptions = new ArrayList<Prescription>();
     try {
       prescriptions = mClient.get_prescriptions_for_patient(patientIds[0]);
@@ -56,14 +57,14 @@ public class GetPrescriptionsAsyncTask extends AsyncTask<String, Integer, Option
     }
   }
 
-  private PrescriptionService.Client initClient() throws TTransportException {
+  private MedicationService.Client initClient() throws TTransportException {
     TTransport transport;
     transport = new TSocket(Constants.DEV_MACHINE_ADDRESS, Constants.DEFAULT_PORT);
     transport.open();
 
     TProtocol protocol = new TBinaryProtocol(transport);
 
-    return new PrescriptionService.Client(protocol);
+    return new MedicationService.Client(protocol);
   }
 
 }

@@ -6,6 +6,8 @@
   <uses-sdk
     android:minSdkVersion="14"
     android:targetSdkVersion="15" />
+  
+  <uses-permission android:name="android.permission.INTERNET" />
 
   <application
     android:icon="@drawable/ic_launcher"
@@ -64,5 +66,6 @@
     
 
   </application>
+  
 
 </manifest>

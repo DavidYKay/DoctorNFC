@@ -51,8 +51,8 @@ public class PrescriptionAdapter extends BaseAdapter {
       TextView name = (TextView) convertView.findViewById(R.id.name);
       TextView tablets = (TextView) convertView.findViewById(R.id.name);
 
-      name.setText(mItems.get(position).medication.name);
-      tablets.setText(mItems.get(position).tablets);
+      name.setText(mItems.get(position).medication_name);
+      tablets.setText(String.valueOf(mItems.get(position).tablets));
     }
 
     return convertView;
